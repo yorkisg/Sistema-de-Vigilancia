@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F78AB7BB-047A-4061-8D46-3CB5F1F7E089}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Aplicacion_2.My.MyApplication</StartupObject>
+    <RootNamespace>Aplicacion_2</RootNamespace>
+    <AssemblyName>Aplicacion 2</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Aplicacion 2.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Aplicacion 2.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="MySql.Data.MySqlClient" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modulos\ModuloGeneral.vb" />
+    <Compile Include="Modulos\ModuloSeguimiento.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Seguimiento\SeguimientoDispositivo.Designer.vb">
+      <DependentUpon>SeguimientoDispositivo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Seguimiento\SeguimientoDispositivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguimiento\SeguimientoDispositivo.resx">
+      <DependentUpon>SeguimientoDispositivo.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Recursos\Abierto1.png" />
+    <Content Include="Recursos\Abierto2.png" />
+    <Content Include="Recursos\Accidentado.png" />
+    <Content Include="Recursos\Aceptar.png" />
+    <Content Include="Recursos\Advertencia.png" />
+    <Content Include="Recursos\Agregar.png" />
+    <Content Include="Recursos\AgregarNuevo.png" />
+    <Content Include="Recursos\AgregarReporte.png" />
+    <Content Include="Recursos\Agrupado.png" />
+    <Content Include="Recursos\Alerta.png" />
+    <Content Include="Recursos\Analista.png" />
+    <Content Include="Recursos\Archivo 1.ico" />
+    <Content Include="Recursos\Archivo2.png" />
+    <Content Include="Recursos\Bandera.png" />
+    <Content Include="Recursos\Bus.png" />
+    <Content Include="Recursos\Buscar.png" />
+    <Content Include="Recursos\Camara.png" />
+    <Content Include="Recursos\CambiarEstado.png" />
+    <Content Include="Recursos\Camion.png" />
+    <Content Include="Recursos\CantidadVehiculo.png" />
+    <Content Include="Recursos\CargadoEsperandoDocumentos.png" />
+    <Content Include="Recursos\CargadoEsperandoPorSalir.png" />
+    <Content Include="Recursos\CECON 1.png" />
+    <Content Include="Recursos\CECON 3.png" />
+    <Content Include="Recursos\Cerrado.png" />
+    <Content Include="Recursos\Cerrar.gif" />
+    <Content Include="Recursos\Choferes.png" />
+    <Content Include="Recursos\Consultar3.png" />
+    <Content Include="Recursos\ConsultarChofer.png" />
+    <Content Include="Recursos\ConsultarInfracciones.gif" />
+    <Content Include="Recursos\ConsultarVehiculo.png" />
+    <Content Include="Recursos\ControldePeso1.png" />
+    <Content Include="Recursos\ControldePeso2.png" />
+    <Content Include="Recursos\ControldePeso3.png" />
+    <Content Include="Recursos\ControlDeRutas2.png" />
+    <Content Include="Recursos\ControlDeRutas3.png" />
+    <Content Include="Recursos\ControlDeRutas4.png" />
+    <Content Include="Recursos\ControlDeRutas5.png" />
+    <Content Include="Recursos\Copair.png" />
+    <Content Include="Recursos\Critico.png" />
+    <Content Include="Recursos\DeRegresoCargado.png" />
+    <Content Include="Recursos\DeRegresoConRetorno.png" />
+    <Content Include="Recursos\DeRegresoVacio.png" />
+    <Content Include="Recursos\Detenido.png" />
+    <Content Include="Recursos\EditarDatos.png" />
+    <Content Include="Recursos\EditarRuta.png" />
+    <Content Include="Recursos\Eliminar.png" />
+    <Content Include="Recursos\EliminarRuta.png" />
+    <Content Include="Recursos\EnElClienteEnElProveedor.png" />
+    <Content Include="Recursos\EnElSitioDeCarga.png" />
+    <Content Include="Recursos\EnProcesoDeCarga.png" />
+    <Content Include="Recursos\EnProcesoDeDescarga.png" />
+    <Content Include="Recursos\EnReparacion.png" />
+    <Content Include="Recursos\EnRutaCargado.png" />
+    <Content Include="Recursos\EnRutaVacio.png" />
+    <Content Include="Recursos\EnTaller.png" />
+    <Content Include="Recursos\EsperandoAutorizacionParaSalir.png" />
+    <Content Include="Recursos\EsperandoPorSalir.png" />
+    <Content Include="Recursos\EstadisticaRuta.png" />
+    <Content Include="Recursos\Estadisticas.png" />
+    <Content Include="Recursos\Estados.png" />
+    <Content Include="Recursos\ExportarExcell.png" />
+    <Content Include="Recursos\Extendido.png" />
+    <Content Include="Recursos\Extensiones.png" />
+    <Content Include="Recursos\Falla.png" />
+    <Content Include="Recursos\Filtro.png" />
+    <Content Include="Recursos\Flota.png" />
+    <Content Include="Recursos\FondoPantalla.png" />
+    <Content Include="Recursos\Guardar.png" />
+    <Content Include="Recursos\Guia2.png" />
+    <Content Include="Recursos\Historial.png" />
+    <Content Include="Recursos\HistorialInfraccion.png" />
+    <Content Include="Recursos\Icono.ico" />
+    <Content Include="Recursos\Icono6.ico" />
+    <Content Include="Recursos\ImprimirReporte.png" />
+    <Content Include="Recursos\Incidencias.png" />
+    <Content Include="Recursos\LibroNovedades.png" />
+    <Content Include="Recursos\Limpiar.png" />
+    <Content Include="Recursos\Lista.ico" />
+    <Content Include="Recursos\ListadoActual.png" />
+    <Content Include="Recursos\ListadoGrupo.png" />
+    <Content Include="Recursos\ListadoResumen.png" />
+    <Content Include="Recursos\Listas.gif" />
+    <Content Include="Recursos\ListasProductos.png" />
+    <Content Include="Recursos\ListasUbicaciones.png" />
+    <Content Include="Recursos\Liviano.ico" />
+    <Content Include="Recursos\Login.ico" />
+    <Content Include="Recursos\Login.png" />
+    <Content Include="Recursos\Logo.jpg" />
+    <Content Include="Recursos\LogoPcp.png" />
+    <Content Include="Recursos\Mapa 2.png" />
+    <Content Include="Recursos\Mapas2.png" />
+    <Content Include="Recursos\MateriaPrima3.png" />
+    <Content Include="Recursos\MateriaPrimaCompeltada.png" />
+    <Content Include="Recursos\MateriaPrimaMensual.png" />
+    <Content Include="Recursos\Modificar.gif" />
+    <Content Include="Recursos\ModificarReporte.png" />
+    <Content Include="Recursos\Operativo.png" />
+    <Content Include="Recursos\OrganizacionElTunal.png" />
+    <Content Include="Recursos\ParadaIrregular.png" />
+    <Content Include="Recursos\Pegar.gif" />
+    <Content Include="Recursos\PendientePorRevision.png" />
+    <Content Include="Recursos\PernoctaAutorizada.png" />
+    <Content Include="Recursos\Peso 3.png" />
+    <Content Include="Recursos\Peso.png" />
+    <Content Include="Recursos\Producto2.png" />
+    <Content Include="Recursos\Proveedor.png" />
+    <Content Include="Recursos\PuntoAsistencial.png" />
+    <Content Include="Recursos\RealizandoMovimientos.png" />
+    <Content Include="Recursos\RegistrarInfraccion.gif" />
+    <Content Include="Recursos\RegistrarrNovedad.png" />
+    <Content Include="Recursos\RegistroFallaMecanica.gif" />
+    <Content Include="Recursos\Retirar.png" />
+    <Content Include="Recursos\Robado.png" />
+    <Content Include="Recursos\RutaCancelada.png" />
+    <Content Include="Recursos\Rutas.png" />
+    <Content Include="Recursos\Salir.png" />
+    <Content Include="Recursos\SinReporte.png" />
+    <Content Include="Recursos\SinRevision.png" />
+    <Content Include="Recursos\Taller.png" />
+    <Content Include="Recursos\Taller2.ico" />
+    <Content Include="Recursos\Taller2.png" />
+    <Content Include="Recursos\Taller3.png" />
+    <Content Include="Recursos\Turno.png" />
+    <Content Include="Recursos\Vehiculo2.png" />
+    <Content Include="Recursos\Vehiculos.ico" />
+    <Content Include="Recursos\VehiculosCarretera.ico" />
+    <Content Include="Recursos\Version.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
