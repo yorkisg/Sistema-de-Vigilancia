@@ -46,6 +46,9 @@ Partial Class MaestroDispositivo
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ComboTipo = New System.Windows.Forms.ComboBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboSede = New System.Windows.Forms.ComboBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -161,7 +164,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(12, 201)
+        Me.Label4.Location = New System.Drawing.Point(12, 245)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(46, 15)
         Me.Label4.TabIndex = 61
@@ -192,7 +195,7 @@ Partial Class MaestroDispositivo
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
-        Me.ComboGrupo.Location = New System.Drawing.Point(12, 219)
+        Me.ComboGrupo.Location = New System.Drawing.Point(12, 263)
         Me.ComboGrupo.Name = "ComboGrupo"
         Me.ComboGrupo.Size = New System.Drawing.Size(280, 23)
         Me.ComboGrupo.TabIndex = 65
@@ -201,7 +204,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label6.Location = New System.Drawing.Point(12, 245)
+        Me.Label6.Location = New System.Drawing.Point(12, 294)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 15)
         Me.Label6.TabIndex = 66
@@ -214,7 +217,7 @@ Partial Class MaestroDispositivo
         Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboEstado.FormattingEnabled = True
         Me.ComboEstado.Items.AddRange(New Object() {"OPERATIVA", "DESCONECTADA", "PRESENTANDO FALLAS"})
-        Me.ComboEstado.Location = New System.Drawing.Point(12, 263)
+        Me.ComboEstado.Location = New System.Drawing.Point(12, 312)
         Me.ComboEstado.Name = "ComboEstado"
         Me.ComboEstado.Size = New System.Drawing.Size(280, 23)
         Me.ComboEstado.TabIndex = 67
@@ -237,18 +240,50 @@ Partial Class MaestroDispositivo
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(298, 219)
+        Me.TextBox4.Location = New System.Drawing.Point(298, 222)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(41, 20)
         Me.TextBox4.TabIndex = 69
         Me.TextBox4.Visible = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label7.Location = New System.Drawing.Point(12, 201)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(33, 15)
+        Me.Label7.TabIndex = 70
+        Me.Label7.Text = "SEDE"
+        '
+        'ComboSede
+        '
+        Me.ComboSede.BackColor = System.Drawing.Color.AliceBlue
+        Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ComboSede.FormattingEnabled = True
+        Me.ComboSede.Location = New System.Drawing.Point(12, 219)
+        Me.ComboSede.Name = "ComboSede"
+        Me.ComboSede.Size = New System.Drawing.Size(280, 23)
+        Me.ComboSede.TabIndex = 71
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(298, 263)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(41, 20)
+        Me.TextBox5.TabIndex = 72
+        Me.TextBox5.Visible = False
         '
         'MaestroDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.AliceBlue
-        Me.ClientSize = New System.Drawing.Size(351, 298)
+        Me.ClientSize = New System.Drawing.Size(351, 347)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.ComboSede)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.ComboTipo)
         Me.Controls.Add(Me.ComboEstado)
         Me.Controls.Add(Me.Label6)
@@ -300,4 +335,7 @@ Partial Class MaestroDispositivo
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents ComboTipo As ComboBox
     Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents ComboSede As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents TextBox5 As TextBox
 End Class

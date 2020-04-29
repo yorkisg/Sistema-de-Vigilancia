@@ -49,6 +49,7 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroDispositivo.BotonModificar.Enabled = True
@@ -161,6 +162,7 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroDispositivo.BotonModificar.Enabled = True
@@ -188,6 +190,46 @@ Public Class ListadoDispositivo
             DataGridView.Rows.Remove(DataGridView.CurrentRow)
 
         Next
+
+    End Sub
+
+    Private Sub DataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView.CellFormatting
+        'CellFormatting: Evento del control DataGridview el cual permite cambiar 
+        'y dar formato a las celdas, bien sea por color de texto, fondo, etc.
+
+        Try
+
+            Dim TipoEstado As String
+
+            If DataGridView.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
+
+                TipoEstado = (DataGridView.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoEstado = "OPERATIVA" Then
+
+                    e.CellStyle.ForeColor = Color.Blue
+
+                End If
+
+                If TipoEstado = "DESCONECTADA" Then
+
+                    e.CellStyle.ForeColor = Color.Red
+
+                End If
+
+                If TipoEstado = "PRESENTANDO FALLAS" Then
+
+                    e.CellStyle.ForeColor = Color.Orange
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
 
     End Sub
 

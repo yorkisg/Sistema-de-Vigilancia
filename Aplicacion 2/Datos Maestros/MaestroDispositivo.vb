@@ -14,7 +14,8 @@ Public Class MaestroDispositivo
         TextBox2.CharacterCasing = CharacterCasing.Upper
         TextBox3.CharacterCasing = CharacterCasing.Upper
 
-        CargarComboGrupo()
+        CargarComboSede()
+        ' CargarComboGrupo()
 
     End Sub
 
@@ -94,18 +95,42 @@ Public Class MaestroDispositivo
 
     End Sub
 
+    Private Sub CargarComboSede()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Dim Tabla As New DataTable
+        Dim Adaptador As New MySqlDataAdapter
+
+        Adaptador = New MySqlDataAdapter("SELECT * FROM sede ORDER BY nombresede ASC", Conexion)
+        Adaptador.Fill(Tabla)
+
+        ComboSede.DataSource = Tabla
+        ComboSede.DisplayMember = "nombresede"
+        ComboSede.ValueMember = "idsede"
+
+    End Sub
+
     Private Sub CargarComboGrupo()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter
 
-        Adaptador = New MySqlDataAdapter("SELECT * FROM grupo ORDER BY nombregrupo ASC", Conexion)
+        Adaptador = New MySqlDataAdapter("SELECT * FROM grupo, sede " _
+                               & " WHERE grupo.sede = sede.idsede " _
+                               & " And nombresede = '" & TextBox5.Text & "' ORDER BY nombregrupo ASC", Conexion)
+
         Adaptador.Fill(Tabla)
 
         ComboGrupo.DataSource = Tabla
         ComboGrupo.DisplayMember = "nombregrupo"
         ComboGrupo.ValueMember = "idgrupo"
+
+    End Sub
+    Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
+
+        TextBox5.Text = ComboSede.Text
+        CargarComboGrupo()
 
     End Sub
 
@@ -162,6 +187,7 @@ Public Class MaestroDispositivo
         Return Validar
 
     End Function
+
 
 
 End Class

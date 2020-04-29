@@ -24,8 +24,9 @@ Partial Class ListadoDispositivo
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadoDispositivo))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -37,15 +38,16 @@ Partial Class ListadoDispositivo
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.DataGridView = New System.Windows.Forms.DataGridView()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.Contador = New System.Windows.Forms.ToolStripLabel()
         Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaUbicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.Contador = New System.Windows.Forms.ToolStripLabel()
+        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip2.SuspendLayout()
@@ -137,7 +139,7 @@ Partial Class ListadoDispositivo
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaTipo, Me.ColumnaGrupo, Me.ColumnaEstado})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaTipo, Me.ColumnaEstado, Me.ColumnaGrupo, Me.ColumnaSede})
         Me.DataGridView.GridColor = System.Drawing.SystemColors.Menu
         Me.DataGridView.Location = New System.Drawing.Point(12, 28)
         Me.DataGridView.MultiSelect = False
@@ -145,11 +147,37 @@ Partial Class ListadoDispositivo
         Me.DataGridView.ReadOnly = True
         Me.DataGridView.RowHeadersVisible = False
         Me.DataGridView.RowHeadersWidth = 45
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView.Size = New System.Drawing.Size(960, 536)
         Me.DataGridView.TabIndex = 26
+        '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.BackColor = System.Drawing.SystemColors.Control
+        Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.Contador})
+        Me.ToolStrip2.Location = New System.Drawing.Point(0, 567)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.Size = New System.Drawing.Size(984, 25)
+        Me.ToolStrip2.TabIndex = 74
+        Me.ToolStrip2.Text = "ToolStrip2"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(158, 22)
+        Me.ToolStripLabel2.Text = "REGISTROS ENCONTRADOS:"
+        '
+        'Contador
+        '
+        Me.Contador.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.Contador.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Contador.Image = CType(resources.GetObject("Contador.Image"), System.Drawing.Image)
+        Me.Contador.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Contador.Name = "Contador"
+        Me.Contador.Size = New System.Drawing.Size(0, 22)
         '
         'ColumnaID
         '
@@ -184,14 +212,6 @@ Partial Class ListadoDispositivo
         Me.ColumnaTipo.Name = "ColumnaTipo"
         Me.ColumnaTipo.ReadOnly = True
         '
-        'ColumnaGrupo
-        '
-        Me.ColumnaGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
-        Me.ColumnaGrupo.HeaderText = "GRUPO"
-        Me.ColumnaGrupo.Name = "ColumnaGrupo"
-        Me.ColumnaGrupo.ReadOnly = True
-        '
         'ColumnaEstado
         '
         Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -202,31 +222,23 @@ Partial Class ListadoDispositivo
         Me.ColumnaEstado.Name = "ColumnaEstado"
         Me.ColumnaEstado.ReadOnly = True
         '
-        'ToolStrip2
+        'ColumnaGrupo
         '
-        Me.ToolStrip2.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.Contador})
-        Me.ToolStrip2.Location = New System.Drawing.Point(0, 567)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(984, 25)
-        Me.ToolStrip2.TabIndex = 74
-        Me.ToolStrip2.Text = "ToolStrip2"
+        Me.ColumnaGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
+        Me.ColumnaGrupo.HeaderText = "GRUPO"
+        Me.ColumnaGrupo.Name = "ColumnaGrupo"
+        Me.ColumnaGrupo.ReadOnly = True
         '
-        'ToolStripLabel2
+        'ColumnaSede
         '
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(158, 22)
-        Me.ToolStripLabel2.Text = "REGISTROS ENCONTRADOS:"
-        '
-        'Contador
-        '
-        Me.Contador.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.Contador.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Contador.Image = CType(resources.GetObject("Contador.Image"), System.Drawing.Image)
-        Me.Contador.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Contador.Name = "Contador"
-        Me.Contador.Size = New System.Drawing.Size(0, 22)
+        Me.ColumnaSede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaSede.DataPropertyName = "nombresede"
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaSede.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ColumnaSede.HeaderText = "SEDE"
+        Me.ColumnaSede.Name = "ColumnaSede"
+        Me.ColumnaSede.ReadOnly = True
         '
         'ListadoDispositivo
         '
@@ -265,8 +277,9 @@ Partial Class ListadoDispositivo
     Friend WithEvents ToolStrip2 As ToolStrip
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
     Friend WithEvents Contador As ToolStripLabel
-    Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaTipo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaUbicacion As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaDescripcion As DataGridViewTextBoxColumn

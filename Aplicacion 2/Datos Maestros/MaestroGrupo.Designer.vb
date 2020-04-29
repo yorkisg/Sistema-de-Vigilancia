@@ -164,10 +164,11 @@ Partial Class MaestroGrupo
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(141, 111)
+        Me.TextBox3.Location = New System.Drawing.Point(298, 134)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox3.Size = New System.Drawing.Size(41, 20)
         Me.TextBox3.TabIndex = 73
+        Me.TextBox3.Visible = False
         '
         'ErrorProvider1
         '
