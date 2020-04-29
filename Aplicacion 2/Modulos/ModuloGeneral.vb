@@ -9,7 +9,6 @@ Module ModuloGeneral
     Public Adaptador As MySqlDataAdapter
     Public DataSet As DataSet
     Public Tabla As DataTable
-    'Public Builder As MySqlCommandBuilder
     Public ConnectionString As String = "server=172.16.8.88;user=cecon01;password=1234;database=bdvigilancia;port=3306"
     Public Conexion As New MySqlConnection
     Public Reader As MySqlDataReader
@@ -70,6 +69,46 @@ Module ModuloGeneral
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     ''''''''''''''''''''''''METODOS DE APOYO'''''''''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    Public Sub Exportar(ByVal DataGridView As DataGridView)
+
+        Dim exApp As New Microsoft.Office.Interop.Excel.Application
+        Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
+        Dim exHoja As Microsoft.Office.Interop.Excel.Worksheet
+
+        exLibro = exApp.Workbooks.Add
+        exHoja = exLibro.Worksheets.Add()
+
+        Dim NCol As Integer = DataGridView.ColumnCount
+        Dim NRow As Integer = DataGridView.RowCount
+
+        For i As Integer = 1 To NCol
+
+            exHoja.Cells.Item(1, i) = DataGridView.Columns(i - 1).Name.ToString
+
+        Next
+
+        For Fila As Integer = 0 To NRow - 1
+
+            For Col As Integer = 0 To NCol - 1
+
+                exHoja.Cells.Item(Fila + 2, Col + 1) = DataGridView.Rows(Fila).Cells(Col).Value
+
+            Next
+
+        Next
+
+        exHoja.Rows.Item(1).Font.Bold = 1
+        exHoja.Rows.Item(1).HorizontalAlignment = 3
+        exHoja.Columns.AutoFit()
+
+        exApp.Application.Visible = True
+
+        exHoja = Nothing
+        exLibro = Nothing
+        exApp = Nothing
+
+    End Sub
 
     Public Sub AlternarFilasGeneral(ByVal DataGridView As DataGridView)
         'En este metodo especificamos cuales son los colores de las filas y los alternamos
