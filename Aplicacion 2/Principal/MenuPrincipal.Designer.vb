@@ -26,11 +26,16 @@ Partial Class MenuPrincipal
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.MenuArchivo = New System.Windows.Forms.ToolStripDropDownButton()
         Me.MenuSedes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuGrupos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuDispositivos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuMateriales = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuGrupos = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.MenuSeguimiento = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.MenuSeguimientoIncidencia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ControlYServiciosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuSalir = New System.Windows.Forms.ToolStripDropDownButton()
         Me.MenuSalir2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -41,11 +46,6 @@ Partial Class MenuPrincipal
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MenuSeguimiento = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.IncidenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ControlYServiciosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1.SuspendLayout()
         Me.ToolStrip2.SuspendLayout()
         Me.SuspendLayout()
@@ -73,39 +73,71 @@ Partial Class MenuPrincipal
         '
         Me.MenuSedes.Image = CType(resources.GetObject("MenuSedes.Image"), System.Drawing.Image)
         Me.MenuSedes.Name = "MenuSedes"
-        Me.MenuSedes.Size = New System.Drawing.Size(152, 22)
+        Me.MenuSedes.Size = New System.Drawing.Size(146, 22)
         Me.MenuSedes.Text = "Sedes"
+        '
+        'MenuGrupos
+        '
+        Me.MenuGrupos.Image = CType(resources.GetObject("MenuGrupos.Image"), System.Drawing.Image)
+        Me.MenuGrupos.Name = "MenuGrupos"
+        Me.MenuGrupos.Size = New System.Drawing.Size(146, 22)
+        Me.MenuGrupos.Text = "Grupos"
         '
         'MenuDispositivos
         '
         Me.MenuDispositivos.Image = CType(resources.GetObject("MenuDispositivos.Image"), System.Drawing.Image)
         Me.MenuDispositivos.Name = "MenuDispositivos"
-        Me.MenuDispositivos.Size = New System.Drawing.Size(152, 22)
+        Me.MenuDispositivos.Size = New System.Drawing.Size(146, 22)
         Me.MenuDispositivos.Text = "Dispositivos"
         '
         'MenuMateriales
         '
         Me.MenuMateriales.Image = CType(resources.GetObject("MenuMateriales.Image"), System.Drawing.Image)
         Me.MenuMateriales.Name = "MenuMateriales"
-        Me.MenuMateriales.Size = New System.Drawing.Size(152, 22)
+        Me.MenuMateriales.Size = New System.Drawing.Size(146, 22)
         Me.MenuMateriales.Text = "Materiales"
-        '
-        'MenuGrupos
-        '
-        Me.MenuGrupos.Image = CType(resources.GetObject("MenuGrupos.Image"), System.Drawing.Image)
-        Me.MenuGrupos.Name = "MenuGrupos"
-        Me.MenuGrupos.Size = New System.Drawing.Size(152, 22)
-        Me.MenuGrupos.Text = "Grupos"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(143, 6)
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'MenuSeguimiento
+        '
+        Me.MenuSeguimiento.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuSeguimientoIncidencia, Me.ToolStripSeparator7, Me.ControlYServiciosToolStripMenuItem})
+        Me.MenuSeguimiento.Image = CType(resources.GetObject("MenuSeguimiento.Image"), System.Drawing.Image)
+        Me.MenuSeguimiento.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.MenuSeguimiento.Name = "MenuSeguimiento"
+        Me.MenuSeguimiento.Size = New System.Drawing.Size(109, 22)
+        Me.MenuSeguimiento.Text = "Seguimiento"
+        '
+        'MenuSeguimientoIncidencia
+        '
+        Me.MenuSeguimientoIncidencia.Image = CType(resources.GetObject("MenuSeguimientoIncidencia.Image"), System.Drawing.Image)
+        Me.MenuSeguimientoIncidencia.Name = "MenuSeguimientoIncidencia"
+        Me.MenuSeguimientoIncidencia.Size = New System.Drawing.Size(184, 22)
+        Me.MenuSeguimientoIncidencia.Text = "Incidencias"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(181, 6)
+        '
+        'ControlYServiciosToolStripMenuItem
+        '
+        Me.ControlYServiciosToolStripMenuItem.Name = "ControlYServiciosToolStripMenuItem"
+        Me.ControlYServiciosToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.ControlYServiciosToolStripMenuItem.Text = "Control y Servicios"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
         '
         'MenuSalir
         '
@@ -178,37 +210,6 @@ Partial Class MenuPrincipal
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
-        '
-        'MenuSeguimiento
-        '
-        Me.MenuSeguimiento.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IncidenciasToolStripMenuItem, Me.ToolStripSeparator7, Me.ControlYServiciosToolStripMenuItem})
-        Me.MenuSeguimiento.Image = CType(resources.GetObject("MenuSeguimiento.Image"), System.Drawing.Image)
-        Me.MenuSeguimiento.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.MenuSeguimiento.Name = "MenuSeguimiento"
-        Me.MenuSeguimiento.Size = New System.Drawing.Size(109, 22)
-        Me.MenuSeguimiento.Text = "Seguimiento"
-        '
-        'IncidenciasToolStripMenuItem
-        '
-        Me.IncidenciasToolStripMenuItem.Name = "IncidenciasToolStripMenuItem"
-        Me.IncidenciasToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.IncidenciasToolStripMenuItem.Text = "Incidencias"
-        '
-        'ControlYServiciosToolStripMenuItem
-        '
-        Me.ControlYServiciosToolStripMenuItem.Name = "ControlYServiciosToolStripMenuItem"
-        Me.ControlYServiciosToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.ControlYServiciosToolStripMenuItem.Text = "Control y Servicios"
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(181, 6)
-        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -253,7 +254,7 @@ Partial Class MenuPrincipal
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents MenuSeguimiento As ToolStripDropDownButton
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
-    Friend WithEvents IncidenciasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MenuSeguimientoIncidencia As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ControlYServiciosToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -1,10 +1,15 @@
 ﻿
 Module ModuloSeguimiento
-    Public Property Seguimientodispostivo As Object
 
-    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    '''''''''''''''''''''''''CARGA DEL ARBOL''''''''''''''''''''''''''''''''''''''''''''''
-    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    Public Operativo As Image
+    Public Desconectada As Image
+    Public Fallas As Image
+
+
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''''CARGA DEL ARBOL''''''''''''''''''''''''''
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub CargarArbolSeguimiento()
         'Metodo donde generamos el arbol de opciones de acuerdo a las flotas, subflotas y grupos registrados en BD
 
@@ -72,11 +77,16 @@ Module ModuloSeguimiento
 
     End Sub
 
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''CARGA DE DATOS''''''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub CargarGridSeguimiento()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT iddispositivo, descripcion, tipo, ubicacion, estado FROM dispositivo, grupo " _
+        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, descripcion, tipo, ubicacion, estado FROM dispositivo, grupo, sede " _
                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
+                       & " AND grupo.sede = sede.idsede " _
                        & " AND nombregrupo = '" & SeguimientoDispositivo.TextBox1.Text & "' " _
                        & " ORDER BY iddispositivo ASC "
 
@@ -100,12 +110,313 @@ Module ModuloSeguimiento
         End With
 
         'Llamada al metodo para cargar imagenes
-        'CargarImagenesEstadoVehiculoCarga()
+        CargarImagenesSeguimiento()
 
         SeguimientoDispositivo.DataGridView1.ClearSelection()
 
     End Sub
 
+    Public Sub CargarHistorialSeguimiento()
+        'Metodo que genera la carga de datos en el DataGridview1 
+
+        Dim sql As String = "SELECT idincidencia, descripcion, prioridad, clasificacion, fecha, hora " _
+                            & " FROM incidencia WHERE dispositivo = '" & SeguimientoDispositivo.TextBox2.Text & "' " _
+                            & " ORDER BY idincidencia ASC " _
+                            & " LIMIT 10 "
+
+
+        Dim connection As New MySqlConnection(ConnectionString)
+
+        'Instancia y uso de variables.
+        Command = New MySqlCommand(sql, connection)
+        Adaptador = New MySqlDataAdapter(Command)
+        DataSet = New DataSet()
+
+        'Llenado del datagridview.
+        Adaptador.Fill(DataSet, "historial")
+        Tabla = DataSet.Tables("historial")
+        SeguimientoDispositivo.DataGridView2.DataSource = Tabla
+
+        'Parametros para editar apariencia del datagridview.
+        With SeguimientoDispositivo.DataGridView2
+            .DefaultCellStyle.Font = New Font("Segoe UI", 7) 'Fuente para celdas
+            .Font = New Font("Segoe UI", 8) 'Fuente para Headers
+        End With
+
+        'Llamada al metodo para cargar imagenes
+        'CargarImagenesHistorial()
+
+        SeguimientoDispositivo.DataGridView2.ClearSelection()
+
+    End Sub
+
+    Public Sub CargarHistorialEstatus()
+        'Metodo que genera la carga de datos en el DataGridview1 
+
+        Dim sql As String = "SELECT idhistorial, descripcion, descripcionhistorial, fecha, hora " _
+                            & " FROM historial, dispositivo " _
+                            & " WHERE historial.dispositivo = dispositivo.iddispositivo " _
+                            & " AND dispositivo = '" & SeguimientoDispositivo.TextBox7.Text & "' "
+
+        Dim connection As New MySqlConnection(ConnectionString)
+
+        'Instancia y uso de variables.
+        Command = New MySqlCommand(sql, connection)
+        Adaptador = New MySqlDataAdapter(Command)
+        DataSet = New DataSet()
+
+        'Llenado del datagridview.
+        Adaptador.Fill(DataSet, "historial")
+        Tabla = DataSet.Tables("historial")
+        SeguimientoDispositivo.DataGridView3.DataSource = Tabla
+
+        'Parametros para editar apariencia del datagridview.
+        With SeguimientoDispositivo.DataGridView3
+            .DefaultCellStyle.Font = New Font("Segoe UI", 7) 'Fuente para celdas
+            .Font = New Font("Segoe UI", 8) 'Fuente para Headers
+        End With
+
+        'Llamada al metodo para cargar imagenes
+        'CargarImagenesHistorial()
+
+        SeguimientoDispositivo.DataGridView3.ClearSelection()
+
+    End Sub
+
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''METODOS DE APOYO''''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    Public Sub SerieSeguimientoIncidencia()
+        'Metodo que permite generar una serie correlativa de numeros enteros. 
+        'Usado para generar automaticamente el ID
+
+        'Se obtiene el ultimo ID
+        Dim Command As New MySqlCommand("Select MAX(idincidencia) FROM incidencia", Conexion)
+        Dim numero As Integer
+
+        'El ID obtenido de la BD se incrementa.
+        numero = Command.ExecuteScalar
+        numero = numero + 1
+
+        'Se da formato al ID obtenido de la BD.
+        SeguimientoDispositivo.TextBox3.Text = Format(numero, "000000000")
+
+    End Sub
+
+    Public Sub SerieSeguimientohistorial()
+        'Metodo que permite generar una serie correlativa de numeros enteros. 
+        'Usado para generar automaticamente el ID
+
+        'Se obtiene el ultimo ID
+        Dim Command As New MySqlCommand("Select MAX(idhistorial) FROM historial", Conexion)
+        Dim numero As Integer
+
+        'El ID obtenido de la BD se incrementa.
+        numero = Command.ExecuteScalar
+        numero = numero + 1
+
+        'Se da formato al ID obtenido de la BD.
+        SeguimientoDispositivo.TextBox10.Text = Format(numero, "000000000")
+
+    End Sub
+
+    Public Sub CargarImagenesSeguimiento()
+        'En este metodo especificamos cuales son las imagenes que se cargaran en el 
+        'CellFormatting del DataGridView1
+
+        Operativo = My.Resources.Operativo
+        Desconectada = My.Resources.Desconectada
+        Fallas = My.Resources.SinReporte
+
+    End Sub
+
+    Public Sub CargarComboSede()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Dim Tabla As New DataTable
+        Dim Adaptador As New MySqlDataAdapter
+
+        Adaptador = New MySqlDataAdapter("Select idsede, nombresede FROM sede ORDER BY nombresede ASC", Conexion)
+        Adaptador.Fill(Tabla)
+
+        SeguimientoDispositivo.ComboSede.DataSource = Tabla
+        SeguimientoDispositivo.ComboSede.DisplayMember = "nombresede"
+        SeguimientoDispositivo.ComboSede.ValueMember = "idsede"
+
+    End Sub
+
+    Public Sub CargarComboGrupo()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Dim Tabla As New DataTable
+        Dim Adaptador As New MySqlDataAdapter
+
+        Adaptador = New MySqlDataAdapter("Select idgrupo, nombregrupo FROM grupo, sede " _
+                         & " WHERE grupo.sede = sede.idsede " _
+                         & " AND nombresede LIKE '" & SeguimientoDispositivo.TextBox12.Text & "' " _
+                         & " ORDER BY nombregrupo ASC", Conexion)
+
+        Adaptador.Fill(Tabla)
+
+        SeguimientoDispositivo.ComboGrupo.DataSource = Tabla
+        SeguimientoDispositivo.ComboGrupo.DisplayMember = "nombregrupo"
+        SeguimientoDispositivo.ComboGrupo.ValueMember = "idgrupo"
+
+    End Sub
+
+    Public Sub ObtenerGrupo()
+        'Este metodo permite obtener el ID del chofer y sus datos
+
+        Dim Adaptador As New MySqlDataAdapter
+        Dim Tabla As New DataTable
+
+        Adaptador = New MySqlDataAdapter("SELECT idgrupo FROM grupo WHERE nombregrupo = '" & SeguimientoDispositivo.ComboGrupo.Text & "' ", Conexion)
+        Adaptador.Fill(Tabla)
+
+        For Each row As DataRow In Tabla.Rows
+
+            SeguimientoDispositivo.TextBox13.Text = row("idgrupo").ToString
+
+        Next
+
+    End Sub
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''METODOS DE LIMPIEZA'''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    Public Function ValidarComponentes() As Boolean
+        'Funcion booleana que permite validar si algun campo quedo vacio.
+
+        Dim Validar As Boolean = True
+
+        'Limpia todos los mensajes de error mostrados en la interfaz de usuario
+        SeguimientoDispositivo.ErrorProvider1.Clear()
+
+        If SeguimientoDispositivo.Panel2.SelectedIndex = 0 Then
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox3.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox3, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox3, "")
+
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox5.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox5, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox5, "")
+
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboClasificacion.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboClasificacion, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboClasificacion, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboPrioridad.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboPrioridad, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboPrioridad, "")
+            End If
+
+        ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox7.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox7, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox7, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox8.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox8, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox8, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox9.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox9, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox9, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboTipo.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboTipo, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboTipo, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboSede.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboSede, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboSede, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboGrupo.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboGrupo, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboGrupo, "")
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.ComboEstado.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboEstado, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboEstado, "")
+
+            End If
+        End If
+
+        Return Validar
+
+    End Function
+
+    Public Sub LimpiarComponentes()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        If SeguimientoDispositivo.Panel2.SelectedIndex = 0 Then
+
+            SeguimientoDispositivo.TextBox2.Text = ""
+            SeguimientoDispositivo.TextBox4.Text = ""
+            SeguimientoDispositivo.TextBox5.Text = ""
+
+        ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
+
+            SeguimientoDispositivo.TextBox7.Text = ""
+            SeguimientoDispositivo.TextBox8.Text = ""
+            SeguimientoDispositivo.TextBox9.Text = ""
+            SeguimientoDispositivo.ComboTipo.SelectedIndex = -1
+            SeguimientoDispositivo.ComboSede.SelectedIndex = -1
+            SeguimientoDispositivo.ComboGrupo.SelectedIndex = -1
+            SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
+
+        End If
+
+    End Sub
 
 
 End Module

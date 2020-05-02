@@ -15,7 +15,7 @@ Public Class MaestroDispositivo
         TextBox3.CharacterCasing = CharacterCasing.Upper
 
         CargarComboSede()
-        ' CargarComboGrupo()
+        'CargarComboGrupo()
 
     End Sub
 
@@ -127,7 +127,9 @@ Public Class MaestroDispositivo
         ComboGrupo.ValueMember = "idgrupo"
 
     End Sub
+
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
+        'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
         TextBox5.Text = ComboSede.Text
         CargarComboGrupo()

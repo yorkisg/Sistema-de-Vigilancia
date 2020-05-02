@@ -7,7 +7,7 @@ Public Class MenuPrincipal
         ConectarBaseDeDatos()
 
         'Instancia del metodo que evita que el ejecutable se abra 2 veces
-        'Instancia()
+        Instancia()
 
     End Sub
 
@@ -43,5 +43,13 @@ Public Class MenuPrincipal
         MaestroGrupo.ShowDialog()
 
     End Sub
+
+    Private Sub MenuSeguimientoIncidencia_Click(sender As Object, e As EventArgs) Handles MenuSeguimientoIncidencia.Click
+        'Formulario SeguimientoDispositivo
+
+        SeguimientoDispositivo.ShowDialog()
+
+    End Sub
+
 
 End Class

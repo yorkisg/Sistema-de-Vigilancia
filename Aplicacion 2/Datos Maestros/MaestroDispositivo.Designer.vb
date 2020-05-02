@@ -232,7 +232,7 @@ Partial Class MaestroDispositivo
         Me.ComboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboTipo.FormattingEnabled = True
-        Me.ComboTipo.Items.AddRange(New Object() {"DOMO", "FRONTAL"})
+        Me.ComboTipo.Items.AddRange(New Object() {"DOMO", "FRONTAL", "OTRO"})
         Me.ComboTipo.Location = New System.Drawing.Point(12, 175)
         Me.ComboTipo.Name = "ComboTipo"
         Me.ComboTipo.Size = New System.Drawing.Size(280, 23)
@@ -299,7 +299,7 @@ Partial Class MaestroDispositivo
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.TextBox4)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "MaestroDispositivo"

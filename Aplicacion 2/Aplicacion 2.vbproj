@@ -54,13 +54,11 @@
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\RibbonWinForms.5.0.1\lib\net45\System.Windows.Forms.Ribbon.dll</HintPath>
+    <Reference Include="System.Deployment">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,6 +74,7 @@
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing.Drawing2D" />
     <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
@@ -192,7 +191,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\Abierto1.png" />
@@ -238,6 +236,7 @@
     <Content Include="Recursos\DeRegresoCargado.png" />
     <Content Include="Recursos\DeRegresoConRetorno.png" />
     <Content Include="Recursos\DeRegresoVacio.png" />
+    <None Include="Recursos\Desconectada.png" />
     <Content Include="Recursos\Detenido.png" />
     <Content Include="Recursos\EditarDatos.png" />
     <Content Include="Recursos\EditarRuta.png" />
