@@ -37,10 +37,12 @@ Partial Class SeguimientoDispositivo
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.Panel = New System.Windows.Forms.TabControl()
+        Me.Panel1 = New System.Windows.Forms.TabControl()
         Me.Pagina1 = New System.Windows.Forms.TabPage()
         Me.Arbol = New System.Windows.Forms.TreeView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonSalir2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -61,7 +63,7 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.TabControl()
-        Me.Pagina3 = New System.Windows.Forms.TabPage()
+        Me.Pagina2 = New System.Windows.Forms.TabPage()
         Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
         Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
         Me.ComboClasificacion = New System.Windows.Forms.ComboBox()
@@ -78,7 +80,7 @@ Partial Class SeguimientoDispositivo
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Pagina4 = New System.Windows.Forms.TabPage()
+        Me.Pagina3 = New System.Windows.Forms.TabPage()
         Me.ComboSede = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.ComboTipo = New System.Windows.Forms.ComboBox()
@@ -95,6 +97,7 @@ Partial Class SeguimientoDispositivo
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.Pagina4 = New System.Windows.Forms.TabPage()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -104,8 +107,8 @@ Partial Class SeguimientoDispositivo
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
         Me.TextBox13 = New System.Windows.Forms.TextBox()
-        Me.Panel6 = New System.Windows.Forms.TabControl()
-        Me.Pagina = New System.Windows.Forms.TabPage()
+        Me.Panel3 = New System.Windows.Forms.TabControl()
+        Me.Pagina5 = New System.Windows.Forms.TabPage()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.ColumnaIDIncidencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaIncidencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -113,7 +116,7 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaPrioridad = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaHora = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Pagina5 = New System.Windows.Forms.TabPage()
+        Me.Pagina6 = New System.Windows.Forms.TabPage()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.ColumnaHistorial2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaDispositivo2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -125,42 +128,43 @@ Partial Class SeguimientoDispositivo
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
-        Me.Panel.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.Pagina1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        Me.Pagina3.SuspendLayout()
+        Me.Pagina2.SuspendLayout()
         Me.ToolStrip3.SuspendLayout()
-        Me.Pagina4.SuspendLayout()
+        Me.Pagina3.SuspendLayout()
         Me.ToolStrip2.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel6.SuspendLayout()
-        Me.Pagina.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.Pagina5.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Pagina6.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Panel
+        'Panel1
         '
-        Me.Panel.Controls.Add(Me.Pagina1)
-        Me.Panel.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Panel.Location = New System.Drawing.Point(12, 28)
-        Me.Panel.Name = "Panel"
-        Me.Panel.SelectedIndex = 0
-        Me.Panel.Size = New System.Drawing.Size(199, 392)
-        Me.Panel.TabIndex = 45
+        Me.Panel1.Controls.Add(Me.Pagina1)
+        Me.Panel1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Panel1.Location = New System.Drawing.Point(12, 28)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.SelectedIndex = 0
+        Me.Panel1.Size = New System.Drawing.Size(196, 351)
+        Me.Panel1.TabIndex = 45
         '
         'Pagina1
         '
         Me.Pagina1.BackColor = System.Drawing.Color.White
         Me.Pagina1.Controls.Add(Me.Arbol)
+        Me.Pagina1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Pagina1.ImageIndex = 0
         Me.Pagina1.Location = New System.Drawing.Point(4, 24)
         Me.Pagina1.Name = "Pagina1"
         Me.Pagina1.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina1.Size = New System.Drawing.Size(191, 364)
+        Me.Pagina1.Size = New System.Drawing.Size(188, 323)
         Me.Pagina1.TabIndex = 0
         Me.Pagina1.Text = "SEDES DE VIGILANCIA"
         '
@@ -176,17 +180,30 @@ Partial Class SeguimientoDispositivo
         Me.Arbol.Location = New System.Drawing.Point(3, 3)
         Me.Arbol.Name = "Arbol"
         Me.Arbol.ShowNodeToolTips = True
-        Me.Arbol.Size = New System.Drawing.Size(185, 358)
+        Me.Arbol.Size = New System.Drawing.Size(182, 317)
         Me.Arbol.TabIndex = 21
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonSalir2, Me.ToolStripSeparator4})
+        Me.ToolStrip1.BackColor = System.Drawing.Color.AliceBlue
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripSeparator2, Me.BotonSalir2, Me.ToolStripSeparator4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1124, 25)
         Me.ToolStrip1.TabIndex = 46
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(111, 22)
+        Me.ToolStripButton3.Text = "Realizar Servicio"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
         'BotonSalir2
         '
@@ -257,7 +274,7 @@ Partial Class SeguimientoDispositivo
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -274,7 +291,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.Menu
-        Me.DataGridView1.Location = New System.Drawing.Point(607, 28)
+        Me.DataGridView1.Location = New System.Drawing.Point(606, 28)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -286,7 +303,7 @@ Partial Class SeguimientoDispositivo
         Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.ShowEditingIcon = False
-        Me.DataGridView1.Size = New System.Drawing.Size(505, 447)
+        Me.DataGridView1.Size = New System.Drawing.Size(506, 602)
         Me.DataGridView1.TabIndex = 47
         '
         'ColumnaID
@@ -385,57 +402,59 @@ Partial Class SeguimientoDispositivo
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(775, 503)
+        Me.TextBox1.Location = New System.Drawing.Point(775, 445)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(153, 20)
         Me.TextBox1.TabIndex = 48
+        Me.TextBox1.Visible = False
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.Pagina2)
         Me.Panel2.Controls.Add(Me.Pagina3)
         Me.Panel2.Controls.Add(Me.Pagina4)
         Me.Panel2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Panel2.ImageList = Me.ImageList1
-        Me.Panel2.Location = New System.Drawing.Point(213, 28)
+        Me.Panel2.Location = New System.Drawing.Point(214, 28)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.SelectedIndex = 0
-        Me.Panel2.Size = New System.Drawing.Size(388, 392)
+        Me.Panel2.Size = New System.Drawing.Size(386, 351)
         Me.Panel2.TabIndex = 49
         '
-        'Pagina3
+        'Pagina2
         '
-        Me.Pagina3.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.Pagina3.Controls.Add(Me.ToolStrip3)
-        Me.Pagina3.Controls.Add(Me.ComboClasificacion)
-        Me.Pagina3.Controls.Add(Me.ComboPrioridad)
-        Me.Pagina3.Controls.Add(Me.Label9)
-        Me.Pagina3.Controls.Add(Me.Label8)
-        Me.Pagina3.Controls.Add(Me.TextBox6)
-        Me.Pagina3.Controls.Add(Me.DateTimePicker1)
-        Me.Pagina3.Controls.Add(Me.Label5)
-        Me.Pagina3.Controls.Add(Me.TextBox5)
-        Me.Pagina3.Controls.Add(Me.Label4)
-        Me.Pagina3.Controls.Add(Me.TextBox4)
-        Me.Pagina3.Controls.Add(Me.Label3)
-        Me.Pagina3.Controls.Add(Me.TextBox3)
-        Me.Pagina3.Controls.Add(Me.Label2)
-        Me.Pagina3.Controls.Add(Me.Label1)
-        Me.Pagina3.ImageIndex = 0
-        Me.Pagina3.Location = New System.Drawing.Point(4, 24)
-        Me.Pagina3.Name = "Pagina3"
-        Me.Pagina3.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina3.Size = New System.Drawing.Size(380, 364)
-        Me.Pagina3.TabIndex = 0
-        Me.Pagina3.Text = "REGISTRO DE INCIDENCIA"
+        Me.Pagina2.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.Pagina2.Controls.Add(Me.ToolStrip3)
+        Me.Pagina2.Controls.Add(Me.ComboClasificacion)
+        Me.Pagina2.Controls.Add(Me.ComboPrioridad)
+        Me.Pagina2.Controls.Add(Me.Label9)
+        Me.Pagina2.Controls.Add(Me.Label8)
+        Me.Pagina2.Controls.Add(Me.TextBox6)
+        Me.Pagina2.Controls.Add(Me.DateTimePicker1)
+        Me.Pagina2.Controls.Add(Me.Label5)
+        Me.Pagina2.Controls.Add(Me.TextBox5)
+        Me.Pagina2.Controls.Add(Me.Label4)
+        Me.Pagina2.Controls.Add(Me.TextBox4)
+        Me.Pagina2.Controls.Add(Me.Label3)
+        Me.Pagina2.Controls.Add(Me.TextBox3)
+        Me.Pagina2.Controls.Add(Me.Label2)
+        Me.Pagina2.Controls.Add(Me.Label1)
+        Me.Pagina2.ImageIndex = 0
+        Me.Pagina2.Location = New System.Drawing.Point(4, 24)
+        Me.Pagina2.Name = "Pagina2"
+        Me.Pagina2.Padding = New System.Windows.Forms.Padding(3)
+        Me.Pagina2.Size = New System.Drawing.Size(378, 323)
+        Me.Pagina2.TabIndex = 0
+        Me.Pagina2.Text = "INCIDENCIAS"
         '
         'ToolStrip3
         '
         Me.ToolStrip3.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ToolStrip3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar})
-        Me.ToolStrip3.Location = New System.Drawing.Point(3, 336)
+        Me.ToolStrip3.Location = New System.Drawing.Point(3, 295)
         Me.ToolStrip3.Name = "ToolStrip3"
-        Me.ToolStrip3.Size = New System.Drawing.Size(374, 25)
+        Me.ToolStrip3.Size = New System.Drawing.Size(372, 25)
         Me.ToolStrip3.TabIndex = 114
         Me.ToolStrip3.Text = "ToolStrip3"
         '
@@ -446,8 +465,8 @@ Partial Class SeguimientoDispositivo
         Me.BotonGuardar.Image = CType(resources.GetObject("BotonGuardar.Image"), System.Drawing.Image)
         Me.BotonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BotonGuardar.Name = "BotonGuardar"
-        Me.BotonGuardar.Size = New System.Drawing.Size(73, 22)
-        Me.BotonGuardar.Text = "Registrar"
+        Me.BotonGuardar.Size = New System.Drawing.Size(130, 22)
+        Me.BotonGuardar.Text = "Registrar Incidencia"
         '
         'ComboClasificacion
         '
@@ -456,9 +475,9 @@ Partial Class SeguimientoDispositivo
         Me.ComboClasificacion.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboClasificacion.FormattingEnabled = True
         Me.ComboClasificacion.Items.AddRange(New Object() {"PERDIDA DE SEÑAL", "PERDIDA DE COLOR", "FALLAS EN IMAGEN", "FALLAS EN MOVIMIENTO", "ANGULO ERRÓNEO"})
-        Me.ComboClasificacion.Location = New System.Drawing.Point(6, 153)
+        Me.ComboClasificacion.Location = New System.Drawing.Point(6, 109)
         Me.ComboClasificacion.Name = "ComboClasificacion"
-        Me.ComboClasificacion.Size = New System.Drawing.Size(268, 23)
+        Me.ComboClasificacion.Size = New System.Drawing.Size(270, 23)
         Me.ComboClasificacion.TabIndex = 93
         '
         'ComboPrioridad
@@ -468,16 +487,16 @@ Partial Class SeguimientoDispositivo
         Me.ComboPrioridad.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboPrioridad.FormattingEnabled = True
         Me.ComboPrioridad.Items.AddRange(New Object() {"ALTA", "MEDIA", "BAJA"})
-        Me.ComboPrioridad.Location = New System.Drawing.Point(6, 109)
+        Me.ComboPrioridad.Location = New System.Drawing.Point(6, 65)
         Me.ComboPrioridad.Name = "ComboPrioridad"
-        Me.ComboPrioridad.Size = New System.Drawing.Size(268, 23)
+        Me.ComboPrioridad.Size = New System.Drawing.Size(270, 23)
         Me.ComboPrioridad.TabIndex = 92
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label9.Location = New System.Drawing.Point(6, 135)
+        Me.Label9.Location = New System.Drawing.Point(6, 91)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 15)
         Me.Label9.TabIndex = 91
@@ -487,7 +506,7 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label8.Location = New System.Drawing.Point(6, 91)
+        Me.Label8.Location = New System.Drawing.Point(6, 47)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 90
@@ -497,24 +516,24 @@ Partial Class SeguimientoDispositivo
         '
         Me.TextBox6.Enabled = False
         Me.TextBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox6.Location = New System.Drawing.Point(6, 310)
+        Me.TextBox6.Location = New System.Drawing.Point(6, 266)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox6.Size = New System.Drawing.Size(270, 23)
         Me.TextBox6.TabIndex = 51
         '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.DateTimePicker1.Location = New System.Drawing.Point(6, 266)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(6, 222)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(268, 23)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(270, 23)
         Me.DateTimePicker1.TabIndex = 89
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label5.Location = New System.Drawing.Point(6, 292)
+        Me.Label5.Location = New System.Drawing.Point(6, 248)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 15)
         Me.Label5.TabIndex = 88
@@ -523,17 +542,17 @@ Partial Class SeguimientoDispositivo
         'TextBox5
         '
         Me.TextBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox5.Location = New System.Drawing.Point(6, 197)
+        Me.TextBox5.Location = New System.Drawing.Point(6, 153)
         Me.TextBox5.Multiline = True
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(268, 48)
+        Me.TextBox5.Size = New System.Drawing.Size(270, 48)
         Me.TextBox5.TabIndex = 87
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(6, 248)
+        Me.Label4.Location = New System.Drawing.Point(6, 204)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(44, 15)
         Me.Label4.TabIndex = 86
@@ -543,16 +562,16 @@ Partial Class SeguimientoDispositivo
         '
         Me.TextBox4.Enabled = False
         Me.TextBox4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox4.Location = New System.Drawing.Point(6, 65)
+        Me.TextBox4.Location = New System.Drawing.Point(6, 21)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox4.Size = New System.Drawing.Size(270, 23)
         Me.TextBox4.TabIndex = 84
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label3.Location = New System.Drawing.Point(6, 179)
+        Me.Label3.Location = New System.Drawing.Point(6, 135)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 15)
         Me.Label3.TabIndex = 85
@@ -562,16 +581,17 @@ Partial Class SeguimientoDispositivo
         '
         Me.TextBox3.Enabled = False
         Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox3.Location = New System.Drawing.Point(6, 21)
+        Me.TextBox3.Location = New System.Drawing.Point(284, 21)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox3.Size = New System.Drawing.Size(90, 23)
         Me.TextBox3.TabIndex = 83
+        Me.TextBox3.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label2.Location = New System.Drawing.Point(6, 47)
+        Me.Label2.Location = New System.Drawing.Point(6, 3)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(75, 15)
         Me.Label2.TabIndex = 82
@@ -581,37 +601,38 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label1.Location = New System.Drawing.Point(6, 3)
+        Me.Label1.Location = New System.Drawing.Point(288, 3)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(86, 15)
         Me.Label1.TabIndex = 81
         Me.Label1.Text = "ID INCIDENCIA"
+        Me.Label1.Visible = False
         '
-        'Pagina4
+        'Pagina3
         '
-        Me.Pagina4.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.Pagina4.Controls.Add(Me.ComboSede)
-        Me.Pagina4.Controls.Add(Me.Label15)
-        Me.Pagina4.Controls.Add(Me.ComboTipo)
-        Me.Pagina4.Controls.Add(Me.Label16)
-        Me.Pagina4.Controls.Add(Me.ComboGrupo)
-        Me.Pagina4.Controls.Add(Me.Label17)
-        Me.Pagina4.Controls.Add(Me.Label18)
-        Me.Pagina4.Controls.Add(Me.ToolStrip2)
-        Me.Pagina4.Controls.Add(Me.ComboEstado)
-        Me.Pagina4.Controls.Add(Me.Label13)
-        Me.Pagina4.Controls.Add(Me.TextBox9)
-        Me.Pagina4.Controls.Add(Me.TextBox7)
-        Me.Pagina4.Controls.Add(Me.TextBox8)
-        Me.Pagina4.Controls.Add(Me.Label11)
-        Me.Pagina4.Controls.Add(Me.Label12)
-        Me.Pagina4.ImageIndex = 1
-        Me.Pagina4.Location = New System.Drawing.Point(4, 24)
-        Me.Pagina4.Name = "Pagina4"
-        Me.Pagina4.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina4.Size = New System.Drawing.Size(380, 364)
-        Me.Pagina4.TabIndex = 1
-        Me.Pagina4.Text = "ESTATUS DE DISPOSITIVO"
+        Me.Pagina3.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.Pagina3.Controls.Add(Me.ComboSede)
+        Me.Pagina3.Controls.Add(Me.Label15)
+        Me.Pagina3.Controls.Add(Me.ComboTipo)
+        Me.Pagina3.Controls.Add(Me.Label16)
+        Me.Pagina3.Controls.Add(Me.ComboGrupo)
+        Me.Pagina3.Controls.Add(Me.Label17)
+        Me.Pagina3.Controls.Add(Me.Label18)
+        Me.Pagina3.Controls.Add(Me.ToolStrip2)
+        Me.Pagina3.Controls.Add(Me.ComboEstado)
+        Me.Pagina3.Controls.Add(Me.Label13)
+        Me.Pagina3.Controls.Add(Me.TextBox9)
+        Me.Pagina3.Controls.Add(Me.TextBox7)
+        Me.Pagina3.Controls.Add(Me.TextBox8)
+        Me.Pagina3.Controls.Add(Me.Label11)
+        Me.Pagina3.Controls.Add(Me.Label12)
+        Me.Pagina3.ImageIndex = 1
+        Me.Pagina3.Location = New System.Drawing.Point(4, 24)
+        Me.Pagina3.Name = "Pagina3"
+        Me.Pagina3.Padding = New System.Windows.Forms.Padding(3)
+        Me.Pagina3.Size = New System.Drawing.Size(380, 323)
+        Me.Pagina3.TabIndex = 1
+        Me.Pagina3.Text = "DISPOSITIVOS"
         '
         'ComboSede
         '
@@ -619,16 +640,16 @@ Partial Class SeguimientoDispositivo
         Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboSede.FormattingEnabled = True
-        Me.ComboSede.Location = New System.Drawing.Point(6, 197)
+        Me.ComboSede.Location = New System.Drawing.Point(6, 153)
         Me.ComboSede.Name = "ComboSede"
-        Me.ComboSede.Size = New System.Drawing.Size(268, 23)
+        Me.ComboSede.Size = New System.Drawing.Size(270, 23)
         Me.ComboSede.TabIndex = 123
         '
         'Label15
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label15.Location = New System.Drawing.Point(6, 179)
+        Me.Label15.Location = New System.Drawing.Point(6, 135)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(33, 15)
         Me.Label15.TabIndex = 122
@@ -641,16 +662,16 @@ Partial Class SeguimientoDispositivo
         Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboTipo.FormattingEnabled = True
         Me.ComboTipo.Items.AddRange(New Object() {"DOMO", "FRONTAL", "OTRO"})
-        Me.ComboTipo.Location = New System.Drawing.Point(6, 153)
+        Me.ComboTipo.Location = New System.Drawing.Point(6, 109)
         Me.ComboTipo.Name = "ComboTipo"
-        Me.ComboTipo.Size = New System.Drawing.Size(268, 23)
+        Me.ComboTipo.Size = New System.Drawing.Size(270, 23)
         Me.ComboTipo.TabIndex = 121
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label16.Location = New System.Drawing.Point(6, 267)
+        Me.Label16.Location = New System.Drawing.Point(6, 223)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(99, 15)
         Me.Label16.TabIndex = 119
@@ -662,16 +683,16 @@ Partial Class SeguimientoDispositivo
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
-        Me.ComboGrupo.Location = New System.Drawing.Point(6, 241)
+        Me.ComboGrupo.Location = New System.Drawing.Point(6, 197)
         Me.ComboGrupo.Name = "ComboGrupo"
-        Me.ComboGrupo.Size = New System.Drawing.Size(268, 23)
+        Me.ComboGrupo.Size = New System.Drawing.Size(270, 23)
         Me.ComboGrupo.TabIndex = 118
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label17.Location = New System.Drawing.Point(6, 223)
+        Me.Label17.Location = New System.Drawing.Point(6, 179)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(46, 15)
         Me.Label17.TabIndex = 117
@@ -681,7 +702,7 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label18.Location = New System.Drawing.Point(6, 135)
+        Me.Label18.Location = New System.Drawing.Point(6, 91)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(121, 15)
         Me.Label18.TabIndex = 116
@@ -692,7 +713,7 @@ Partial Class SeguimientoDispositivo
         Me.ToolStrip2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar2})
-        Me.ToolStrip2.Location = New System.Drawing.Point(3, 336)
+        Me.ToolStrip2.Location = New System.Drawing.Point(3, 295)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(374, 25)
         Me.ToolStrip2.TabIndex = 115
@@ -705,8 +726,8 @@ Partial Class SeguimientoDispositivo
         Me.BotonGuardar2.Image = CType(resources.GetObject("BotonGuardar2.Image"), System.Drawing.Image)
         Me.BotonGuardar2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BotonGuardar2.Name = "BotonGuardar2"
-        Me.BotonGuardar2.Size = New System.Drawing.Size(79, 22)
-        Me.BotonGuardar2.Text = "Actualizar"
+        Me.BotonGuardar2.Size = New System.Drawing.Size(129, 22)
+        Me.BotonGuardar2.Text = "Actualizar Cambios"
         '
         'ComboEstado
         '
@@ -715,16 +736,16 @@ Partial Class SeguimientoDispositivo
         Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboEstado.FormattingEnabled = True
         Me.ComboEstado.Items.AddRange(New Object() {"OPERATIVA", "DESCONECTADA", "PRESENTANDO FALLAS"})
-        Me.ComboEstado.Location = New System.Drawing.Point(6, 285)
+        Me.ComboEstado.Location = New System.Drawing.Point(6, 241)
         Me.ComboEstado.Name = "ComboEstado"
-        Me.ComboEstado.Size = New System.Drawing.Size(268, 23)
+        Me.ComboEstado.Size = New System.Drawing.Size(270, 23)
         Me.ComboEstado.TabIndex = 94
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label13.Location = New System.Drawing.Point(6, 91)
+        Me.Label13.Location = New System.Drawing.Point(6, 47)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(70, 15)
         Me.Label13.TabIndex = 90
@@ -733,33 +754,34 @@ Partial Class SeguimientoDispositivo
         'TextBox9
         '
         Me.TextBox9.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox9.Location = New System.Drawing.Point(6, 109)
+        Me.TextBox9.Location = New System.Drawing.Point(6, 65)
         Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox9.Size = New System.Drawing.Size(270, 23)
         Me.TextBox9.TabIndex = 89
         '
         'TextBox7
         '
         Me.TextBox7.Enabled = False
         Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox7.Location = New System.Drawing.Point(6, 21)
+        Me.TextBox7.Location = New System.Drawing.Point(282, 21)
         Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox7.Size = New System.Drawing.Size(92, 23)
         Me.TextBox7.TabIndex = 88
+        Me.TextBox7.Visible = False
         '
         'TextBox8
         '
         Me.TextBox8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox8.Location = New System.Drawing.Point(6, 65)
+        Me.TextBox8.Location = New System.Drawing.Point(6, 21)
         Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(268, 23)
+        Me.TextBox8.Size = New System.Drawing.Size(270, 23)
         Me.TextBox8.TabIndex = 87
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label11.Location = New System.Drawing.Point(6, 47)
+        Me.Label11.Location = New System.Drawing.Point(6, 3)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(81, 15)
         Me.Label11.TabIndex = 86
@@ -769,11 +791,21 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label12.Location = New System.Drawing.Point(6, 3)
+        Me.Label12.Location = New System.Drawing.Point(285, 3)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(89, 15)
         Me.Label12.TabIndex = 85
         Me.Label12.Text = "ID DISPOSITIVO"
+        Me.Label12.Visible = False
+        '
+        'Pagina4
+        '
+        Me.Pagina4.Location = New System.Drawing.Point(4, 24)
+        Me.Pagina4.Name = "Pagina4"
+        Me.Pagina4.Size = New System.Drawing.Size(380, 323)
+        Me.Pagina4.TabIndex = 2
+        Me.Pagina4.Text = "AGREGAR SERVICIO"
+        Me.Pagina4.UseVisualStyleBackColor = True
         '
         'ImageList1
         '
@@ -784,10 +816,11 @@ Partial Class SeguimientoDispositivo
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(775, 584)
+        Me.TextBox2.Location = New System.Drawing.Point(775, 526)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(153, 20)
         Me.TextBox2.TabIndex = 50
+        Me.TextBox2.Visible = False
         '
         'ErrorProvider1
         '
@@ -797,82 +830,88 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label6.Location = New System.Drawing.Point(672, 505)
+        Me.Label6.Location = New System.Drawing.Point(672, 447)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(98, 15)
         Me.Label6.TabIndex = 90
         Me.Label6.Text = "NOMBRE GRUPO"
+        Me.Label6.Visible = False
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label7.Location = New System.Drawing.Point(699, 589)
+        Me.Label7.Location = New System.Drawing.Point(699, 531)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(45, 15)
         Me.Label7.TabIndex = 91
         Me.Label7.Text = "ID DISP"
+        Me.Label7.Visible = False
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label19.Location = New System.Drawing.Point(679, 533)
+        Me.Label19.Location = New System.Drawing.Point(679, 475)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(85, 15)
         Me.Label19.TabIndex = 127
         Me.Label19.Text = "NOMBRE SEDE"
+        Me.Label19.Visible = False
         '
         'Label20
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label20.Location = New System.Drawing.Point(691, 561)
+        Me.Label20.Location = New System.Drawing.Point(691, 503)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(60, 15)
         Me.Label20.TabIndex = 130
         Me.Label20.Text = "ID GRUPO"
+        Me.Label20.Visible = False
         '
         'TextBox12
         '
         Me.TextBox12.Enabled = False
         Me.TextBox12.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox12.Location = New System.Drawing.Point(775, 528)
+        Me.TextBox12.Location = New System.Drawing.Point(775, 470)
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.Size = New System.Drawing.Size(153, 23)
         Me.TextBox12.TabIndex = 126
+        Me.TextBox12.Visible = False
         '
         'TextBox13
         '
         Me.TextBox13.Enabled = False
         Me.TextBox13.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox13.Location = New System.Drawing.Point(775, 556)
+        Me.TextBox13.Location = New System.Drawing.Point(775, 498)
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.Size = New System.Drawing.Size(153, 23)
         Me.TextBox13.TabIndex = 131
+        Me.TextBox13.Visible = False
         '
-        'Panel6
+        'Panel3
         '
-        Me.Panel6.Controls.Add(Me.Pagina)
-        Me.Panel6.Controls.Add(Me.Pagina5)
-        Me.Panel6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Panel6.Location = New System.Drawing.Point(12, 422)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.SelectedIndex = 0
-        Me.Panel6.Size = New System.Drawing.Size(589, 250)
-        Me.Panel6.TabIndex = 132
+        Me.Panel3.Controls.Add(Me.Pagina5)
+        Me.Panel3.Controls.Add(Me.Pagina6)
+        Me.Panel3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Panel3.Location = New System.Drawing.Point(12, 385)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.SelectedIndex = 0
+        Me.Panel3.Size = New System.Drawing.Size(588, 245)
+        Me.Panel3.TabIndex = 132
         '
-        'Pagina
+        'Pagina5
         '
-        Me.Pagina.BackColor = System.Drawing.Color.White
-        Me.Pagina.Controls.Add(Me.DataGridView2)
-        Me.Pagina.ImageIndex = 4
-        Me.Pagina.Location = New System.Drawing.Point(4, 24)
-        Me.Pagina.Name = "Pagina"
-        Me.Pagina.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina.Size = New System.Drawing.Size(581, 222)
-        Me.Pagina.TabIndex = 0
-        Me.Pagina.Text = "HISTORIAL DE INCIDENCIAS"
+        Me.Pagina5.BackColor = System.Drawing.Color.White
+        Me.Pagina5.Controls.Add(Me.DataGridView2)
+        Me.Pagina5.ImageIndex = 4
+        Me.Pagina5.Location = New System.Drawing.Point(4, 24)
+        Me.Pagina5.Name = "Pagina5"
+        Me.Pagina5.Padding = New System.Windows.Forms.Padding(3)
+        Me.Pagina5.Size = New System.Drawing.Size(580, 217)
+        Me.Pagina5.TabIndex = 0
+        Me.Pagina5.Text = "HISTORIAL DE INCIDENCIAS"
         '
         'DataGridView2
         '
@@ -905,7 +944,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(575, 216)
+        Me.DataGridView2.Size = New System.Drawing.Size(574, 211)
         Me.DataGridView2.TabIndex = 62
         '
         'ColumnaIDIncidencia
@@ -965,17 +1004,17 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaHora.ReadOnly = True
         Me.ColumnaHora.Width = 60
         '
-        'Pagina5
+        'Pagina6
         '
-        Me.Pagina5.Controls.Add(Me.DataGridView3)
-        Me.Pagina5.ImageIndex = 3
-        Me.Pagina5.Location = New System.Drawing.Point(4, 24)
-        Me.Pagina5.Name = "Pagina5"
-        Me.Pagina5.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina5.Size = New System.Drawing.Size(581, 222)
-        Me.Pagina5.TabIndex = 2
-        Me.Pagina5.Text = "HISTORIAL DE CAMBIOS"
-        Me.Pagina5.UseVisualStyleBackColor = True
+        Me.Pagina6.Controls.Add(Me.DataGridView3)
+        Me.Pagina6.ImageIndex = 3
+        Me.Pagina6.Location = New System.Drawing.Point(4, 24)
+        Me.Pagina6.Name = "Pagina6"
+        Me.Pagina6.Padding = New System.Windows.Forms.Padding(3)
+        Me.Pagina6.Size = New System.Drawing.Size(582, 219)
+        Me.Pagina6.TabIndex = 2
+        Me.Pagina6.Text = "HISTORIAL DE CAMBIOS"
+        Me.Pagina6.UseVisualStyleBackColor = True
         '
         'DataGridView3
         '
@@ -1008,7 +1047,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView3.Size = New System.Drawing.Size(575, 216)
+        Me.DataGridView3.Size = New System.Drawing.Size(576, 213)
         Me.DataGridView3.TabIndex = 64
         '
         'ColumnaHistorial2
@@ -1073,18 +1112,20 @@ Partial Class SeguimientoDispositivo
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label10.Location = New System.Drawing.Point(672, 612)
+        Me.Label10.Location = New System.Drawing.Point(672, 554)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(79, 15)
         Me.Label10.TabIndex = 134
         Me.Label10.Text = "ID HISTORIAL"
+        Me.Label10.Visible = False
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(775, 610)
+        Me.TextBox10.Location = New System.Drawing.Point(775, 552)
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.Size = New System.Drawing.Size(153, 20)
         Me.TextBox10.TabIndex = 133
+        Me.TextBox10.Visible = False
         '
         'ImageList2
         '
@@ -1098,13 +1139,13 @@ Partial Class SeguimientoDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(1124, 684)
-        Me.Controls.Add(Me.Panel6)
-        Me.Controls.Add(Me.Panel2)
+        Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.ClientSize = New System.Drawing.Size(1124, 642)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.Panel)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TextBox10)
         Me.Controls.Add(Me.TextBox13)
@@ -1120,33 +1161,33 @@ Partial Class SeguimientoDispositivo
         Me.MaximizeBox = False
         Me.Name = "SeguimientoDispositivo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Seguimiento de Camaras de Vigilancia"
-        Me.Panel.ResumeLayout(False)
+        Me.Text = "Seguimiento y Control de Camaras de Vigilancia"
+        Me.Panel1.ResumeLayout(False)
         Me.Pagina1.ResumeLayout(False)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.Pagina3.ResumeLayout(False)
-        Me.Pagina3.PerformLayout()
+        Me.Pagina2.ResumeLayout(False)
+        Me.Pagina2.PerformLayout()
         Me.ToolStrip3.ResumeLayout(False)
         Me.ToolStrip3.PerformLayout()
-        Me.Pagina4.ResumeLayout(False)
-        Me.Pagina4.PerformLayout()
+        Me.Pagina3.ResumeLayout(False)
+        Me.Pagina3.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel6.ResumeLayout(False)
-        Me.Pagina.ResumeLayout(False)
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
         Me.Pagina5.ResumeLayout(False)
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Pagina6.ResumeLayout(False)
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Panel As TabControl
+    Friend WithEvents Panel1 As TabControl
     Friend WithEvents Pagina1 As TabPage
     Friend WithEvents Arbol As TreeView
     Friend WithEvents ToolStrip1 As ToolStrip
@@ -1161,8 +1202,8 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Panel2 As TabControl
+    Friend WithEvents Pagina2 As TabPage
     Friend WithEvents Pagina3 As TabPage
-    Friend WithEvents Pagina4 As TabPage
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
@@ -1212,10 +1253,10 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents Label20 As Label
     Friend WithEvents TextBox12 As TextBox
     Friend WithEvents TextBox13 As TextBox
-    Friend WithEvents Panel6 As TabControl
-    Friend WithEvents Pagina As TabPage
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents Panel3 As TabControl
     Friend WithEvents Pagina5 As TabPage
+    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents Pagina6 As TabPage
     Friend WithEvents DataGridView3 As DataGridView
     Friend WithEvents ColumnaHora As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaFecha As DataGridViewTextBoxColumn
@@ -1234,4 +1275,7 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents ColumnaDispositivo2 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaHistorial2 As DataGridViewTextBoxColumn
     Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents Pagina4 As TabPage
+    Friend WithEvents ToolStripButton3 As ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
 End Class

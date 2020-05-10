@@ -1,7 +1,7 @@
 ﻿
 Module ModuloListado
 
-    Public Sub CargarGridListadoSede()
+    Public Sub CargarListadoSede()
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
@@ -28,7 +28,7 @@ Module ModuloListado
 
     End Sub
 
-    Public Sub CargarGridListadoDispositivo()
+    Public Sub CargarListadoDispositivo()
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
@@ -61,7 +61,7 @@ Module ModuloListado
 
     End Sub
 
-    Public Sub CargarGridListadoGrupo()
+    Public Sub CargarListadoGrupo()
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
@@ -90,6 +90,37 @@ Module ModuloListado
 
         'Mostramos la cantidad de registros encontrados
         ListadoGrupo.Contador.Text = ListadoGrupo.DataGridView.RowCount
+
+    End Sub
+
+    Public Sub CargarListadoMaterial()
+        'Metodo para cargar el datagridview.
+
+        'Conexion a la BD.
+        Dim sql As String = "SELECT idmaterial, nombrematerial, unidad, cantidad " _
+                            & " FROM material " _
+                            & " ORDER BY nombrematerial ASC"
+
+        Dim connection As New MySqlConnection(ConnectionString)
+
+
+        'Instancia y uso de variables.
+        Command = New MySqlCommand(sql, connection)
+        Adaptador = New MySqlDataAdapter(Command)
+        DataSet = New DataSet()
+
+        'Llenado del datagridview.
+        Adaptador.Fill(DataSet, "materiales")
+        Tabla = DataSet.Tables("materiales")
+        ListadoMaterial.DataGridView.DataSource = Tabla
+
+        With ListadoMaterial.DataGridView
+            .DefaultCellStyle.Font = New Font("Segoe UI", 8) 'Fuente para celdas
+            .Font = New Font("Segoe UI", 9) 'Fuente para Headers
+        End With
+
+        'Mostramos la cantidad de registros encontrados
+        ListadoMaterial.Contador.Text = ListadoMaterial.DataGridView.RowCount
 
     End Sub
 

@@ -1,21 +1,21 @@
 ﻿
-Public Class ListadoSede
+Public Class ListadoMaterial
 
-    Private Sub ListadoSede_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub ListadoMaterial_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Se llama el metodo para alternar colores entre filas
         AlternarFilasGeneral(DataGridView)
 
         'Se llama al metodo en el Load del formulario para que el datagridview cargue los datos inmediatamente
-        CargarListadoSede()
+        CargarListadoMaterial()
 
         'Se llama al metodo para que cargue rapido el datagridview
         EnableDoubleBuffered(DataGridView)
 
     End Sub
 
-    Private Sub ListadoSede_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub ListadoDispositivo_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Cierre del formulario
 
         If DataGridView.RowCount > 0 Then
@@ -40,18 +40,20 @@ Public Class ListadoSede
 
         If DataGridView.RowCount > 0 Then
 
-            If MaestroSede.Visible = True Then
+            If MaestroMaterial.Visible = True Then
                 'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
 
-                MaestroSede.TextBox1.Text = DataGridView.Rows(DataGridView.CurrentRow.Index).Cells(0).Value
-                MaestroSede.TextBox2.Text = DataGridView.Rows(DataGridView.CurrentRow.Index).Cells(1).Value
+                MaestroMaterial.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.ComboUnidad.Text = DataGridView.Item("ColumnaUnidad", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.TextBox3.Text = DataGridView.Item("ColumnaCantidad", DataGridView.SelectedRows(0).Index).Value
 
-                'Se activa el uso del boton modificar del formulario "MaestroEstado"
-                MaestroSede.BotonModificar.Enabled = True
-                'Se desactiva el uso del boton guardar del formulario "MaestroEstado"
-                MaestroSede.BotonGuardar.Enabled = False
+                'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
+                MaestroMaterial.BotonModificar.Enabled = True
+                'Se desactiva el uso del boton guardar del formulario "MaestroVehiculo"
+                MaestroMaterial.BotonGuardar.Enabled = False
 
-                'Se cierra el formulario ListadoEstado.
+                'Se cierra el formulario ListadoVehiculo
                 Tabla.Clear()
                 DataSet.Clear()
                 Dispose()
@@ -128,7 +130,9 @@ Public Class ListadoSede
     Function Filtrar(ByVal busqueda As String) As DataTable
         'Funcion que carga los datos de acuerdo a lo ingresado en el TextBox
 
-        Dim cmd As New MySqlCommand("SELECT idsede, nombresede FROM sede WHERE nombresede LIKE '%" & busqueda & "%' ", Conexion)
+        Dim cmd As New MySqlCommand("SELECT idmaterial, nombrematerial, unidad, cantidad " _
+                                       & " FROM material " _
+                                       & " WHERE nombrematerial Like '%" & busqueda & "%' ", Conexion)
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter(cmd)
@@ -138,34 +142,6 @@ Public Class ListadoSede
         Return Tabla
 
     End Function
-
-    Private Sub DataGridView_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView.CellMouseDoubleClick
-        'Al dar dobleclick en cualquier fila
-        'se lleva la informacion correspondiente al siguiente formulario
-
-        If DataGridView.RowCount > 0 Then
-
-            If MaestroSede.Visible = True Then
-                'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
-
-                MaestroSede.TextBox1.Text = DataGridView.Rows(DataGridView.CurrentRow.Index).Cells(0).Value
-                MaestroSede.TextBox2.Text = DataGridView.Rows(DataGridView.CurrentRow.Index).Cells(1).Value
-
-                'Se activa el uso del boton modificar del formulario "MaestroEstado"
-                MaestroSede.BotonModificar.Enabled = True
-                'Se desactiva el uso del boton guardar del formulario "MaestroEstado"
-                MaestroSede.BotonGuardar.Enabled = False
-
-                'Se cierra el formulario ListadoEstado.
-                Tabla.Clear()
-                DataSet.Clear()
-                Dispose()
-
-            End If
-
-        End If
-
-    End Sub
 
     Private Sub LimpiarComponentes()
         'Metodo que permite limpiar todos los controles del formulario.
@@ -177,6 +153,36 @@ Public Class ListadoSede
             DataGridView.Rows.Remove(DataGridView.CurrentRow)
 
         Next
+
+    End Sub
+
+    Private Sub DataGridView_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView.CellMouseDoubleClick
+        'Al dar dobleclick en cualquier fila
+        'se lleva la informacion correspondiente al siguiente formulario
+
+        If DataGridView.RowCount > 0 Then
+
+            If MaestroMaterial.Visible = True Then
+                'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
+
+                MaestroMaterial.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.ComboUnidad.Text = DataGridView.Item("ColumnaUnidad", DataGridView.SelectedRows(0).Index).Value
+                MaestroMaterial.TextBox3.Text = DataGridView.Item("ColumnaCantidad", DataGridView.SelectedRows(0).Index).Value
+
+                'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
+                MaestroMaterial.BotonModificar.Enabled = True
+                'Se desactiva el uso del boton guardar del formulario "MaestroVehiculo"
+                MaestroMaterial.BotonGuardar.Enabled = False
+
+                'Se cierra el formulario ListadoVehiculo
+                Tabla.Clear()
+                DataSet.Clear()
+                Dispose()
+
+            End If
+
+        End If
 
     End Sub
 

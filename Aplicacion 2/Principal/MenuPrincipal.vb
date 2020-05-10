@@ -23,33 +23,48 @@ Public Class MenuPrincipal
 
     End Sub
 
-    Private Sub MenuSedes_Click(sender As Object, e As EventArgs) Handles MenuSedes.Click
+    Private Sub MenuSede_Click(sender As Object, e As EventArgs) Handles MenuSede.Click
         'Formulario MaestroSede
 
         MaestroSede.ShowDialog()
 
     End Sub
 
-    Private Sub MenuDispositivos_Click(sender As Object, e As EventArgs) Handles MenuDispositivos.Click
+    Private Sub MenuDispositivo_Click(sender As Object, e As EventArgs) Handles MenuDispositivo.Click
         'Formulario MaestroDispositivo
 
         MaestroDispositivo.ShowDialog()
 
     End Sub
 
-    Private Sub MenuGrupos_Click(sender As Object, e As EventArgs) Handles MenuGrupos.Click
+    Private Sub MenuGrupo_Click(sender As Object, e As EventArgs) Handles MenuGrupo.Click
         'Formulario MaestroGrupo
 
         MaestroGrupo.ShowDialog()
 
     End Sub
 
-    Private Sub MenuSeguimientoIncidencia_Click(sender As Object, e As EventArgs) Handles MenuSeguimientoIncidencia.Click
+    Private Sub MenuMaterial_Click(sender As Object, e As EventArgs) Handles MenuMaterial.Click
+        'Formulario MaestroMaterial
+
+        MaestroMaterial.ShowDialog()
+
+    End Sub
+
+    Private Sub MenuIncidencia_Click(sender As Object, e As EventArgs) Handles MenuIncidencia.Click
         'Formulario SeguimientoDispositivo
 
         SeguimientoDispositivo.ShowDialog()
 
     End Sub
+
+    Private Sub MenuServicio_Click(sender As Object, e As EventArgs) Handles MenuServicio.Click
+        'Formulario SeguimientoServicio
+
+        SeguimientoServicio.ShowDialog()
+
+    End Sub
+
 
 
 End Class

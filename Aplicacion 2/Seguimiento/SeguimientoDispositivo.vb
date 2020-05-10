@@ -106,6 +106,9 @@ Public Class SeguimientoDispositivo
 
         Try
 
+            'Se limpian todos los componentes del formulario para un nuevo uso.
+            LimpiarComponentes()
+
             If DataGridView1.RowCount > 0 And DataGridView1.SelectedRows.Count = 1 Then
 
                 'Seleccionamos y pasamos el valor al TextBox.
@@ -357,7 +360,6 @@ Public Class SeguimientoDispositivo
 
         End If
 
-
     End Sub
 
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
@@ -379,13 +381,13 @@ Public Class SeguimientoDispositivo
 
         If Panel2.SelectedIndex = 0 Then
 
-            Panel6.SelectedIndex = 0
+            Panel3.SelectedIndex = 0
 
         End If
 
         If Panel2.SelectedIndex = 1 Then
 
-            Panel6.SelectedIndex = 1
+            Panel3.SelectedIndex = 1
 
             'Cargamos el combo con las sedes
             CargarComboSede()
@@ -394,16 +396,16 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub Panel6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Panel6.SelectedIndexChanged
+    Private Sub Panel3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Panel3.SelectedIndexChanged
         'Evento donde se seleccionan los tabs del tabcontrol (paginas) y luego se cargan metodos dependiendo del index del tab
 
-        If Panel6.SelectedIndex = 0 Then
+        If Panel3.SelectedIndex = 0 Then
 
             Panel2.SelectedIndex = 0
 
         End If
 
-        If Panel6.SelectedIndex = 1 Then
+        If Panel3.SelectedIndex = 1 Then
 
             Panel2.SelectedIndex = 1
 
@@ -411,6 +413,17 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
+    Private Sub ComboEstado_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles ComboEstado.DrawItem
+
+        If (e.Index <> -1) Then
+
+            e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+            e.Graphics.DrawString(ComboEstado.Items(e.Index).ToString(), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.Images(e.Index).Width, e.Bounds.Top)
+
+        End If
+
+    End Sub
 
 
 End Class

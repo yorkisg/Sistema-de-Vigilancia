@@ -1,7 +1,8 @@
 ﻿
-Public Class MaestroDispositivo
 
-    Private Sub MaestroDispositivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class MaestroMaterial
+
+    Private Sub MaestroMaterial_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Se habilita la serie correlativa para el siguiente ID.
@@ -14,8 +15,6 @@ Public Class MaestroDispositivo
         TextBox2.CharacterCasing = CharacterCasing.Upper
         TextBox3.CharacterCasing = CharacterCasing.Upper
 
-        CargarComboSede()
-        'CargarComboGrupo()
 
     End Sub
 
@@ -33,8 +32,8 @@ Public Class MaestroDispositivo
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("INSERT INTO dispositivo (iddispositivo, descripcion, ubicacion, tipo, grupo, estado) " _
-            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & TextBox3.Text & "', '" & ComboTipo.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
+            Dim db As New MySqlCommand("INSERT INTO material (idmaterial, nombrematerial, unidad, cantidad) " _
+            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & ComboUnidad.Text & "', '" & TextBox3.Text & "')", Conexion)
 
             db.ExecuteNonQuery()
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
@@ -54,7 +53,7 @@ Public Class MaestroDispositivo
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE dispositivo SET descripcion = '" & TextBox2.Text & "', ubicacion = '" & TextBox3.Text & "', tipo = '" & ComboTipo.Text & "', grupo = '" & TextBox4.Text & "', estado = '" & ComboEstado.Text & "' WHERE iddispositivo = '" & TextBox1.Text & "' ", Conexion)
+            Dim db As New MySqlCommand("UPDATE material SET nombrematerial = '" & TextBox2.Text & "', unidad = '" & ComboUnidad.Text & "', cantidad = '" & TextBox3.Text & "' WHERE idmaterial = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -82,7 +81,7 @@ Public Class MaestroDispositivo
     Private Sub BotonBuscar_Click(sender As Object, e As EventArgs) Handles BotonBuscar.Click
         'Boton buscar
 
-        ListadoDispositivo.ShowDialog()
+        ListadoMaterial.ShowDialog()
 
     End Sub
 
@@ -95,68 +94,12 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub CargarComboSede()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("SELECT * FROM sede ORDER BY nombresede ASC", Conexion)
-        Adaptador.Fill(Tabla)
-
-        ComboSede.DataSource = Tabla
-        ComboSede.DisplayMember = "nombresede"
-        ComboSede.ValueMember = "idsede"
-
-    End Sub
-
-    Private Sub CargarComboGrupo()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("SELECT * FROM grupo, sede " _
-                               & " WHERE grupo.sede = sede.idsede " _
-                               & " And nombresede = '" & TextBox5.Text & "' ORDER BY nombregrupo ASC", Conexion)
-
-        Adaptador.Fill(Tabla)
-
-        ComboGrupo.DataSource = Tabla
-        ComboGrupo.DisplayMember = "nombregrupo"
-        ComboGrupo.ValueMember = "idgrupo"
-
-    End Sub
-
-    Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
-        'Evento que permite cargar el metodo de acuerdo al valor selecionado
-
-        TextBox5.Text = ComboSede.Text
-        CargarComboGrupo()
-
-    End Sub
-
-    Private Sub ComboGrupo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboGrupo.SelectedIndexChanged
-        'Este metodo permite obtener el ID de cada item seleccionado. 
-
-        Dim Adaptador As New MySqlDataAdapter
-        Dim Tabla As New DataTable
-
-        Adaptador = New MySqlDataAdapter("SELECT idgrupo FROM grupo WHERE nombregrupo = '" & ComboGrupo.Text & "' ", Conexion)
-        Adaptador.Fill(Tabla)
-
-        For Each row As DataRow In Tabla.Rows
-            TextBox4.Text = row("idgrupo").ToString
-        Next
-
-    End Sub
-
     Private Sub Serie()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID.
 
         'Se obtiene el ultimo ID del chofer.
-        Dim Command As New MySqlCommand("SELECT MAX(iddispositivo) FROM dispositivo", Conexion)
+        Dim Command As New MySqlCommand("SELECT MAX(idmaterial) FROM material", Conexion)
         Dim numero As Integer
 
         'El ID obtenido de la BD se incrementa.

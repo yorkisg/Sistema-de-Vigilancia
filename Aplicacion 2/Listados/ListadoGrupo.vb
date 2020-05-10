@@ -8,7 +8,7 @@ Public Class ListadoGrupo
         AlternarFilasGeneral(DataGridView)
 
         'Se llama al metodo en el Load del formulario para que el datagridview cargue los datos inmediatamente
-        CargarGridListadoGrupo()
+        CargarListadoGrupo()
 
         'Se llama al metodo para que cargue rapido el datagridview
         EnableDoubleBuffered(DataGridView)

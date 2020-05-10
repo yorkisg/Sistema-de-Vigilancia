@@ -45,6 +45,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Camara3.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -93,6 +96,12 @@
     <Compile Include="Datos Maestros\MaestroGrupo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Datos Maestros\MaestroMaterial.Designer.vb">
+      <DependentUpon>MaestroMaterial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Datos Maestros\MaestroMaterial.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Listados\ListadoDispositivo.Designer.vb">
       <DependentUpon>ListadoDispositivo.vb</DependentUpon>
     </Compile>
@@ -103,6 +112,12 @@
       <DependentUpon>ListadoGrupo.vb</DependentUpon>
     </Compile>
     <Compile Include="Listados\ListadoGrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\ListadoMaterial.Designer.vb">
+      <DependentUpon>ListadoMaterial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\ListadoMaterial.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Principal\MenuPrincipal.Designer.vb">
@@ -147,6 +162,12 @@
     <Compile Include="Seguimiento\SeguimientoDispositivo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Seguimiento\SeguimientoServicio.Designer.vb">
+      <DependentUpon>SeguimientoServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Seguimiento\SeguimientoServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Datos Maestros\MaestroDispositivo.resx">
@@ -155,11 +176,17 @@
     <EmbeddedResource Include="Datos Maestros\MaestroGrupo.resx">
       <DependentUpon>MaestroGrupo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Datos Maestros\MaestroMaterial.resx">
+      <DependentUpon>MaestroMaterial.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Listados\ListadoDispositivo.resx">
       <DependentUpon>ListadoDispositivo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listados\ListadoGrupo.resx">
       <DependentUpon>ListadoGrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\ListadoMaterial.resx">
+      <DependentUpon>ListadoMaterial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
@@ -179,6 +206,9 @@
     <EmbeddedResource Include="Seguimiento\SeguimientoDispositivo.resx">
       <DependentUpon>SeguimientoDispositivo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Seguimiento\SeguimientoServicio.resx">
+      <DependentUpon>SeguimientoServicio.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -193,6 +223,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Camara3.ico" />
     <Content Include="Recursos\Abierto1.png" />
     <Content Include="Recursos\Abierto2.png" />
     <Content Include="Recursos\Accidentado.png" />
