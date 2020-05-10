@@ -1,5 +1,5 @@
 ﻿
-Module ModuloSeguimiento
+Module ModuloSeguimientoDispositivo
 
     Public Operativo As Image
     Public Desconectada As Image

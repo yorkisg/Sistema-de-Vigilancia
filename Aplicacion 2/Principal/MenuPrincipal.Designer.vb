@@ -84,7 +84,7 @@ Partial Class MenuPrincipal
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(61, 22)
-        Me.ToolStripButton1.Text = "28.04.2020"
+        Me.ToolStripButton1.Text = "10.05.2020"
         '
         'ToolStripLabel2
         '
@@ -219,7 +219,7 @@ Partial Class MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(984, 562)

@@ -54,6 +54,8 @@ Partial Class SeguimientoServicio
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.TabControl()
         Me.Pagina3 = New System.Windows.Forms.TabPage()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.BotonRemover = New System.Windows.Forms.ToolStripButton()
@@ -98,8 +100,8 @@ Partial Class SeguimientoServicio
         Me.BotonGuardar.Image = CType(resources.GetObject("BotonGuardar.Image"), System.Drawing.Image)
         Me.BotonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BotonGuardar.Name = "BotonGuardar"
-        Me.BotonGuardar.Size = New System.Drawing.Size(69, 22)
-        Me.BotonGuardar.Text = "Guardar"
+        Me.BotonGuardar.Size = New System.Drawing.Size(113, 22)
+        Me.BotonGuardar.Text = "Guardar Servicio"
         '
         'ToolStripSeparator1
         '
@@ -284,6 +286,8 @@ Partial Class SeguimientoServicio
         'Pagina3
         '
         Me.Pagina3.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.Pagina3.Controls.Add(Me.TextBox4)
+        Me.Pagina3.Controls.Add(Me.TextBox3)
         Me.Pagina3.Controls.Add(Me.GroupBox2)
         Me.Pagina3.Controls.Add(Me.BotonBuscar)
         Me.Pagina3.Controls.Add(Me.ComboGrupo)
@@ -304,6 +308,24 @@ Partial Class SeguimientoServicio
         Me.Pagina3.TabIndex = 0
         Me.Pagina3.Text = "SERVICIOS Y MANTENIMIENTO"
         '
+        'TextBox4
+        '
+        Me.TextBox4.Enabled = False
+        Me.TextBox4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox4.Location = New System.Drawing.Point(279, 222)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(165, 23)
+        Me.TextBox4.TabIndex = 117
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox3.Location = New System.Drawing.Point(282, 178)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(165, 23)
+        Me.TextBox3.TabIndex = 116
+        '
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.AliceBlue
@@ -312,7 +334,7 @@ Partial Class SeguimientoServicio
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 251)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(438, 304)
+        Me.GroupBox2.Size = New System.Drawing.Size(438, 329)
         Me.GroupBox2.TabIndex = 92
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "MATERIALES POR SERVICIO"
@@ -323,7 +345,7 @@ Partial Class SeguimientoServicio
         Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonRemover, Me.ToolStripButton2, Me.BotonAgregar})
-        Me.ToolStrip2.Location = New System.Drawing.Point(3, 276)
+        Me.ToolStrip2.Location = New System.Drawing.Point(3, 301)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(432, 25)
         Me.ToolStrip2.TabIndex = 52
@@ -332,6 +354,7 @@ Partial Class SeguimientoServicio
         'BotonRemover
         '
         Me.BotonRemover.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.BotonRemover.BackColor = System.Drawing.Color.AliceBlue
         Me.BotonRemover.Image = CType(resources.GetObject("BotonRemover.Image"), System.Drawing.Image)
         Me.BotonRemover.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BotonRemover.Name = "BotonRemover"
@@ -347,6 +370,7 @@ Partial Class SeguimientoServicio
         'BotonAgregar
         '
         Me.BotonAgregar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.BotonAgregar.BackColor = System.Drawing.Color.AliceBlue
         Me.BotonAgregar.Image = CType(resources.GetObject("BotonAgregar.Image"), System.Drawing.Image)
         Me.BotonAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BotonAgregar.Name = "BotonAgregar"
@@ -357,6 +381,7 @@ Partial Class SeguimientoServicio
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AllowUserToResizeColumns = False
         Me.DataGridView2.AllowUserToResizeRows = False
         Me.DataGridView2.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -381,7 +406,7 @@ Partial Class SeguimientoServicio
         DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(426, 251)
+        Me.DataGridView2.Size = New System.Drawing.Size(426, 276)
         Me.DataGridView2.TabIndex = 51
         '
         'DataGridViewTextBoxColumn1
@@ -423,10 +448,10 @@ Partial Class SeguimientoServicio
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.ColumnaCantidad.DefaultCellStyle = DataGridViewCellStyle11
         Me.ColumnaCantidad.HeaderText = "CANTIDAD"
-        Me.ColumnaCantidad.MinimumWidth = 80
+        Me.ColumnaCantidad.MinimumWidth = 65
         Me.ColumnaCantidad.Name = "ColumnaCantidad"
         Me.ColumnaCantidad.ReadOnly = True
-        Me.ColumnaCantidad.Width = 80
+        Me.ColumnaCantidad.Width = 65
         '
         'BotonBuscar
         '
@@ -444,7 +469,6 @@ Partial Class SeguimientoServicio
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
-        Me.ComboGrupo.Items.AddRange(New Object() {"PERDIDA DE SEÑAL", "PERDIDA DE COLOR", "FALLAS EN IMAGEN", "FALLAS EN MOVIMIENTO", "ANGULO ERRÓNEO"})
         Me.ComboGrupo.Location = New System.Drawing.Point(6, 222)
         Me.ComboGrupo.Name = "ComboGrupo"
         Me.ComboGrupo.Size = New System.Drawing.Size(270, 23)
@@ -456,7 +480,6 @@ Partial Class SeguimientoServicio
         Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboSede.FormattingEnabled = True
-        Me.ComboSede.Items.AddRange(New Object() {"ALTA", "MEDIA", "BAJA"})
         Me.ComboSede.Location = New System.Drawing.Point(6, 178)
         Me.ComboSede.Name = "ComboSede"
         Me.ComboSede.Size = New System.Drawing.Size(270, 23)
@@ -599,14 +622,16 @@ Partial Class SeguimientoServicio
     Friend WithEvents BotonBuscar As Button
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents ColumnaCantidad As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaUnidad As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaDescripcion As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents BotonGuardar As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStrip2 As ToolStrip
     Friend WithEvents BotonRemover As ToolStripButton
     Friend WithEvents BotonAgregar As ToolStripButton
     Friend WithEvents ToolStripButton2 As ToolStripSeparator
+    Friend WithEvents ColumnaCantidad As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaUnidad As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaDescripcion As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
 End Class
