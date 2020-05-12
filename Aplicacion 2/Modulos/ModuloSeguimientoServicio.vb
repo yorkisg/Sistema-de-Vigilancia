@@ -71,5 +71,76 @@ Module ModuloSeguimientoServicio
 
     End Sub
 
+    Public Sub SerieSeguimientoServicio()
+        'Metodo que permite generar una serie correlativa de numeros enteros. 
+        'Usado para generar automaticamente el ID.
+
+        'Se obtiene el ultimo ID del chofer.
+        Dim Command As New MySqlCommand("SELECT MAX(idservicio) FROM servicio", Conexion)
+        Dim numero As Integer
+
+        'El ID obtenido de la BD se incrementa.
+        numero = Command.ExecuteScalar
+        numero = numero + 1
+
+        'Se da formato al ID obtenido de la BD.
+        SeguimientoServicio.TextBox1.Text = Format(numero, "000000000")
+
+    End Sub
+
+    Public Sub SerieSeguimientoDetalle()
+        'Metodo que permite generar una serie correlativa de numeros enteros. 
+        'Usado para generar automaticamente el ID.
+
+        'Se obtiene el ultimo ID del chofer.
+        Dim Command As New MySqlCommand("SELECT MAX(iddetalle) FROM detalleservicio", Conexion)
+        Dim numero As Integer
+
+        'El ID obtenido de la BD se incrementa.
+        numero = Command.ExecuteScalar
+        numero = numero + 1
+
+        'Se da formato al ID obtenido de la BD.
+        SeguimientoServicio.TextBox5.Text = Format(numero, "000000000")
+
+    End Sub
+
+    Public Sub LimpiarComponentesServicio()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        'Abrimos el ciclo que recorre todas las filas del datagridview
+        For i As Integer = 0 To SeguimientoServicio.DataGridView2.RowCount - 1
+
+            'Eliminamos elemento por elemento
+            SeguimientoServicio.DataGridView2.Rows.Remove(SeguimientoServicio.DataGridView2.CurrentRow)
+
+        Next
+
+        SeguimientoServicio.TextBox2.Text = ""
+
+    End Sub
+
+    Public Function ValidarComponentesServicio() As Boolean
+        'Funcion booleana que permite validar si algun campo quedo vacio.
+
+        Dim Validar As Boolean = True
+
+        'Limpia todos los mensajes de error mostrados en la interfaz de usuario
+        SeguimientoServicio.ErrorProvider1.Clear()
+
+        If String.IsNullOrEmpty(SeguimientoServicio.TextBox2.Text) Then
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.TextBox2, "No puede dejar campos en blanco.")
+            Validar = False
+        Else
+            'Si el error ha sido superado, se debe borrar
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.TextBox2, "")
+
+        End If
+
+        Return Validar
+
+    End Function
+
+
 
 End Module

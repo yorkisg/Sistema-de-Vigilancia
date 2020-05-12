@@ -1,5 +1,4 @@
 ﻿
-
 Public Class MaestroMaterial
 
     Private Sub MaestroMaterial_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -80,6 +79,9 @@ Public Class MaestroMaterial
 
     Private Sub BotonBuscar_Click(sender As Object, e As EventArgs) Handles BotonBuscar.Click
         'Boton buscar
+
+        'Escondemos la columna check
+        ' ListadoMaterial.DataGridView.MultiSelect = False
 
         ListadoMaterial.ShowDialog()
 

@@ -40,7 +40,6 @@ Partial Class MaestroMaterial
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboUnidad = New System.Windows.Forms.ComboBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,9 +109,9 @@ Partial Class MaestroMaterial
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Label5.Location = New System.Drawing.Point(12, 113)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(51, 15)
+        Me.Label5.Size = New System.Drawing.Size(115, 15)
         Me.Label5.TabIndex = 69
-        Me.Label5.Text = "UNIDAD"
+        Me.Label5.Text = "UNIDAD DE MEDIDA"
         '
         'BotonBuscar
         '
@@ -168,9 +167,9 @@ Partial Class MaestroMaterial
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Label2.Location = New System.Drawing.Point(12, 157)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(66, 15)
+        Me.Label2.Size = New System.Drawing.Size(127, 15)
         Me.Label2.TabIndex = 71
-        Me.Label2.Text = "CANTIDAD"
+        Me.Label2.Text = "CANTIDAD ASIGNADA"
         '
         'ComboUnidad
         '
@@ -184,15 +183,6 @@ Partial Class MaestroMaterial
         Me.ComboUnidad.Size = New System.Drawing.Size(280, 23)
         Me.ComboUnidad.TabIndex = 72
         '
-        'TextBox4
-        '
-        Me.TextBox4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox4.Location = New System.Drawing.Point(296, 87)
-        Me.TextBox4.MaxLength = 50
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(55, 23)
-        Me.TextBox4.TabIndex = 73
-        '
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
@@ -203,7 +193,6 @@ Partial Class MaestroMaterial
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ClientSize = New System.Drawing.Size(351, 210)
-        Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.ComboUnidad)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox3)
@@ -243,6 +232,5 @@ Partial Class MaestroMaterial
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents ComboUnidad As ComboBox
-    Friend WithEvents TextBox4 As TextBox
     Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

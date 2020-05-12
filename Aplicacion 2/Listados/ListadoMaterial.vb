@@ -60,9 +60,32 @@ Public Class ListadoMaterial
 
             End If
 
+            If SeguimientoServicio.Visible = True Then
+
+                For Each row As DataGridViewRow In DataGridView.SelectedRows
+
+                    Dim id As String = row.Cells("ColumnaID").Value
+                    Dim descripcion As String = row.Cells("ColumnaDescripcion").Value
+                    Dim unidad As String = row.Cells("ColumnaUnidad").Value
+
+                    SeguimientoServicio.DataGridView2.Rows.Add(id, descripcion, unidad)
+
+                Next
+
+            End If
+
+            'Desactivamos la seleccion multiple
+            DataGridView.MultiSelect = False
+
+            'Se cierra el formulario ListadoVehiculo
+            Tabla.Clear()
+            DataSet.Clear()
+            Dispose()
+
         End If
 
     End Sub
+
 
     Private Sub BotonExportar_Click(sender As Object, e As EventArgs) Handles BotonExportar.Click
         'Boton Exportar a Excel
@@ -130,7 +153,7 @@ Public Class ListadoMaterial
     Function Filtrar(ByVal busqueda As String) As DataTable
         'Funcion que carga los datos de acuerdo a lo ingresado en el TextBox
 
-        Dim cmd As New MySqlCommand("SELECT idmaterial, nombrematerial, unidad, cantidad " _
+        Dim cmd As New MySqlCommand("Select idmaterial, nombrematerial, unidad, cantidad " _
                                        & " FROM material " _
                                        & " WHERE nombrematerial Like '%" & busqueda & "%' ", Conexion)
 

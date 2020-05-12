@@ -1,8 +1,14 @@
 ﻿
+Imports System.ComponentModel
+
 Public Class SeguimientoServicio
 
     Private Sub SeguimientoServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
+
+        'Carga inicial de las series
+        SerieSeguimientoServicio()
+        SerieSeguimientoDetalle()
 
         'Llamada al metodo para alternar los colores de las filas
         AlternarFilasGeneral(DataGridView1)
@@ -42,19 +48,75 @@ Public Class SeguimientoServicio
     End Sub
 
     Private Sub BotonGuardar_Click(sender As Object, e As EventArgs) Handles BotonGuardar.Click
+        'Boton guardar
 
+        Try
+
+            Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+
+            If ValidarComponentesServicio() = True Then
+
+                'Registro formal de la ruta con todos sus atributos
+                Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, descripcion, fecha) " _
+                                    & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "')", Conexion)
+
+                db.ExecuteNonQuery()
+
+                'Instancia del metodo que inserta el detalle
+                InsertarDetalle()
+
+                'Se limpian todos los componentes del formulario para un nuevo uso.
+                LimpiarComponentesServicio()
+                'Se habilita el metodo para incrementar el siguiente ID.
+                SerieSeguimientoServicio()
+
+                MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.1", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub InsertarDetalle()
+        'Metodo para calcular el detalle del servicio
+
+        Try
+
+            Dim idmaterial As String
+            Dim cantidad As Double
+
+            'Se reccorren todos los elementos del grid para guardar fila por fila
+            For Each row In DataGridView2.Rows
+
+                'Se inicializan variables 
+                idmaterial = row.Cells(0).Value
+                cantidad = row.Cells(3).Value
+
+                Dim db2 As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad) " _
+                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "')", Conexion)
+
+                db2.ExecuteNonQuery()
+
+                'Incrementamos el id para el siguiente registro
+                SerieSeguimientoDetalle()
+
+            Next
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
 
     End Sub
 
     Private Sub BotonCerrar_Click(sender As Object, e As EventArgs) Handles BotonCerrar.Click
 
-
-    End Sub
-
-    Private Sub BotonBuscar_Click(sender As Object, e As EventArgs) Handles BotonBuscar.Click
-        'Boton buscar
-
-        'ListadoServicio.ShowDialog()
 
     End Sub
 
@@ -81,13 +143,26 @@ Public Class SeguimientoServicio
     Private Sub BotonAgregar_Click(sender As Object, e As EventArgs) Handles BotonAgregar.Click
         'Boton buscar
 
+        'Activamos la seleccion multiple
+        ListadoMaterial.DataGridView.MultiSelect = True
         ListadoMaterial.ShowDialog()
-
 
     End Sub
 
     Private Sub BotonRemover_Click(sender As Object, e As EventArgs) Handles BotonRemover.Click
+        'boton remover material
 
+        'si el datagridview esta vacio, muestra el mensaje de error
+        If DataGridView2.CurrentCell Is Nothing Then
+
+            MsgBox("Debe seleccionar un item a remover.", MsgBoxStyle.Critical, "Error")
+
+            'si el datagridview tiene elementos, entonces se procede a remover
+        Else
+
+            DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
+
+        End If
 
     End Sub
 
@@ -144,7 +219,32 @@ Public Class SeguimientoServicio
 
         Catch ex As Exception
 
-            MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
+            MsgBox("No se pudo completar la operación.3", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
+        'SelectionChanged o CellMouseClick: Propiedad del control DataGridview el cual permite hacer click
+        'y seleccionar elementos por filas o columnas.
+        'en este caso se selecciona el ID del vehiculo el cual es pasado a un control
+        'TextBox pasa su posterior uso.
+
+        Try
+
+            If DataGridView1.RowCount > 0 And DataGridView1.SelectedRows.Count = 1 Then
+
+                'Seleccionamos y pasamos el valor al TextBox.
+                'Usado para el detalle de ruta
+                TextBox7.Text = DataGridView1.Item("ColumnaID", DataGridView1.SelectedRows(0).Index).Value
+
+            End If
+
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.4", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
