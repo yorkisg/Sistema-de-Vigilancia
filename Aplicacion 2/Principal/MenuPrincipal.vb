@@ -51,14 +51,21 @@ Public Class MenuPrincipal
 
     End Sub
 
-    Private Sub MenuIncidencia_Click(sender As Object, e As EventArgs) Handles MenuIncidencia.Click
+    Private Sub MenuServicio_Click(sender As Object, e As EventArgs) Handles MenuServicio.Click
+        'Formulario MaestroServicio
+
+        MaestroServicio.ShowDialog()
+
+    End Sub
+
+    Private Sub MenuSeguimientoIncidencia_Click(sender As Object, e As EventArgs) Handles MenuSeguimientoIncidencia.Click
         'Formulario SeguimientoDispositivo
 
         SeguimientoDispositivo.ShowDialog()
 
     End Sub
 
-    Private Sub MenuServicio_Click(sender As Object, e As EventArgs) Handles MenuServicio.Click
+    Private Sub MenuSeguimientoServicio_Click(sender As Object, e As EventArgs) Handles MenuSeguimientoServicio.Click
         'Formulario SeguimientoServicio
 
         SeguimientoServicio.ShowDialog()

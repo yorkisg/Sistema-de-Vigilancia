@@ -124,6 +124,37 @@ Module ModuloListado
 
     End Sub
 
+    Public Sub CargarListadoServicio()
+        'Metodo para cargar el datagridview.
+
+        'Conexion a la BD.
+        Dim sql As String = "SELECT idservicio, descripcion, fechainicio, nombresede, nombregrupo, estado" _
+                            & " FROM servicio, grupo, sede" _
+                            & " WHERE servicio.grupo = grupo.idgrupo " _
+                            & " AND grupo.sede = sede.idsede " _
+                            & " ORDER BY descripcion ASC"
+
+        Dim connection As New MySqlConnection(ConnectionString)
+
+        'Instancia y uso de variables.
+        Command = New MySqlCommand(sql, connection)
+        Adaptador = New MySqlDataAdapter(Command)
+        DataSet = New DataSet()
+
+        'Llenado del datagridview.
+        Adaptador.Fill(DataSet, "servicios")
+        Tabla = DataSet.Tables("servicios")
+        ListadoServicio.DataGridView.DataSource = Tabla
+
+        With ListadoServicio.DataGridView
+            .DefaultCellStyle.Font = New Font("Segoe UI", 8) 'Fuente para celdas
+            .Font = New Font("Segoe UI", 9) 'Fuente para Headers
+        End With
+
+        'Mostramos la cantidad de registros encontrados
+        ListadoServicio.Contador.Text = ListadoServicio.DataGridView.RowCount
+
+    End Sub
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '''''''''''''''''''''''METODOS DE APOYO''''''''''''''''''''''''

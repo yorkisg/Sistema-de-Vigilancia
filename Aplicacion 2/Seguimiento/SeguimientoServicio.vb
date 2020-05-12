@@ -1,13 +1,11 @@
 ﻿
-Imports System.ComponentModel
-
 Public Class SeguimientoServicio
 
     Private Sub SeguimientoServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Carga inicial de las series
-        SerieSeguimientoServicio()
+        'SerieSeguimientoServicio()
         SerieSeguimientoDetalle()
 
         'Llamada al metodo para alternar los colores de las filas
@@ -24,6 +22,10 @@ Public Class SeguimientoServicio
 
         'Carga inicial del combo de las sedes
         CargarComboSedeServicio()
+
+        'validamos uso de los botones
+        BotonGuardar.Enabled = False
+        BotonCerrar.Enabled = False
 
     End Sub
 
@@ -68,7 +70,7 @@ Public Class SeguimientoServicio
                 'Se limpian todos los componentes del formulario para un nuevo uso.
                 LimpiarComponentesServicio()
                 'Se habilita el metodo para incrementar el siguiente ID.
-                SerieSeguimientoServicio()
+                'SerieSeguimientoServicio()
 
                 MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -116,7 +118,25 @@ Public Class SeguimientoServicio
     End Sub
 
     Private Sub BotonCerrar_Click(sender As Object, e As EventArgs) Handles BotonCerrar.Click
+        'Boton cerrar
 
+        'Se valida que no haya algun campo vacio
+        If ValidarComponentesServicio() = True Then
+
+            Dim db As New MySqlCommand("UPDATE servicio SET estado = '" & TextBox6.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
+            db.ExecuteNonQuery()
+            MsgBox("Finalizado con Exito.", MsgBoxStyle.Information, "Exito.")
+
+            'Se desactiva el uso del boton modificar.
+            'BotonModificar.Enabled = False
+            'Se activa el uso del boton guardar.
+            'BotonGuardar.Enabled = True
+            'Se limpian todos los componentes del formulario para un nuevo uso.
+            LimpiarComponentesServicio()
+            'Se habilita el metodo para incrementar el siguiente ID.
+            'Serie()
+
+        End If
 
     End Sub
 
@@ -163,6 +183,20 @@ Public Class SeguimientoServicio
             DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
 
         End If
+
+    End Sub
+
+    Private Sub BotonBuscar1_Click(sender As Object, e As EventArgs) Handles BotonBuscar1.Click
+        'Llamada al formulario "ListadoServicio"
+
+        ListadoServicio.ShowDialog()
+
+    End Sub
+
+    Private Sub BotonNuevo_Click(sender As Object, e As EventArgs) Handles BotonNuevo.Click
+        'Llamada al formulario "MaestroServicio"
+
+        MaestroServicio.ShowDialog()
 
     End Sub
 

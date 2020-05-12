@@ -1,7 +1,7 @@
 ﻿
-Public Class MaestroDispositivo
+Public Class MaestroServicio
 
-    Private Sub MaestroDispositivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub MaestroServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Se habilita la serie correlativa para el siguiente ID.
@@ -12,14 +12,13 @@ Public Class MaestroDispositivo
 
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
         TextBox2.CharacterCasing = CharacterCasing.Upper
-        TextBox3.CharacterCasing = CharacterCasing.Upper
 
         CargarComboSede()
         'CargarComboGrupo()
 
     End Sub
 
-    Private Sub MaestroDispositivo_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub MaestroServicio_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Cierre del formulario
 
         LimpiarComponentes()
@@ -30,11 +29,13 @@ Public Class MaestroDispositivo
     Private Sub BotonGuardar_Click(sender As Object, e As EventArgs) Handles BotonGuardar.Click
         'Boton registrar
 
+        Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("INSERT INTO dispositivo (iddispositivo, descripcion, ubicacion, tipo, grupo, estado) " _
-            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & TextBox3.Text & "', '" & ComboTipo.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
+            Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, descripcion, fechainicio, grupo, estado) " _
+            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
 
             db.ExecuteNonQuery()
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
@@ -51,10 +52,12 @@ Public Class MaestroDispositivo
     Private Sub BotonModificar_Click(sender As Object, e As EventArgs) Handles BotonModificar.Click
         'Boton modificar
 
+        Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE dispositivo SET descripcion = '" & TextBox2.Text & "', ubicacion = '" & TextBox3.Text & "', tipo = '" & ComboTipo.Text & "', grupo = '" & TextBox4.Text & "', estado = '" & ComboEstado.Text & "' WHERE iddispositivo = '" & TextBox1.Text & "' ", Conexion)
+            Dim db As New MySqlCommand("UPDATE servicio SET descripcion = '" & TextBox2.Text & "', fechainicio = '" & fecha & "', grupo = '" & TextBox4.Text & "', estado = '" & ComboEstado.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -82,7 +85,7 @@ Public Class MaestroDispositivo
     Private Sub BotonBuscar_Click(sender As Object, e As EventArgs) Handles BotonBuscar.Click
         'Boton buscar
 
-        ListadoDispositivo.ShowDialog()
+        ListadoServicio.ShowDialog()
 
     End Sub
 
@@ -91,7 +94,6 @@ Public Class MaestroDispositivo
 
         'TextBox1.Text = ""
         TextBox2.Text = ""
-        TextBox3.Text = ""
 
     End Sub
 
@@ -118,7 +120,7 @@ Public Class MaestroDispositivo
 
         Adaptador = New MySqlDataAdapter("SELECT * FROM grupo, sede " _
                                & " WHERE grupo.sede = sede.idsede " _
-                               & " And nombresede = '" & TextBox5.Text & "' ORDER BY nombregrupo ASC", Conexion)
+                               & " And nombresede = '" & TextBox3.Text & "' ORDER BY nombregrupo ASC", Conexion)
 
         Adaptador.Fill(Tabla)
 
@@ -131,7 +133,7 @@ Public Class MaestroDispositivo
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
         'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
-        TextBox5.Text = ComboSede.Text
+        TextBox3.Text = ComboSede.Text
         CargarComboGrupo()
 
     End Sub
@@ -156,7 +158,7 @@ Public Class MaestroDispositivo
         'Usado para generar automaticamente el ID.
 
         'Se obtiene el ultimo ID del chofer.
-        Dim Command As New MySqlCommand("SELECT MAX(iddispositivo) FROM dispositivo", Conexion)
+        Dim Command As New MySqlCommand("SELECT MAX(idservicio) FROM servicio", Conexion)
         Dim numero As Integer
 
         'El ID obtenido de la BD se incrementa.
@@ -186,8 +188,13 @@ Public Class MaestroDispositivo
             Validar = False
         End If
 
-        If String.IsNullOrEmpty(ComboTipo.Text) Then
-            ErrorProvider1.SetError(ComboTipo, "No puede dejar campos en blanco.")
+        If String.IsNullOrEmpty(ComboSede.Text) Then
+            ErrorProvider1.SetError(ComboSede, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
+        If String.IsNullOrEmpty(ComboGrupo.Text) Then
+            ErrorProvider1.SetError(ComboGrupo, "No puede dejar campos en blanco.")
             Validar = False
         End If
 

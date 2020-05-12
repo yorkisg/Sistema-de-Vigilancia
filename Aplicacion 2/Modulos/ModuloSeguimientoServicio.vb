@@ -128,6 +128,15 @@ Module ModuloSeguimientoServicio
         'Limpia todos los mensajes de error mostrados en la interfaz de usuario
         SeguimientoServicio.ErrorProvider1.Clear()
 
+        If String.IsNullOrEmpty(SeguimientoServicio.TextBox1.Text) Then
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.TextBox1, "No puede dejar campos en blanco.")
+            Validar = False
+        Else
+            'Si el error ha sido superado, se debe borrar
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.TextBox1, "")
+
+        End If
+
         If String.IsNullOrEmpty(SeguimientoServicio.TextBox2.Text) Then
             SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.TextBox2, "No puede dejar campos en blanco.")
             Validar = False
@@ -140,7 +149,6 @@ Module ModuloSeguimientoServicio
         Return Validar
 
     End Function
-
 
 
 End Module

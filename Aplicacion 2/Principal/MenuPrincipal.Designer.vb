@@ -37,11 +37,12 @@ Partial Class MenuPrincipal
         Me.MenuDispositivo = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuMaterial = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.MenuServicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuSeguimiento = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuIncidencia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSeguimientoIncidencia = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MenuServicio = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSeguimientoServicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuSalir2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -111,7 +112,7 @@ Partial Class MenuPrincipal
         '
         'MenuDatosMaestros
         '
-        Me.MenuDatosMaestros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuSede, Me.MenuGrupo, Me.MenuDispositivo, Me.MenuMaterial, Me.ToolStripSeparator8})
+        Me.MenuDatosMaestros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuSede, Me.MenuGrupo, Me.MenuDispositivo, Me.MenuMaterial, Me.ToolStripSeparator8, Me.MenuServicio})
         Me.MenuDatosMaestros.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuDatosMaestros.Image = CType(resources.GetObject("MenuDatosMaestros.Image"), System.Drawing.Image)
         Me.MenuDatosMaestros.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -123,34 +124,40 @@ Partial Class MenuPrincipal
         '
         Me.MenuSede.Image = CType(resources.GetObject("MenuSede.Image"), System.Drawing.Image)
         Me.MenuSede.Name = "MenuSede"
-        Me.MenuSede.Size = New System.Drawing.Size(146, 22)
+        Me.MenuSede.Size = New System.Drawing.Size(152, 22)
         Me.MenuSede.Text = "Sedes"
         '
         'MenuGrupo
         '
         Me.MenuGrupo.Image = CType(resources.GetObject("MenuGrupo.Image"), System.Drawing.Image)
         Me.MenuGrupo.Name = "MenuGrupo"
-        Me.MenuGrupo.Size = New System.Drawing.Size(146, 22)
+        Me.MenuGrupo.Size = New System.Drawing.Size(152, 22)
         Me.MenuGrupo.Text = "Grupos"
         '
         'MenuDispositivo
         '
         Me.MenuDispositivo.Image = CType(resources.GetObject("MenuDispositivo.Image"), System.Drawing.Image)
         Me.MenuDispositivo.Name = "MenuDispositivo"
-        Me.MenuDispositivo.Size = New System.Drawing.Size(146, 22)
+        Me.MenuDispositivo.Size = New System.Drawing.Size(152, 22)
         Me.MenuDispositivo.Text = "Dispositivos"
         '
         'MenuMaterial
         '
         Me.MenuMaterial.Image = CType(resources.GetObject("MenuMaterial.Image"), System.Drawing.Image)
         Me.MenuMaterial.Name = "MenuMaterial"
-        Me.MenuMaterial.Size = New System.Drawing.Size(146, 22)
+        Me.MenuMaterial.Size = New System.Drawing.Size(152, 22)
         Me.MenuMaterial.Text = "Materiales"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(143, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(149, 6)
+        '
+        'MenuServicio
+        '
+        Me.MenuServicio.Name = "MenuServicio"
+        Me.MenuServicio.Size = New System.Drawing.Size(152, 22)
+        Me.MenuServicio.Text = "Servicios"
         '
         'ToolStripSeparator12
         '
@@ -159,7 +166,7 @@ Partial Class MenuPrincipal
         '
         'MenuSeguimiento
         '
-        Me.MenuSeguimiento.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuIncidencia, Me.ToolStripSeparator9, Me.MenuServicio})
+        Me.MenuSeguimiento.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuSeguimientoIncidencia, Me.ToolStripSeparator9, Me.MenuSeguimientoServicio})
         Me.MenuSeguimiento.Font = New System.Drawing.Font("Segoe UI", 9.75!)
         Me.MenuSeguimiento.Image = CType(resources.GetObject("MenuSeguimiento.Image"), System.Drawing.Image)
         Me.MenuSeguimiento.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -167,26 +174,26 @@ Partial Class MenuPrincipal
         Me.MenuSeguimiento.Size = New System.Drawing.Size(108, 23)
         Me.MenuSeguimiento.Text = "Seguimiento"
         '
-        'MenuIncidencia
+        'MenuSeguimientoIncidencia
         '
-        Me.MenuIncidencia.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.MenuIncidencia.Image = CType(resources.GetObject("MenuIncidencia.Image"), System.Drawing.Image)
-        Me.MenuIncidencia.Name = "MenuIncidencia"
-        Me.MenuIncidencia.Size = New System.Drawing.Size(184, 22)
-        Me.MenuIncidencia.Text = "Incidencias"
+        Me.MenuSeguimientoIncidencia.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.MenuSeguimientoIncidencia.Image = CType(resources.GetObject("MenuSeguimientoIncidencia.Image"), System.Drawing.Image)
+        Me.MenuSeguimientoIncidencia.Name = "MenuSeguimientoIncidencia"
+        Me.MenuSeguimientoIncidencia.Size = New System.Drawing.Size(184, 22)
+        Me.MenuSeguimientoIncidencia.Text = "Incidencias"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
         Me.ToolStripSeparator9.Size = New System.Drawing.Size(181, 6)
         '
-        'MenuServicio
+        'MenuSeguimientoServicio
         '
-        Me.MenuServicio.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.MenuServicio.Image = CType(resources.GetObject("MenuServicio.Image"), System.Drawing.Image)
-        Me.MenuServicio.Name = "MenuServicio"
-        Me.MenuServicio.Size = New System.Drawing.Size(184, 22)
-        Me.MenuServicio.Text = "Control y Servicios"
+        Me.MenuSeguimientoServicio.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.MenuSeguimientoServicio.Image = CType(resources.GetObject("MenuSeguimientoServicio.Image"), System.Drawing.Image)
+        Me.MenuSeguimientoServicio.Name = "MenuSeguimientoServicio"
+        Me.MenuSeguimientoServicio.Size = New System.Drawing.Size(184, 22)
+        Me.MenuSeguimientoServicio.Text = "Control y Servicios"
         '
         'ToolStripSeparator10
         '
@@ -255,11 +262,12 @@ Partial Class MenuPrincipal
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator12 As ToolStripSeparator
     Friend WithEvents MenuSeguimiento As ToolStripMenuItem
-    Friend WithEvents MenuIncidencia As ToolStripMenuItem
+    Friend WithEvents MenuSeguimientoIncidencia As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
-    Friend WithEvents MenuServicio As ToolStripMenuItem
+    Friend WithEvents MenuSeguimientoServicio As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator10 As ToolStripSeparator
     Friend WithEvents MenuSalir As ToolStripMenuItem
     Friend WithEvents MenuSalir2 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
+    Friend WithEvents MenuServicio As ToolStripMenuItem
 End Class
