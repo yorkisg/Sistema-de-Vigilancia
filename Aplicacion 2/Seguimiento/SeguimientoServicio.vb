@@ -5,7 +5,6 @@ Public Class SeguimientoServicio
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Carga inicial de las series
-        'SerieSeguimientoServicio()
         SerieSeguimientoDetalle()
 
         'Llamada al metodo para alternar los colores de las filas
@@ -20,12 +19,11 @@ Public Class SeguimientoServicio
         TextBox2.CharacterCasing = CharacterCasing.Upper
         DateTimePicker1.Value = Today
 
-        'Carga inicial del combo de las sedes
-        CargarComboSedeServicio()
-
         'validamos uso de los botones
         BotonGuardar.Enabled = False
-        BotonCerrar.Enabled = False
+
+        BotonAgregar.Enabled = False
+        BotonRemover.Enabled = False
 
     End Sub
 
@@ -55,22 +53,34 @@ Public Class SeguimientoServicio
         Try
 
             Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+            Dim idmaterial As String
+            Dim cantidad As Double
 
-            If ValidarComponentesServicio() = True Then
+            'Limpiamos la seleccion y la edicion de la celda seleccionada al agregar la cantidad
+            DataGridView2.ClearSelection()
+            DataGridView2.EndEdit()
 
-                'Registro formal de la ruta con todos sus atributos
-                Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, descripcion, fecha) " _
-                                    & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "')", Conexion)
+            If ValidarComponentesServicio() = True And ValidarDataGridView() = True And ValidarDuplicado() = True Then
 
-                db.ExecuteNonQuery()
+                'Se reccorren todos los elementos del grid para guardar fila por fila
+                For Each row In DataGridView2.Rows
 
-                'Instancia del metodo que inserta el detalle
-                InsertarDetalle()
+                    'Se inicializan variables 
+                    idmaterial = row.Cells(0).Value
+                    cantidad = row.Cells(3).Value
+
+                    Dim db As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad) " _
+                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "')", Conexion)
+
+                    db.ExecuteNonQuery()
+
+                    'Incrementamos el id para el siguiente registro
+                    SerieSeguimientoDetalle()
+
+                Next
 
                 'Se limpian todos los componentes del formulario para un nuevo uso.
                 LimpiarComponentesServicio()
-                'Se habilita el metodo para incrementar el siguiente ID.
-                'SerieSeguimientoServicio()
 
                 MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -81,62 +91,6 @@ Public Class SeguimientoServicio
             MsgBox("No se pudo completar la operación.1", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
-
-    End Sub
-
-    Private Sub InsertarDetalle()
-        'Metodo para calcular el detalle del servicio
-
-        Try
-
-            Dim idmaterial As String
-            Dim cantidad As Double
-
-            'Se reccorren todos los elementos del grid para guardar fila por fila
-            For Each row In DataGridView2.Rows
-
-                'Se inicializan variables 
-                idmaterial = row.Cells(0).Value
-                cantidad = row.Cells(3).Value
-
-                Dim db2 As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad) " _
-                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "')", Conexion)
-
-                db2.ExecuteNonQuery()
-
-                'Incrementamos el id para el siguiente registro
-                SerieSeguimientoDetalle()
-
-            Next
-
-        Catch ex As Exception
-
-            MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
-
-        End Try
-
-    End Sub
-
-    Private Sub BotonCerrar_Click(sender As Object, e As EventArgs) Handles BotonCerrar.Click
-        'Boton cerrar
-
-        'Se valida que no haya algun campo vacio
-        If ValidarComponentesServicio() = True Then
-
-            Dim db As New MySqlCommand("UPDATE servicio SET estado = '" & TextBox6.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
-            db.ExecuteNonQuery()
-            MsgBox("Finalizado con Exito.", MsgBoxStyle.Information, "Exito.")
-
-            'Se desactiva el uso del boton modificar.
-            'BotonModificar.Enabled = False
-            'Se activa el uso del boton guardar.
-            'BotonGuardar.Enabled = True
-            'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentesServicio()
-            'Se habilita el metodo para incrementar el siguiente ID.
-            'Serie()
-
-        End If
 
     End Sub
 
@@ -172,13 +126,16 @@ Public Class SeguimientoServicio
     Private Sub BotonRemover_Click(sender As Object, e As EventArgs) Handles BotonRemover.Click
         'boton remover material
 
-        'si el datagridview esta vacio, muestra el mensaje de error
-        If DataGridView2.CurrentCell Is Nothing Then
+        If DataGridView2.RowCount = 0 Then
 
-            MsgBox("Debe seleccionar un item a remover.", MsgBoxStyle.Critical, "Error")
+            BotonRemover.Enabled = False
 
-            'si el datagridview tiene elementos, entonces se procede a remover
-        Else
+        ElseIf DataGridView2.RowCount = 1 Then
+
+            DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
+            BotonRemover.Enabled = False
+
+        ElseIf DataGridView2.RowCount > 1 Then
 
             DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
 
@@ -190,6 +147,7 @@ Public Class SeguimientoServicio
         'Llamada al formulario "ListadoServicio"
 
         ListadoServicio.ShowDialog()
+        CargarGridSeguimientoServicio()
 
     End Sub
 
@@ -197,22 +155,6 @@ Public Class SeguimientoServicio
         'Llamada al formulario "MaestroServicio"
 
         MaestroServicio.ShowDialog()
-
-    End Sub
-
-    Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
-        'Evento que permite cargar el metodo de acuerdo al valor selecionado
-
-        TextBox3.Text = ComboSede.Text
-        CargarComboGrupoServicio()
-
-    End Sub
-
-    Private Sub ComboGrupo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboGrupo.SelectedIndexChanged
-        'Evento que permite cargar el metodo de acuerdo al valor selecionado
-
-        TextBox4.Text = ComboGrupo.Text
-        CargarGridSeguimientoServicio()
 
     End Sub
 
@@ -272,6 +214,7 @@ Public Class SeguimientoServicio
                 'Seleccionamos y pasamos el valor al TextBox.
                 'Usado para el detalle de ruta
                 TextBox7.Text = DataGridView1.Item("ColumnaID", DataGridView1.SelectedRows(0).Index).Value
+                TextBox9.Text = DataGridView1.Item("ColumnaDispositivo", DataGridView1.SelectedRows(0).Index).Value
 
             End If
 

@@ -67,10 +67,13 @@ Public Class ListadoMaterial
                     Dim id As String = row.Cells("ColumnaID").Value
                     Dim descripcion As String = row.Cells("ColumnaDescripcion").Value
                     Dim unidad As String = row.Cells("ColumnaUnidad").Value
+                    Dim cantidad As Double = "0" 'Inicializamos el ingreso de la cantidad en 0
 
-                    SeguimientoServicio.DataGridView2.Rows.Add(id, descripcion, unidad)
+                    SeguimientoServicio.DataGridView2.Rows.Add(id, descripcion, unidad, cantidad)
 
                 Next
+
+                SeguimientoServicio.BotonRemover.Enabled = True
 
             End If
 
@@ -85,7 +88,6 @@ Public Class ListadoMaterial
         End If
 
     End Sub
-
 
     Private Sub BotonExportar_Click(sender As Object, e As EventArgs) Handles BotonExportar.Click
         'Boton Exportar a Excel

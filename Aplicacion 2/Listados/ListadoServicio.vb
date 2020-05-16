@@ -13,6 +13,17 @@ Public Class ListadoServicio
         'Se llama al metodo para que cargue rapido el datagridview
         EnableDoubleBuffered(DataGridView)
 
+        'Decimos que el primer elemento activo del combo es "POR REALIZAR"
+        ComboEstado.SelectedItem = "POR REALIZAR"
+
+        'si la llamada proviene del seguimiento liviano entonces cargamos los choferes livianos
+        If SeguimientoServicio.Visible = True Then
+
+            ComboEstado.SelectedItem = "POR REALIZAR"
+            ComboEstado.Enabled = False
+
+        End If
+
     End Sub
 
     Private Sub ListadoServicio_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -68,13 +79,15 @@ Public Class ListadoServicio
                 SeguimientoServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+                SeguimientoServicio.TextBox4.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                SeguimientoServicio.TextBox3.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.TextBox6.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
 
                 'validamos uso de los botones
                 SeguimientoServicio.BotonGuardar.Enabled = True
-                SeguimientoServicio.BotonCerrar.Enabled = True
+                SeguimientoServicio.BotonAgregar.Enabled = True
+
+                ComboEstado.Enabled = True
 
                 'Se cierra el formulario ListadoVehiculo
                 Tabla.Clear()
@@ -202,13 +215,15 @@ Public Class ListadoServicio
                 SeguimientoServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+                SeguimientoServicio.TextBox4.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                SeguimientoServicio.TextBox3.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
                 SeguimientoServicio.TextBox6.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
 
                 'validamos uso de los botones
                 SeguimientoServicio.BotonGuardar.Enabled = True
-                SeguimientoServicio.BotonCerrar.Enabled = True
+                SeguimientoServicio.BotonAgregar.Enabled = True
+
+                ComboEstado.Enabled = True
 
                 'Se cierra el formulario ListadoVehiculo
                 Tabla.Clear()
@@ -265,6 +280,15 @@ Public Class ListadoServicio
             MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
+
+    End Sub
+
+    Private Sub ComboEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboEstado.SelectedIndexChanged
+        'Evento donde seleccionamos el combobox y el elemento se va directamente al textbox
+        'inmediatamente cargamos el datagridview para refrescar.
+
+        TextBox1.Text = ComboEstado.Text
+        CargarListadoServicio()
 
     End Sub
 

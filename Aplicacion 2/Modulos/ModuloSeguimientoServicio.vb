@@ -2,44 +2,11 @@
 Module ModuloSeguimientoServicio
 
 
-    Public Sub CargarComboSedeServicio()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("Select idsede, nombresede FROM sede ORDER BY nombresede ASC", Conexion)
-        Adaptador.Fill(Tabla)
-
-        SeguimientoServicio.ComboSede.DataSource = Tabla
-        SeguimientoServicio.ComboSede.DisplayMember = "nombresede"
-        SeguimientoServicio.ComboSede.ValueMember = "idsede"
-
-    End Sub
-
-    Public Sub CargarComboGrupoServicio()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("Select idgrupo, nombregrupo FROM grupo, sede " _
-                         & " WHERE grupo.sede = sede.idsede " _
-                         & " AND nombresede LIKE '" & SeguimientoServicio.TextBox3.Text & "' " _
-                         & " ORDER BY nombregrupo ASC", Conexion)
-
-        Adaptador.Fill(Tabla)
-
-        SeguimientoServicio.ComboGrupo.DataSource = Tabla
-        SeguimientoServicio.ComboGrupo.DisplayMember = "nombregrupo"
-        SeguimientoServicio.ComboGrupo.ValueMember = "idgrupo"
-
-    End Sub
-
     Public Sub CargarGridSeguimientoServicio()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, descripcion, tipo, ubicacion, estado FROM dispositivo, grupo, sede " _
+        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, descripcion, tipo, ubicacion, estado " _
+                       & " FROM dispositivo, grupo, sede " _
                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
                        & " AND grupo.sede = sede.idsede " _
                        & " AND nombregrupo = '" & SeguimientoServicio.TextBox4.Text & "' " _
@@ -116,7 +83,8 @@ Module ModuloSeguimientoServicio
 
         Next
 
-        SeguimientoServicio.TextBox2.Text = ""
+        SeguimientoServicio.BotonRemover.Enabled = False
+        'SeguimientoServicio.TextBox2.Text = ""
 
     End Sub
 
@@ -147,6 +115,58 @@ Module ModuloSeguimientoServicio
         End If
 
         Return Validar
+
+    End Function
+
+    Public Function ValidarDataGridView() As Boolean
+        'metodo para validar q no se cargue dos veces un elemento en el datagridview
+
+        Dim Existe As Boolean = True
+
+        'Validamos el ingreso de las cantidades en el datagridview2
+        'Se reccorren todos los elementos del grid para guardar fila por fila
+        For Each row In SeguimientoServicio.DataGridView2.Rows
+
+            'Por ejemplo si deseas de nota
+            If row.Cells("ColumnaCantidad").Value.ToString = "0" Or row.Cells("ColumnaCantidad").Value.ToString = "" Then
+
+                MsgBox("Debe agregar una cantidad al material.", MsgBoxStyle.Exclamation, "Error.")
+                Return False
+
+            End If
+
+        Next
+
+        Return True
+
+    End Function
+
+    Public Function ValidarDuplicado() As Boolean
+        'metodo para validar q no se cargue dos veces un elemento en el datagridview
+
+        Dim Existe As Boolean = True
+
+        For Fila1 As Integer = 0 To SeguimientoServicio.DataGridView2.Rows.Count - 1
+
+            For Fila2 As Integer = 0 To SeguimientoServicio.DataGridView2.Rows.Count - 1
+
+                If Fila2 <> Fila1 AndAlso SeguimientoServicio.DataGridView2.Rows(Fila1).Cells(0).Value.ToString = SeguimientoServicio.DataGridView2.Rows(Fila2).Cells(0).Value.ToString Then
+
+                    Existe = False
+
+                End If
+
+            Next
+
+        Next
+
+        If Existe = False Then
+
+            MsgBox("Elementos repetidos, por favor verifique la información.", MsgBoxStyle.Exclamation, "Error.")
+
+        End If
+
+        Return Existe
 
     End Function
 

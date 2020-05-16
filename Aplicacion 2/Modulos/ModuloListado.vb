@@ -132,6 +132,7 @@ Module ModuloListado
                             & " FROM servicio, grupo, sede" _
                             & " WHERE servicio.grupo = grupo.idgrupo " _
                             & " AND grupo.sede = sede.idsede " _
+                            & " AND estado = '" & ListadoServicio.TextBox1.Text & "' " _
                             & " ORDER BY descripcion ASC"
 
         Dim connection As New MySqlConnection(ConnectionString)

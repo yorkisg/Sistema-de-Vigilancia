@@ -24,9 +24,11 @@ Partial Class ListadoServicio
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadoServicio))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.Contador = New System.Windows.Forms.ToolStripLabel()
@@ -34,6 +36,9 @@ Partial Class ListadoServicio
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
+        Me.ComboEstado = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
@@ -41,11 +46,12 @@ Partial Class ListadoServicio
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,7 +104,7 @@ Partial Class ListadoServicio
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaFecha, Me.ColumnaSede, Me.ColumnaGrupo, Me.ColumnaEstado})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaSede, Me.ColumnaGrupo, Me.ColumnaFecha, Me.ColumnaEstado})
         Me.DataGridView.GridColor = System.Drawing.SystemColors.Menu
         Me.DataGridView.Location = New System.Drawing.Point(12, 28)
         Me.DataGridView.MultiSelect = False
@@ -106,8 +112,8 @@ Partial Class ListadoServicio
         Me.DataGridView.ReadOnly = True
         Me.DataGridView.RowHeadersVisible = False
         Me.DataGridView.RowHeadersWidth = 45
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView.Size = New System.Drawing.Size(960, 536)
         Me.DataGridView.TabIndex = 76
@@ -115,7 +121,7 @@ Partial Class ListadoServicio
         'ToolStrip1
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.AliceBlue
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator2, Me.BotonExportar, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.TextBox, Me.ToolStripSeparator1, Me.BotonSalir, Me.ToolStripSeparator4})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator2, Me.ToolStripLabel3, Me.ComboEstado, Me.ToolStripSeparator5, Me.BotonExportar, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.TextBox, Me.ToolStripSeparator1, Me.BotonSalir, Me.ToolStripSeparator4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(984, 25)
@@ -134,6 +140,25 @@ Partial Class ListadoServicio
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(45, 22)
+        Me.ToolStripLabel3.Text = "Estado:"
+        '
+        'ComboEstado
+        '
+        Me.ComboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboEstado.FlatStyle = System.Windows.Forms.FlatStyle.Standard
+        Me.ComboEstado.Items.AddRange(New Object() {"POR REALIZAR", "COMPLETADO"})
+        Me.ComboEstado.Name = "ComboEstado"
+        Me.ComboEstado.Size = New System.Drawing.Size(180, 25)
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
         '
         'BotonExportar
         '
@@ -178,6 +203,14 @@ Partial Class ListadoServicio
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(424, 54)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(170, 20)
+        Me.TextBox1.TabIndex = 78
+        Me.TextBox1.Visible = False
+        '
         'ColumnaID
         '
         Me.ColumnaID.DataPropertyName = "idservicio"
@@ -189,26 +222,22 @@ Partial Class ListadoServicio
         '
         'ColumnaDescripcion
         '
-        Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ColumnaDescripcion.DataPropertyName = "descripcion"
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaDescripcion.DefaultCellStyle = DataGridViewCellStyle2
         Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
+        Me.ColumnaDescripcion.MinimumWidth = 300
         Me.ColumnaDescripcion.Name = "ColumnaDescripcion"
         Me.ColumnaDescripcion.ReadOnly = True
-        '
-        'ColumnaFecha
-        '
-        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaFecha.DataPropertyName = "fechainicio"
-        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
-        Me.ColumnaFecha.Name = "ColumnaFecha"
-        Me.ColumnaFecha.ReadOnly = True
+        Me.ColumnaDescripcion.Width = 300
         '
         'ColumnaSede
         '
         Me.ColumnaSede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ColumnaSede.DataPropertyName = "nombresede"
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaSede.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaSede.DefaultCellStyle = DataGridViewCellStyle3
         Me.ColumnaSede.HeaderText = "SEDE"
         Me.ColumnaSede.Name = "ColumnaSede"
         Me.ColumnaSede.ReadOnly = True
@@ -217,19 +246,33 @@ Partial Class ListadoServicio
         '
         Me.ColumnaGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaGrupo.DefaultCellStyle = DataGridViewCellStyle4
         Me.ColumnaGrupo.HeaderText = "GRUPO"
         Me.ColumnaGrupo.Name = "ColumnaGrupo"
         Me.ColumnaGrupo.ReadOnly = True
         '
+        'ColumnaFecha
+        '
+        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaFecha.DataPropertyName = "fechainicio"
+        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
+        Me.ColumnaFecha.MinimumWidth = 150
+        Me.ColumnaFecha.Name = "ColumnaFecha"
+        Me.ColumnaFecha.ReadOnly = True
+        Me.ColumnaFecha.Width = 150
+        '
         'ColumnaEstado
         '
-        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ColumnaEstado.DataPropertyName = "estado"
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle5
         Me.ColumnaEstado.HeaderText = "ESTADO"
+        Me.ColumnaEstado.MinimumWidth = 150
         Me.ColumnaEstado.Name = "ColumnaEstado"
         Me.ColumnaEstado.ReadOnly = True
+        Me.ColumnaEstado.Width = 150
         '
         'ListadoServicio
         '
@@ -240,6 +283,7 @@ Partial Class ListadoServicio
         Me.Controls.Add(Me.ToolStrip2)
         Me.Controls.Add(Me.DataGridView)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.TextBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListadoServicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -268,10 +312,14 @@ Partial Class ListadoServicio
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents BotonSalir As ToolStripButton
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents ToolStripLabel3 As ToolStripLabel
+    Friend WithEvents ComboEstado As ToolStripComboBox
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaFecha As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaFecha As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaDescripcion As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaID As DataGridViewTextBoxColumn
 End Class
