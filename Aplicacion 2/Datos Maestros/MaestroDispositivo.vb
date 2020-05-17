@@ -16,6 +16,7 @@ Public Class MaestroDispositivo
 
         CargarComboSede()
         'CargarComboGrupo()
+        CargarComboTipoDispositivo()
 
     End Sub
 
@@ -33,8 +34,8 @@ Public Class MaestroDispositivo
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("INSERT INTO dispositivo (iddispositivo, descripcion, ubicacion, tipo, grupo, estado) " _
-            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & TextBox3.Text & "', '" & ComboTipo.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
+            Dim db As New MySqlCommand("INSERT INTO dispositivo (iddispositivo, nombredispositivo, ubicacion, tipodispositivo, grupo, estadodispositivo) " _
+            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & TextBox3.Text & "', '" & TextBox6.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
 
             db.ExecuteNonQuery()
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
@@ -54,7 +55,7 @@ Public Class MaestroDispositivo
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE dispositivo SET descripcion = '" & TextBox2.Text & "', ubicacion = '" & TextBox3.Text & "', tipo = '" & ComboTipo.Text & "', grupo = '" & TextBox4.Text & "', estado = '" & ComboEstado.Text & "' WHERE iddispositivo = '" & TextBox1.Text & "' ", Conexion)
+            Dim db As New MySqlCommand("UPDATE dispositivo SET nombredispositivo = '" & TextBox2.Text & "', ubicacion = '" & TextBox3.Text & "', tipodispositivo = '" & TextBox6.Text & "', grupo = '" & TextBox4.Text & "', estadodispositivo = '" & ComboEstado.Text & "' WHERE iddispositivo = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -128,6 +129,33 @@ Public Class MaestroDispositivo
 
     End Sub
 
+    Private Sub CargarComboTipoDispositivo()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Dim Tabla As New DataTable
+        Dim Adaptador As New MySqlDataAdapter
+
+        Adaptador = New MySqlDataAdapter("SELECT * FROM tipodispositivo ORDER BY idtipodispositivo ASC", Conexion)
+        Adaptador.Fill(Tabla)
+
+        ComboTipo.DataSource = Tabla
+        ComboTipo.DisplayMember = "nombretipo"
+        ComboTipo.ValueMember = "idtipodispositivo"
+
+        ComboTipo.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
+        ComboTipo.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
+
+        'Generamos un ciclo para obtener cada nombre de la consulta guardada en el Tabla
+        'cada valor obtenido es agregado al ArrayList declarado al inicio de la clase
+        For Each dr As DataRow In Tabla.Rows
+
+            'guardamos cada registro en el arreglo
+            Arreglo.Add(dr("nombretipo"))
+
+        Next
+
+    End Sub
+
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
         'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
@@ -148,6 +176,83 @@ Public Class MaestroDispositivo
         For Each row As DataRow In Tabla.Rows
             TextBox4.Text = row("idgrupo").ToString
         Next
+
+    End Sub
+
+    Private Sub ComboTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTipo.SelectedIndexChanged
+        'Este metodo permite obtener el ID de cada item seleccionado. 
+
+        Dim Adaptador As New MySqlDataAdapter
+        Dim Tabla As New DataTable
+
+        Adaptador = New MySqlDataAdapter("SELECT idtipodispositivo FROM tipodispositivo WHERE nombretipo = '" & ComboTipo.Text & "' ", Conexion)
+        Adaptador.Fill(Tabla)
+
+        For Each row As DataRow In Tabla.Rows
+            TextBox6.Text = row("idtipodispositivo").ToString
+        Next
+
+    End Sub
+
+    Private Sub ComboTipo_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboTipo.DrawItem
+        'Evento que dibuja el texto y las imagenes cargadas en el combobox
+
+        Try
+
+            e.DrawBackground()
+
+            If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+                'Si hay un elemento seleccionado se dibuja la seleccion, el texto y la imagen
+
+                'Dibuja la seleccion
+                e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
+
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            Else
+                'Si no se selecciona nada, se dibuja el texto y la imagen
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            End If
+
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboTipo_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboTipo.MeasureItem
+        'Esto es para darle espacio a los elementos mostrados en el ComboBox
+
+        Try
+
+            e.ItemHeight = ImageList3.ImageSize.Height + 3
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
 
     End Sub
 

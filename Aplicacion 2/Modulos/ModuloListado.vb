@@ -1,6 +1,12 @@
 ﻿
 Module ModuloListado
 
+    Public Dvr1 As Image
+    Public Dvr2 As Image
+    Public CamaraFrontal As Image
+    Public Camara360 As Image
+    Public Otro As Image
+
     Public Sub CargarListadoSede()
         'Metodo para cargar el datagridview.
 
@@ -32,11 +38,12 @@ Module ModuloListado
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
-        Dim sql As String = "SELECT iddispositivo, descripcion, ubicacion, tipo, nombregrupo, estado, nombresede " _
-                            & " FROM dispositivo, grupo, sede " _
+        Dim sql As String = "SELECT iddispositivo, nombredispositivo, ubicacion, nombretipo, nombregrupo, estadodispositivo, nombresede " _
+                            & " FROM dispositivo, grupo, sede, tipodispositivo " _
                             & " WHERE dispositivo.grupo = grupo.idgrupo " _
+                            & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
                             & " AND grupo.sede = sede.idsede " _
-                            & " ORDER BY descripcion ASC"
+                            & " ORDER BY nombredispositivo ASC"
 
         Dim connection As New MySqlConnection(ConnectionString)
 
@@ -58,6 +65,8 @@ Module ModuloListado
 
         'Mostramos la cantidad de registros encontrados
         ListadoDispositivo.Contador.Text = ListadoDispositivo.DataGridView.RowCount
+
+        CargarImagenesDispositivo()
 
     End Sub
 
@@ -128,12 +137,12 @@ Module ModuloListado
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
-        Dim sql As String = "SELECT idservicio, descripcion, fechainicio, nombresede, nombregrupo, estado" _
+        Dim sql As String = "SELECT idservicio, nombreservicio, fechainicio, nombresede, nombregrupo, estadoservicio" _
                             & " FROM servicio, grupo, sede" _
                             & " WHERE servicio.grupo = grupo.idgrupo " _
                             & " AND grupo.sede = sede.idsede " _
-                            & " AND estado = '" & ListadoServicio.TextBox1.Text & "' " _
-                            & " ORDER BY descripcion ASC"
+                            & " AND estadoservicio = '" & ListadoServicio.TextBox1.Text & "' " _
+                            & " ORDER BY idservicio DESC, fechainicio DESC"
 
         Dim connection As New MySqlConnection(ConnectionString)
 
@@ -161,6 +170,17 @@ Module ModuloListado
     '''''''''''''''''''''''METODOS DE APOYO''''''''''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+    Public Sub CargarImagenesDispositivo()
+        'En este metodo especificamos cuales son las imagenes que se cargaran en el 
+        'CellFormatting del DataGridView1
+
+        Dvr1 = My.Resources.Dvr1
+        Dvr2 = My.Resources.Dvr2
+        CamaraFrontal = My.Resources.CamaraFrontal
+        Camara360 = My.Resources.Camara360
+        Otro = My.Resources.Otro
+
+    End Sub
 
 
 End Module

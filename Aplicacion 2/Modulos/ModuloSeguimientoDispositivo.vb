@@ -84,9 +84,11 @@ Module ModuloSeguimientoDispositivo
     Public Sub CargarGridSeguimiento()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, descripcion, tipo, ubicacion, estado FROM dispositivo, grupo, sede " _
+        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, nombredispositivo, nombretipo, ubicacion, estadodispositivo " _
+                       & " FROM dispositivo, grupo, sede, tipodispositivo " _
                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
                        & " AND grupo.sede = sede.idsede " _
+                       & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
                        & " AND nombregrupo = '" & SeguimientoDispositivo.TextBox1.Text & "' " _
                        & " ORDER BY iddispositivo ASC "
 
@@ -99,8 +101,8 @@ Module ModuloSeguimientoDispositivo
         DataSet = New DataSet()
 
         'Llenado del datagridview.
-        Adaptador.Fill(DataSet, "flota")
-        Tabla = DataSet.Tables("flota")
+        Adaptador.Fill(DataSet, "seguimientos")
+        Tabla = DataSet.Tables("seguimientos")
         SeguimientoDispositivo.DataGridView1.DataSource = Tabla
 
         'Parametros para editar apariencia del datagridview.
@@ -112,7 +114,8 @@ Module ModuloSeguimientoDispositivo
         'Llamada al metodo para cargar imagenes
         CargarImagenesSeguimiento()
 
-        SeguimientoDispositivo.DataGridView1.ClearSelection()
+        CargarImagenesDispositivo()
+        'SeguimientoDispositivo.DataGridView1.ClearSelection()
 
     End Sub
 
@@ -120,8 +123,9 @@ Module ModuloSeguimientoDispositivo
         'Metodo que genera la carga de datos en el DataGridview1 
 
         Dim sql As String = "SELECT idincidencia, descripcion, prioridad, clasificacion, fecha, hora " _
-                            & " FROM incidencia WHERE dispositivo = '" & SeguimientoDispositivo.TextBox2.Text & "' " _
-                            & " ORDER BY idincidencia ASC " _
+                            & " FROM incidencia " _
+                            & " WHERE dispositivo = '" & SeguimientoDispositivo.TextBox2.Text & "' " _
+                            & " ORDER BY idincidencia DESC, fecha DESC, hora DESC " _
                             & " LIMIT 10 "
 
 
@@ -153,10 +157,11 @@ Module ModuloSeguimientoDispositivo
     Public Sub CargarHistorialEstatus()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT idhistorial, descripcion, descripcionhistorial, fecha, hora " _
+        Dim sql As String = "SELECT idhistorial, nombredispositivo, descripcionhistorial, fecha, hora " _
                             & " FROM historial, dispositivo " _
                             & " WHERE historial.dispositivo = dispositivo.iddispositivo " _
-                            & " AND dispositivo = '" & SeguimientoDispositivo.TextBox7.Text & "' "
+                            & " AND dispositivo = '" & SeguimientoDispositivo.TextBox2.Text & "' " _
+                            & " ORDER BY idhistorial DESC, fecha DESC, hora DESC "
 
         Dim connection As New MySqlConnection(ConnectionString)
 
@@ -183,6 +188,37 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
+    Public Sub CargarHistorialServicios()
+        'Metodo que genera la carga de datos en el DataGridview1 
+
+        Dim sql As String = "SELECT nombredispositivo, nombreservicio, fechainicio " _
+                    & " FROM dispositivo, detalleservicio, servicio " _
+                    & " WHERE detalleservicio.dispositivo = dispositivo.iddispositivo " _
+                    & " AND detalleservicio.servicio = servicio.idservicio " _
+                    & " AND dispositivo = '" & SeguimientoDispositivo.TextBox2.Text & "' " _
+                    & " ORDER BY fechainicio DESC "
+
+        Dim connection As New MySqlConnection(ConnectionString)
+
+        'Instancia y uso de variables.
+        Command = New MySqlCommand(sql, connection)
+        Adaptador = New MySqlDataAdapter(Command)
+        DataSet = New DataSet()
+
+        'Llenado del datagridview.
+        Adaptador.Fill(DataSet, "historialservicios")
+        Tabla = DataSet.Tables("historialservicios")
+        SeguimientoDispositivo.DataGridView4.DataSource = Tabla
+
+        'Parametros para editar apariencia del datagridview.
+        With SeguimientoDispositivo.DataGridView4
+            .DefaultCellStyle.Font = New Font("Segoe UI", 7) 'Fuente para celdas
+            .Font = New Font("Segoe UI", 8) 'Fuente para Headers
+        End With
+
+        SeguimientoDispositivo.DataGridView4.ClearSelection()
+
+    End Sub
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '''''''''''''''''''''''METODOS DE APOYO''''''''''''''''''''''''''
@@ -255,7 +291,7 @@ Module ModuloSeguimientoDispositivo
 
         Adaptador = New MySqlDataAdapter("Select idgrupo, nombregrupo FROM grupo, sede " _
                          & " WHERE grupo.sede = sede.idsede " _
-                         & " AND nombresede LIKE '" & SeguimientoDispositivo.TextBox12.Text & "' " _
+                         & " And nombresede Like '" & SeguimientoDispositivo.TextBox12.Text & "' " _
                          & " ORDER BY nombregrupo ASC", Conexion)
 
         Adaptador.Fill(Tabla)
@@ -278,6 +314,33 @@ Module ModuloSeguimientoDispositivo
         For Each row As DataRow In Tabla.Rows
 
             SeguimientoDispositivo.TextBox13.Text = row("idgrupo").ToString
+
+        Next
+
+    End Sub
+
+    Public Sub CargarComboTipoDispositivoSeguimiento()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Dim Tabla As New DataTable
+        Dim Adaptador As New MySqlDataAdapter
+
+        Adaptador = New MySqlDataAdapter("SELECT * FROM tipodispositivo", Conexion)
+        Adaptador.Fill(Tabla)
+
+        SeguimientoDispositivo.ComboTipo.DataSource = Tabla
+        SeguimientoDispositivo.ComboTipo.DisplayMember = "nombretipo"
+        SeguimientoDispositivo.ComboTipo.ValueMember = "idtipodispositivo"
+
+        SeguimientoDispositivo.ComboTipo.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
+        SeguimientoDispositivo.ComboTipo.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
+
+        'Generamos un ciclo para obtener cada nombre de la consulta guardada en el Tabla
+        'cada valor obtenido es agregado al ArrayList declarado al inicio de la clase
+        For Each dr As DataRow In Tabla.Rows
+
+            'guardamos cada registro en el arreglo
+            Arreglo.Add(dr("nombretipo"))
 
         Next
 
@@ -306,12 +369,30 @@ Module ModuloSeguimientoDispositivo
 
             End If
 
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox4.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox4, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox4, "")
+
+            End If
+
             If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox5.Text) Then
                 SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox5, "No puede dejar campos en blanco.")
                 Validar = False
             Else
                 'Si el error ha sido superado, se debe borrar
                 SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox5, "")
+
+            End If
+
+            If String.IsNullOrEmpty(SeguimientoDispositivo.TextBox6.Text) Then
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox6, "No puede dejar campos en blanco.")
+                Validar = False
+            Else
+                'Si el error ha sido superado, se debe borrar
+                SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.TextBox6, "")
 
             End If
 
@@ -389,6 +470,7 @@ Module ModuloSeguimientoDispositivo
                 SeguimientoDispositivo.ErrorProvider1.SetError(SeguimientoDispositivo.ComboEstado, "")
 
             End If
+
         End If
 
         Return Validar
@@ -403,16 +485,65 @@ Module ModuloSeguimientoDispositivo
             SeguimientoDispositivo.TextBox2.Text = ""
             SeguimientoDispositivo.TextBox4.Text = ""
             SeguimientoDispositivo.TextBox5.Text = ""
+            SeguimientoDispositivo.ComboPrioridad.SelectedIndex = -1
+            SeguimientoDispositivo.ComboClasificacion.SelectedIndex = -1
 
         ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
 
             SeguimientoDispositivo.TextBox7.Text = ""
             SeguimientoDispositivo.TextBox8.Text = ""
             SeguimientoDispositivo.TextBox9.Text = ""
-            SeguimientoDispositivo.ComboTipo.SelectedIndex = -1
+            'SeguimientoDispositivo.ComboTipo.SelectedIndex = -1
             SeguimientoDispositivo.ComboSede.SelectedIndex = -1
             SeguimientoDispositivo.ComboGrupo.SelectedIndex = -1
             SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
+
+        End If
+
+    End Sub
+
+    Public Sub LimpiarDataGridView()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        If SeguimientoDispositivo.DataGridView1.RowCount > 0 Then
+
+            'Abrimos el ciclo que recorre todas las filas del datagridview
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView1.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView1.Rows.Remove(SeguimientoDispositivo.DataGridView1.CurrentRow)
+
+            Next
+
+        End If
+
+        If SeguimientoDispositivo.DataGridView2.RowCount > 0 Then
+
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView2.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView2.Rows.Remove(SeguimientoDispositivo.DataGridView2.CurrentRow)
+
+            Next
+
+        End If
+
+        If SeguimientoDispositivo.DataGridView3.RowCount > 0 Then
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView3.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView3.Rows.Remove(SeguimientoDispositivo.DataGridView3.CurrentRow)
+
+            Next
+
+        End If
+
+        If SeguimientoDispositivo.DataGridView4.RowCount > 0 Then
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView4.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView4.Rows.Remove(SeguimientoDispositivo.DataGridView4.CurrentRow)
+
+            Next
 
         End If
 

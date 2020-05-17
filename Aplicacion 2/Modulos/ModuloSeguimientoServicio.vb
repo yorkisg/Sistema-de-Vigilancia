@@ -5,10 +5,11 @@ Module ModuloSeguimientoServicio
     Public Sub CargarGridSeguimientoServicio()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, descripcion, tipo, ubicacion, estado " _
-                       & " FROM dispositivo, grupo, sede " _
+        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, nombredispositivo, nombretipo, ubicacion, estadodispositivo " _
+                       & " FROM dispositivo, grupo, sede, tipodispositivo " _
                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
                        & " AND grupo.sede = sede.idsede " _
+                       & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
                        & " AND nombregrupo = '" & SeguimientoServicio.TextBox4.Text & "' " _
                        & " ORDER BY iddispositivo ASC "
 
@@ -33,6 +34,8 @@ Module ModuloSeguimientoServicio
 
         'Llamada al metodo para cargar imagenes
         CargarImagenesSeguimiento()
+
+        CargarImagenesDispositivo()
 
         SeguimientoServicio.DataGridView1.ClearSelection()
 

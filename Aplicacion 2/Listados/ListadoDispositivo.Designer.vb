@@ -44,6 +44,7 @@ Partial Class ListadoDispositivo
         Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaUbicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaImagen = New System.Windows.Forms.DataGridViewImageColumn()
         Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -139,7 +140,7 @@ Partial Class ListadoDispositivo
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaTipo, Me.ColumnaEstado, Me.ColumnaSede, Me.ColumnaGrupo})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaImagen, Me.ColumnaTipo, Me.ColumnaEstado, Me.ColumnaSede, Me.ColumnaGrupo})
         Me.DataGridView.GridColor = System.Drawing.SystemColors.Menu
         Me.DataGridView.Location = New System.Drawing.Point(12, 28)
         Me.DataGridView.MultiSelect = False
@@ -191,7 +192,7 @@ Partial Class ListadoDispositivo
         'ColumnaDescripcion
         '
         Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaDescripcion.DataPropertyName = "descripcion"
+        Me.ColumnaDescripcion.DataPropertyName = "nombredispositivo"
         Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
         Me.ColumnaDescripcion.Name = "ColumnaDescripcion"
         Me.ColumnaDescripcion.ReadOnly = True
@@ -204,10 +205,19 @@ Partial Class ListadoDispositivo
         Me.ColumnaUbicacion.Name = "ColumnaUbicacion"
         Me.ColumnaUbicacion.ReadOnly = True
         '
+        'ColumnaImagen
+        '
+        Me.ColumnaImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaImagen.HeaderText = ""
+        Me.ColumnaImagen.MinimumWidth = 25
+        Me.ColumnaImagen.Name = "ColumnaImagen"
+        Me.ColumnaImagen.ReadOnly = True
+        Me.ColumnaImagen.Width = 25
+        '
         'ColumnaTipo
         '
         Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaTipo.DataPropertyName = "tipo"
+        Me.ColumnaTipo.DataPropertyName = "nombretipo"
         Me.ColumnaTipo.HeaderText = "TIPO"
         Me.ColumnaTipo.Name = "ColumnaTipo"
         Me.ColumnaTipo.ReadOnly = True
@@ -215,7 +225,7 @@ Partial Class ListadoDispositivo
         'ColumnaEstado
         '
         Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaEstado.DataPropertyName = "estado"
+        Me.ColumnaEstado.DataPropertyName = "estadodispositivo"
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle2
         Me.ColumnaEstado.HeaderText = "ESTADO"
@@ -277,6 +287,7 @@ Partial Class ListadoDispositivo
     Friend WithEvents ToolStrip2 As ToolStrip
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
     Friend WithEvents Contador As ToolStripLabel
+    Friend WithEvents ColumnaImagen As DataGridViewImageColumn
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn

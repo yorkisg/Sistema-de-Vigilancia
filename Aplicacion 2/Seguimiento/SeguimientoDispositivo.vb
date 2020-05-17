@@ -9,23 +9,26 @@ Public Class SeguimientoDispositivo
 
         InicializarTimer()
 
+
         'Carga del arbol de opciones
         CargarArbolSeguimiento()
 
         'Validamos que el primer item seleccionado en el arbol sea el primero
-        Arbol.SelectedNode = Arbol.Nodes(0).Nodes(0) 'SELECCIONAMOS EL PRIMER HIJO
-        'Arbol.SelectedNode = Arbol.Nodes(0) 'SELECCIONAMOS EL PRIMER PADRE
+        'Arbol.SelectedNode = Arbol.Nodes(0).Nodes(0) 'SELECCIONAMOS EL PRIMER HIJO
+        Arbol.SelectedNode = Arbol.Nodes(0) 'SELECCIONAMOS EL PRIMER PADRE
 
         'Llamada al metodo para alternar los colores de las filas
         AlternarFilasGeneral(DataGridView1)
         AlternarFilasGeneral(DataGridView2)
         AlternarFilasGeneral(DataGridView3)
-        'Metodos de mejora para los componentes
+        AlternarFilasGeneral(DataGridView4)
 
+        'Metodos de mejora para los componentes
         EnableDoubleBuffered(Arbol)
         EnableDoubleBuffered(DataGridView1)
         EnableDoubleBuffered(DataGridView2)
         EnableDoubleBuffered(DataGridView3)
+        EnableDoubleBuffered(DataGridView4)
 
         'Inicializacion de la serie
         SerieSeguimientoIncidencia()
@@ -34,12 +37,17 @@ Public Class SeguimientoDispositivo
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
         TextBox5.CharacterCasing = CharacterCasing.Upper
 
+        'Carga del combo
+        CargarComboTipoDispositivoSeguimiento()
+
     End Sub
 
     Private Sub SeguimientoDispositivo_FormClosing(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
         'Al cerrar el formulario por el boton "x" se ejecutan los metodos del boton salir
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+            LimpiarDataGridView()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -80,7 +88,7 @@ Public Class SeguimientoDispositivo
         'MENU DE OPCIONES DINAMICO. SE PUEDEN AGREGAR NUEVAS OPCIONES.
 
         'Si se selecciona una opcion sin elementos, se limpian todos los componentes
-        LimpiarComponentes()
+        'LimpiarComponentes()
 
         'Enviamos el nombre de la flota al textbox mediante la propiedad node.text
         TextBox1.Text = e.Node.Text
@@ -88,6 +96,21 @@ Public Class SeguimientoDispositivo
         'Al conocer la sede enviada al textbox, se ejecuta el metodo
         CargarGridSeguimiento()
 
+        'Si el nodo seleccionado es padre se inhabilita el panel2 y el panel3
+        If e.Node.Parent Is Nothing And e.Node.Nodes.Count > 0 Then
+
+            Panel2.Enabled = False
+            Panel3.Enabled = False
+
+            LimpiarDataGridView()
+
+            'Si el nodo seleccionado es hijo se habilita el panel2 y el panel3
+        Else
+
+            Panel2.Enabled = True
+            Panel3.Enabled = True
+
+        End If
 
     End Sub
 
@@ -131,11 +154,11 @@ Public Class SeguimientoDispositivo
 
             End If
 
-            'Luego de seleccionar el valor en el DataGridView1 llamamos al metodo 
-            'CargarHistorialSeguimiento para cargar lo correspondiente.
+            'Luego de seleccionar el valor en el DataGridView1 llamamos a los metodos para cargar lo correspondiente.
 
             CargarHistorialSeguimiento()
             CargarHistorialEstatus()
+            CargarHistorialServicios()
 
         Catch ex As Exception
 
@@ -177,6 +200,7 @@ Public Class SeguimientoDispositivo
         Try
 
             Dim TipoEstado As String
+            Dim TipoDispositivo As String
 
             If DataGridView1.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
 
@@ -200,6 +224,47 @@ Public Class SeguimientoDispositivo
 
                     e.CellStyle.ForeColor = Color.Red
                     DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Desconectada
+
+                End If
+
+            End If
+
+            If DataGridView1.Columns(e.ColumnIndex).Name.Equals("ColumnaTipo") Then
+
+                TipoDispositivo = (DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoDispositivo = "DVR - 16 CANALES" Then
+
+                    'e.CellStyle.ForeColor = Color.Blue
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen3").Value = Dvr1
+
+                End If
+
+                If TipoDispositivo = "DVR - 20 CANALES" Then
+
+                    'e.CellStyle.ForeColor = Color.Red
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen3").Value = Dvr2
+
+                End If
+
+                If TipoDispositivo = "CAMARA FRONTAL" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen3").Value = CamaraFrontal
+
+                End If
+
+                If TipoDispositivo = "CAMARA 360" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen3").Value = Camara360
+
+                End If
+
+                If TipoDispositivo = "OTRO DISPOSITIVO" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen3").Value = Otro
 
                 End If
 
@@ -307,9 +372,9 @@ Public Class SeguimientoDispositivo
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE dispositivo SET descripcion = '" & TextBox8.Text & "', " _
-                             & " ubicacion = '" & TextBox9.Text & "', tipo = '" & ComboTipo.Text & "', " _
-                             & " grupo = '" & TextBox13.Text & "', estado = '" & ComboEstado.Text & "' " _
+            Dim db As New MySqlCommand("UPDATE dispositivo SET nombredispositivo = '" & TextBox8.Text & "', " _
+                             & " ubicacion = '" & TextBox9.Text & "', tipodispositivo = '" & TextBox11.Text & "', " _
+                             & " grupo = '" & TextBox13.Text & "', estadodispositivo = '" & ComboEstado.Text & "' " _
                              & " WHERE iddispositivo = '" & TextBox7.Text & "' ", Conexion)
 
             db.ExecuteNonQuery()
@@ -334,7 +399,7 @@ Public Class SeguimientoDispositivo
 
             'Luego de guardar nos posicionamos en la fila ya seleccionada anteriormente
             'para verificar la inclusion de la ruta en el datagridview2.
-            'DataGridView1.CurrentCell = DataGridView1(Columna, Fila)
+            DataGridView1.CurrentCell = DataGridView1(Columna, Fila)
 
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -346,6 +411,8 @@ Public Class SeguimientoDispositivo
         'Boton salir
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+            LimpiarDataGridView()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -422,6 +489,91 @@ Public Class SeguimientoDispositivo
             e.Graphics.DrawString(ComboEstado.Items(e.Index).ToString(), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.Images(e.Index).Width, e.Bounds.Top)
 
         End If
+
+    End Sub
+
+    Private Sub ComboTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTipo.SelectedIndexChanged
+        'Este metodo permite obtener el ID de cada item seleccionado. 
+
+        Try
+
+            Dim Adaptador As New MySqlDataAdapter
+            Dim Tabla As New DataTable
+
+            Adaptador = New MySqlDataAdapter("SELECT idtipodispositivo FROM tipodispositivo WHERE nombretipo = '" & ComboTipo.Text & "' ", Conexion)
+            Adaptador.Fill(Tabla)
+
+            For Each row As DataRow In Tabla.Rows
+                TextBox11.Text = row("idtipodispositivo").ToString
+            Next
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.13", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboTipo_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboTipo.DrawItem
+        'Evento que dibuja el texto y las imagenes cargadas en el combobox
+
+        Try
+
+            e.DrawBackground()
+
+            If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+                'Si hay un elemento seleccionado se dibuja la seleccion, el texto y la imagen
+
+                'Dibuja la seleccion
+                e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
+
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            Else
+                'Si no se selecciona nada, se dibuja el texto y la imagen
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            End If
+
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboTipo_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboTipo.MeasureItem
+        'Esto es para darle espacio a los elementos mostrados en el ComboBox
+
+        Try
+
+            e.ItemHeight = ImageList3.ImageSize.Height + 3
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
 
     End Sub
 

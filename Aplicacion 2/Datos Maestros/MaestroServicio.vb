@@ -34,7 +34,7 @@ Public Class MaestroServicio
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, descripcion, fechainicio, grupo, estado) " _
+            Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, nombreservicio, fechainicio, grupo, estadoservicio) " _
             & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
 
             db.ExecuteNonQuery()
@@ -57,7 +57,7 @@ Public Class MaestroServicio
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE servicio SET descripcion = '" & TextBox2.Text & "', fechainicio = '" & fecha & "', grupo = '" & TextBox4.Text & "', estado = '" & ComboEstado.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
+            Dim db As New MySqlCommand("UPDATE servicio SET nombreservicio = '" & TextBox2.Text & "', fechainicio = '" & fecha & "', grupo = '" & TextBox4.Text & "', estadoservicio = '" & ComboEstado.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 

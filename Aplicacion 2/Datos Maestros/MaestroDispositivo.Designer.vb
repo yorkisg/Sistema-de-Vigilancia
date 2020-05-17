@@ -31,7 +31,6 @@ Partial Class MaestroDispositivo
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BotonBuscar = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -49,6 +48,9 @@ Partial Class MaestroDispositivo
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ComboSede = New System.Windows.Forms.ComboBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.BotonBuscar = New System.Windows.Forms.Button()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -101,16 +103,6 @@ Partial Class MaestroDispositivo
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'BotonBuscar
-        '
-        Me.BotonBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BotonBuscar.Image = CType(resources.GetObject("BotonBuscar.Image"), System.Drawing.Image)
-        Me.BotonBuscar.Location = New System.Drawing.Point(311, 40)
-        Me.BotonBuscar.Name = "BotonBuscar"
-        Me.BotonBuscar.Size = New System.Drawing.Size(28, 28)
-        Me.BotonBuscar.TabIndex = 59
-        Me.BotonBuscar.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
@@ -232,7 +224,6 @@ Partial Class MaestroDispositivo
         Me.ComboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboTipo.FormattingEnabled = True
-        Me.ComboTipo.Items.AddRange(New Object() {"DOMO", "FRONTAL", "OTRO"})
         Me.ComboTipo.Location = New System.Drawing.Point(12, 175)
         Me.ComboTipo.Name = "ComboTipo"
         Me.ComboTipo.Size = New System.Drawing.Size(280, 23)
@@ -242,7 +233,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox4.Location = New System.Drawing.Point(298, 222)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(41, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(53, 20)
         Me.TextBox4.TabIndex = 69
         Me.TextBox4.Visible = False
         '
@@ -271,9 +262,37 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox5.Location = New System.Drawing.Point(298, 263)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(41, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(53, 20)
         Me.TextBox5.TabIndex = 72
         Me.TextBox5.Visible = False
+        '
+        'BotonBuscar
+        '
+        Me.BotonBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BotonBuscar.Image = CType(resources.GetObject("BotonBuscar.Image"), System.Drawing.Image)
+        Me.BotonBuscar.Location = New System.Drawing.Point(311, 40)
+        Me.BotonBuscar.Name = "BotonBuscar"
+        Me.BotonBuscar.Size = New System.Drawing.Size(28, 28)
+        Me.BotonBuscar.TabIndex = 59
+        Me.BotonBuscar.UseVisualStyleBackColor = True
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(298, 178)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(53, 20)
+        Me.TextBox6.TabIndex = 73
+        Me.TextBox6.Visible = False
+        '
+        'ImageList3
+        '
+        Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList3.Images.SetKeyName(0, "Dvr1.png")
+        Me.ImageList3.Images.SetKeyName(1, "Dvr2.png")
+        Me.ImageList3.Images.SetKeyName(2, "CamaraFrontal.png")
+        Me.ImageList3.Images.SetKeyName(3, "Camara360.png")
+        Me.ImageList3.Images.SetKeyName(4, "Otro.png")
         '
         'MaestroDispositivo
         '
@@ -281,6 +300,7 @@ Partial Class MaestroDispositivo
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ClientSize = New System.Drawing.Size(351, 347)
+        Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.ComboSede)
         Me.Controls.Add(Me.Label7)
@@ -338,4 +358,6 @@ Partial Class MaestroDispositivo
     Friend WithEvents ComboSede As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents ImageList3 As ImageList
 End Class

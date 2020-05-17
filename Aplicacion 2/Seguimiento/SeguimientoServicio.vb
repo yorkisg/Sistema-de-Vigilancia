@@ -151,13 +151,6 @@ Public Class SeguimientoServicio
 
     End Sub
 
-    Private Sub BotonNuevo_Click(sender As Object, e As EventArgs) Handles BotonNuevo.Click
-        'Llamada al formulario "MaestroServicio"
-
-        MaestroServicio.ShowDialog()
-
-    End Sub
-
     Private Sub DataGridView1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
         'CellFormatting: Evento del control DataGridview el cual permite cambiar 
         'y dar formato a las celdas, bien sea por color de texto, fondo, etc.
@@ -165,6 +158,7 @@ Public Class SeguimientoServicio
         Try
 
             Dim TipoEstado As String
+            Dim TipoDispositivo As String
 
             If DataGridView1.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
 
@@ -193,6 +187,47 @@ Public Class SeguimientoServicio
 
             End If
 
+            If DataGridView1.Columns(e.ColumnIndex).Name.Equals("ColumnaTipo") Then
+
+                TipoDispositivo = (DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoDispositivo = "DVR - 16 CANALES" Then
+
+                    'e.CellStyle.ForeColor = Color.Blue
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Dvr1
+
+                End If
+
+                If TipoDispositivo = "DVR - 20 CANALES" Then
+
+                    'e.CellStyle.ForeColor = Color.Red
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Dvr2
+
+                End If
+
+                If TipoDispositivo = "CAMARA FRONTAL" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = CamaraFrontal
+
+                End If
+
+                If TipoDispositivo = "CAMARA 360" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Camara360
+
+                End If
+
+                If TipoDispositivo = "OTRO DISPOSITIVO" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Otro
+
+                End If
+
+            End If
+
         Catch ex As Exception
 
             MsgBox("No se pudo completar la operación.3", MsgBoxStyle.Exclamation, "Error.")
@@ -210,6 +245,9 @@ Public Class SeguimientoServicio
         Try
 
             If DataGridView1.RowCount > 0 And DataGridView1.SelectedRows.Count = 1 Then
+
+                'Se limpian todos los componentes del formulario para un nuevo uso.
+                LimpiarComponentesServicio()
 
                 'Seleccionamos y pasamos el valor al TextBox.
                 'Usado para el detalle de ruta

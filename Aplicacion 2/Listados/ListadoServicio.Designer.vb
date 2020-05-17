@@ -223,7 +223,7 @@ Partial Class ListadoServicio
         'ColumnaDescripcion
         '
         Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaDescripcion.DataPropertyName = "descripcion"
+        Me.ColumnaDescripcion.DataPropertyName = "nombreservicio"
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ColumnaDescripcion.DefaultCellStyle = DataGridViewCellStyle2
         Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
@@ -265,7 +265,7 @@ Partial Class ListadoServicio
         'ColumnaEstado
         '
         Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaEstado.DataPropertyName = "estado"
+        Me.ColumnaEstado.DataPropertyName = "estadoservicio"
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle5
         Me.ColumnaEstado.HeaderText = "ESTADO"

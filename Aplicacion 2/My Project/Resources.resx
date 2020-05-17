@@ -118,11 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Camara2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Camara2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Camara360" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Camara360.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Camara4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Camara4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CamaraFrontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\CamaraFrontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Desconectada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Desconectada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dvr1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Dvr1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dvr2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Dvr2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Operativo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Operativo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Otro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Otro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SinReporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\SinReporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -16,7 +16,7 @@ Module ModuloGeneral
 
     'Usado para cargar las imagenes en un arreglo y desplegarlas en el combobox mediante los eventos drawitem y measureitem
     Public Arreglo As New ArrayList
-    Public Arreglo2 As New ArrayList
+    'Public Arreglo2 As New ArrayList
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '''''''''''''''''''''''CONEXION A LA BD''''''''''''''''''''''''

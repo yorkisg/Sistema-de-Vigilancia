@@ -199,27 +199,44 @@ Public Class ListadoDispositivo
 
         Try
 
-            Dim TipoEstado As String
+            Dim TipoDispositivo As String
 
-            If DataGridView.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
+            If DataGridView.Columns(e.ColumnIndex).Name.Equals("ColumnaTipo") Then
 
-                TipoEstado = (DataGridView.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+                TipoDispositivo = (DataGridView.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
 
-                If TipoEstado = "OPERATIVA" Then
+                If TipoDispositivo = "DVR - 16 CANALES" Then
 
-                    e.CellStyle.ForeColor = Color.Blue
-
-                End If
-
-                If TipoEstado = "DESCONECTADA" Then
-
-                    e.CellStyle.ForeColor = Color.Red
+                    'e.CellStyle.ForeColor = Color.Blue
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Dvr1
 
                 End If
 
-                If TipoEstado = "PRESENTANDO FALLAS" Then
+                If TipoDispositivo = "DVR - 20 CANALES" Then
 
-                    e.CellStyle.ForeColor = Color.Orange
+                    'e.CellStyle.ForeColor = Color.Red
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Dvr2
+
+                End If
+
+                If TipoDispositivo = "CAMARA FRONTAL" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = CamaraFrontal
+
+                End If
+
+                If TipoDispositivo = "CAMARA 360" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Camara360
+
+                End If
+
+                If TipoDispositivo = "OTRO DISPOSITIVO" Then
+
+                    'e.CellStyle.ForeColor = Color.Orange
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Otro
 
                 End If
 
