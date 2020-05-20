@@ -87,6 +87,7 @@ Module ModuloSeguimientoServicio
         Next
 
         SeguimientoServicio.BotonRemover.Enabled = False
+        SeguimientoServicio.BotonGuardar.Enabled = False
         'SeguimientoServicio.TextBox2.Text = ""
 
     End Sub
@@ -117,6 +118,15 @@ Module ModuloSeguimientoServicio
 
         End If
 
+        If String.IsNullOrEmpty(SeguimientoServicio.TextBox8.Text) Then
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.Label10, "No puede dejar campos en blanco.")
+            Validar = False
+        Else
+            'Si el error ha sido superado, se debe borrar
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.Label10, "")
+
+        End If
+
         Return Validar
 
     End Function
@@ -126,21 +136,30 @@ Module ModuloSeguimientoServicio
 
         Dim Existe As Boolean = True
 
-        'Validamos el ingreso de las cantidades en el datagridview2
-        'Se reccorren todos los elementos del grid para guardar fila por fila
-        For Each row In SeguimientoServicio.DataGridView2.Rows
+        If SeguimientoServicio.DataGridView2.RowCount > 0 Then
 
-            'Por ejemplo si deseas de nota
-            If row.Cells("ColumnaCantidad").Value.ToString = "0" Or row.Cells("ColumnaCantidad").Value.ToString = "" Then
+            'Validamos el ingreso de las cantidades en el datagridview2
+            'Se reccorren todos los elementos del grid para guardar fila por fila
+            For Each row In SeguimientoServicio.DataGridView2.Rows
 
-                MsgBox("Debe agregar una cantidad al material.", MsgBoxStyle.Exclamation, "Error.")
-                Return False
+                'Por ejemplo si deseas de nota
+                If row.Cells("ColumnaCantidad").Value.ToString = "0" Or row.Cells("ColumnaCantidad").Value.ToString = "" Then
 
-            End If
+                    Existe = False
 
-        Next
+                End If
 
-        Return True
+            Next
+
+        End If
+
+        If Existe = False Then
+
+            MsgBox("Debe agregar una cantidad al material.", MsgBoxStyle.Exclamation, "Error.")
+
+        End If
+
+        Return Existe
 
     End Function
 

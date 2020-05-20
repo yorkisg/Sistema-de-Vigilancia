@@ -72,5 +72,11 @@ Public Class MenuPrincipal
 
     End Sub
 
+    Private Sub MenuConsultaGeneral_Click(sender As Object, e As EventArgs) Handles MenuConsultaGeneral.Click
+        'Formulario ConsultaServicio
+
+        ConsultaServicio.ShowDialog()
+
+    End Sub
 
 End Class

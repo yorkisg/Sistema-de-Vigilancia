@@ -46,6 +46,8 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox3.Text = DataGridView.Item("ColumnaUbicacion", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox7.Text = DataGridView.Item("ColumnaDireccion", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox8.Text = DataGridView.Item("ColumnaMarca", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
@@ -133,10 +135,13 @@ Public Class ListadoDispositivo
     Function Filtrar(ByVal busqueda As String) As DataTable
         'Funcion que carga los datos de acuerdo a lo ingresado en el TextBox
 
-        Dim cmd As New MySqlCommand("SELECT iddispositivo, descripcion, ubicacion, tipo, nombregrupo, estado " _
-                                       & " FROM dispositivo, grupo " _
+        Dim cmd As New MySqlCommand("SELECT iddispositivo, nombredispositivo, ubicacion, direccionip, marca, nombretipo, nombregrupo, nombresede, estadodispositivo " _
+                                       & " FROM dispositivo, grupo, sede, tipodispositivo " _
                                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
-                                       & " And descripcion Like '%" & busqueda & "%' ", Conexion)
+                                       & " AND grupo.sede = sede.idsede " _
+                                       & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
+                                       & " AND nombredispositivo Like '%" & busqueda & "%' " _
+                                       & " ORDER BY nombredispositivo ", Conexion)
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter(cmd)
@@ -159,6 +164,8 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox3.Text = DataGridView.Item("ColumnaUbicacion", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox7.Text = DataGridView.Item("ColumnaDireccion", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox8.Text = DataGridView.Item("ColumnaMarca", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
@@ -200,6 +207,7 @@ Public Class ListadoDispositivo
         Try
 
             Dim TipoDispositivo As String
+            Dim TipoEstado As String
 
             If DataGridView.Columns(e.ColumnIndex).Name.Equals("ColumnaTipo") Then
 
@@ -237,6 +245,33 @@ Public Class ListadoDispositivo
 
                     'e.CellStyle.ForeColor = Color.Orange
                     DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Otro
+
+                End If
+
+            End If
+
+            If DataGridView.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
+
+                TipoEstado = (DataGridView.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoEstado = "OPERATIVO" Then
+
+                    e.CellStyle.ForeColor = Color.Green
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Operativo
+
+                End If
+
+                If TipoEstado = "PRESENTANDO FALLAS" Then
+
+                    e.CellStyle.ForeColor = Color.Orange
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Fallas
+
+                End If
+
+                If TipoEstado = "DESCONECTADO" Then
+
+                    e.CellStyle.ForeColor = Color.Red
+                    DataGridView.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Desconectada
 
                 End If
 

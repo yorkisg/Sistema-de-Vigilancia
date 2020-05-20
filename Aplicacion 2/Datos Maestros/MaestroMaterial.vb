@@ -131,9 +131,27 @@ Public Class MaestroMaterial
             Validar = False
         End If
 
+        If String.IsNullOrEmpty(ComboUnidad.Text) Then
+            ErrorProvider1.SetError(ComboUnidad, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
         Return Validar
 
     End Function
+
+    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox3.KeyPress
+        'Evento KeyPress: permite agregar solo numeros en el textbox.
+
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+
+    End Sub
 
 
 End Class

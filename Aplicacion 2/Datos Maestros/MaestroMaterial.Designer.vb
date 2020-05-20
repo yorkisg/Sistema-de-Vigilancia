@@ -51,7 +51,7 @@ Partial Class MaestroMaterial
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator1, Me.BotonModificar, Me.ToolStripSeparator2, Me.BotonSalir, Me.ToolStripSeparator3})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(351, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(329, 25)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -117,7 +117,7 @@ Partial Class MaestroMaterial
         '
         Me.BotonBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BotonBuscar.Image = CType(resources.GetObject("BotonBuscar.Image"), System.Drawing.Image)
-        Me.BotonBuscar.Location = New System.Drawing.Point(311, 40)
+        Me.BotonBuscar.Location = New System.Drawing.Point(297, 40)
         Me.BotonBuscar.Name = "BotonBuscar"
         Me.BotonBuscar.Size = New System.Drawing.Size(28, 28)
         Me.BotonBuscar.TabIndex = 68
@@ -192,7 +192,7 @@ Partial Class MaestroMaterial
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.ClientSize = New System.Drawing.Size(351, 210)
+        Me.ClientSize = New System.Drawing.Size(329, 210)
         Me.Controls.Add(Me.ComboUnidad)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox3)

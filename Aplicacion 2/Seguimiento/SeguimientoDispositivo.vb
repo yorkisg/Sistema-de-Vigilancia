@@ -1,5 +1,4 @@
 ﻿
-
 Public Class SeguimientoDispositivo
 
     Dim Fila As Integer
@@ -7,8 +6,8 @@ Public Class SeguimientoDispositivo
 
     Private Sub SeguimientoDispositivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Inicializamos el timer
         InicializarTimer()
-
 
         'Carga del arbol de opciones
         CargarArbolSeguimiento()
@@ -39,6 +38,8 @@ Public Class SeguimientoDispositivo
 
         'Carga del combo
         CargarComboTipoDispositivoSeguimiento()
+        CargarComboPrioridad()
+        CargarComboEstado()
 
     End Sub
 
@@ -206,7 +207,7 @@ Public Class SeguimientoDispositivo
 
                 TipoEstado = (DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
 
-                If TipoEstado = "OPERATIVA" Then
+                If TipoEstado = "OPERATIVO" Then
 
                     e.CellStyle.ForeColor = Color.Green
                     DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Operativo
@@ -220,7 +221,7 @@ Public Class SeguimientoDispositivo
 
                 End If
 
-                If TipoEstado = "DESCONECTADA" Then
+                If TipoEstado = "DESCONECTADO" Then
 
                     e.CellStyle.ForeColor = Color.Red
                     DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Desconectada
@@ -278,6 +279,46 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
+    Private Sub DataGridView2_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView2.CellFormatting
+        'CellFormatting: Evento del control DataGridview el cual permite cambiar 
+        'y dar formato a las celdas, bien sea por color de texto, fondo, etc.
+
+        Try
+
+            Dim TipoEstado As String
+
+            If DataGridView2.Columns(e.ColumnIndex).Name.Equals("ColumnaPrioridad") Then
+
+                TipoEstado = (DataGridView2.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoEstado = "ALTA" Then
+
+                    e.CellStyle.ForeColor = Color.Red
+
+                End If
+
+                If TipoEstado = "MEDIA" Then
+
+                    e.CellStyle.ForeColor = Color.Orange
+
+                End If
+
+                If TipoEstado = "BAJA" Then
+
+                    e.CellStyle.ForeColor = Color.Green
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
     Private Sub DataGridView3_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView3.CellFormatting
         'CellFormatting: Evento del control DataGridview el cual permite cambiar 
         'y dar formato a las celdas, bien sea por color de texto, fondo, etc.
@@ -290,7 +331,7 @@ Public Class SeguimientoDispositivo
 
                 TipoEstado = (DataGridView3.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
 
-                If TipoEstado = "OPERATIVA" Then
+                If TipoEstado = "OPERATIVO" Then
 
                     e.CellStyle.ForeColor = Color.Green
                     DataGridView3.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Operativo
@@ -304,7 +345,7 @@ Public Class SeguimientoDispositivo
 
                 End If
 
-                If TipoEstado = "DESCONECTADA" Then
+                If TipoEstado = "DESCONECTADO" Then
 
                     e.CellStyle.ForeColor = Color.Red
                     DataGridView3.Rows(e.RowIndex).Cells("ColumnaImagen2").Value = Desconectada
@@ -316,6 +357,62 @@ Public Class SeguimientoDispositivo
         Catch ex As Exception
 
             MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub DataGridView4_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView4.MouseClick
+        'Metodo o evento que permite generar menu contextual con click derecho
+
+        Try
+
+            If DataGridView4.RowCount > 0 Or DataGridView4.SelectedRows.Count = 1 Then
+
+                DataGridView4.ContextMenuStrip = MenuServicios
+
+            Else
+
+                DataGridView4.ContextMenuStrip = Nothing
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.7", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub DataGridView4_MouseDown(sender As Object, e As MouseEventArgs) Handles DataGridView4.MouseDown
+        'Metodo o evento que permite seleccionar filas con el click derecho
+
+        Dim Indice As Integer
+        Dim Dato As DataGridView.HitTestInfo = DataGridView4.HitTest(e.X, e.Y)
+
+        Try
+
+            If e.Button = MouseButtons.Right Then
+
+                If Dato.Type = DataGridViewHitTestType.Cell Then
+
+                    If Dato.RowIndex >= 0 Then
+
+                        Indice = Dato.RowIndex
+                        DataGridView4.CurrentCell = DataGridView4.Rows(Dato.RowIndex).Cells(Dato.ColumnIndex)
+                        DataGridView4.Rows(Dato.RowIndex).Selected = True
+                        DataGridView4.ContextMenuStrip = MenuServicios
+
+                    End If
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.8", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
@@ -339,8 +436,10 @@ Public Class SeguimientoDispositivo
 
                 'Se limpian todos los componentes del formulario para un nuevo uso.
                 LimpiarComponentes()
+
                 'Se habilita el metodo para incrementar el siguiente ID.
                 SerieSeguimientoIncidencia()
+
                 'Actualizamos la lista
                 CargarGridSeguimiento()
 
@@ -381,15 +480,17 @@ Public Class SeguimientoDispositivo
 
             'Registro formal de la ruta con todos sus atributos
             Dim db2 As New MySqlCommand("INSERT INTO historial (idhistorial, dispositivo, descripcionhistorial, fecha, hora) " _
-                    & " VALUES ('" & TextBox10.Text & "', '" & TextBox7.Text & "', '" & ComboEstado.Text & "', '" & fecha & "', '" & TextBox6.Text & "')", Conexion)
+            & " VALUES ('" & TextBox10.Text & "', '" & TextBox7.Text & "', '" & ComboEstado.Text & "', '" & fecha & "', '" & TextBox6.Text & "')", Conexion)
 
             db2.ExecuteNonQuery()
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
             LimpiarComponentes()
+
             'Se habilita el metodo para incrementar el siguiente ID.
             SerieSeguimientoIncidencia()
             SerieSeguimientohistorial()
+
             'Actualizamos la lista
             CargarGridSeguimiento()
 
@@ -480,18 +581,6 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboEstado_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles ComboEstado.DrawItem
-
-        If (e.Index <> -1) Then
-
-            e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
-
-            e.Graphics.DrawString(ComboEstado.Items(e.Index).ToString(), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.Images(e.Index).Width, e.Bounds.Top)
-
-        End If
-
-    End Sub
-
     Private Sub ComboTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTipo.SelectedIndexChanged
         'Este metodo permite obtener el ID de cada item seleccionado. 
 
@@ -568,6 +657,192 @@ Public Class SeguimientoDispositivo
         Try
 
             e.ItemHeight = ImageList3.ImageSize.Height + 3
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboPrioridad_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboPrioridad.DrawItem
+        'Evento que dibuja el texto y las imagenes cargadas en el combobox
+
+        Try
+
+            e.DrawBackground()
+
+            If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+                'Si hay un elemento seleccionado se dibuja la seleccion, el texto y la imagen
+
+                'Dibuja la seleccion
+                e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
+
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList4.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            Else
+                'Si no se selecciona nada, se dibuja el texto y la imagen
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList4.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            End If
+
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.667", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboPrioridad_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboPrioridad.MeasureItem
+        'Esto es para darle espacio a los elementos mostrados en el ComboBox
+
+        Try
+
+            e.ItemHeight = ImageList4.ImageSize.Height + 3
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.668", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboEstado_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboEstado.DrawItem
+        'Evento que dibuja el texto y las imagenes cargadas en el combobox
+
+        Try
+
+            e.DrawBackground()
+
+            If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+                'Si hay un elemento seleccionado se dibuja la seleccion, el texto y la imagen
+
+                'Dibuja la seleccion
+                e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
+
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo4(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            Else
+                'Si no se selecciona nada, se dibuja el texto y la imagen
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo4(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            End If
+
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboEstado_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboEstado.MeasureItem
+        'Esto es para darle espacio a los elementos mostrados en el ComboBox
+
+        Try
+
+            e.ItemHeight = ImageList2.ImageSize.Height + 3
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboSede_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboSede.DrawItem
+        'Evento que dibuja el texto y las imagenes cargadas en el combobox
+
+        Try
+
+            e.DrawBackground()
+
+            If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+                'Si hay un elemento seleccionado se dibuja la seleccion, el texto y la imagen
+
+                'Dibuja la seleccion
+                e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
+
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo5(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList5.ImageSize.Width + 16, e.Bounds.Top)
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList5.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            Else
+                'Si no se selecciona nada, se dibuja el texto y la imagen
+
+                'Dibuja la imagen
+                e.Graphics.DrawImage(ImageList5.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
+                'Dibuja el texto
+                e.Graphics.DrawString(Arreglo5(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList5.ImageSize.Width + 16, e.Bounds.Top)
+
+                'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+
+            End If
+
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
+
+    End Sub
+
+    Private Sub ComboSede_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboSede.MeasureItem
+        'Esto es para darle espacio a los elementos mostrados en el ComboBox
+
+        Try
+
+            e.ItemHeight = ImageList5.ImageSize.Height + 3
 
         Catch ex As Exception
 

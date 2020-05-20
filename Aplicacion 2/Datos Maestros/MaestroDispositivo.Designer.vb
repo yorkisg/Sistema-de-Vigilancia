@@ -51,6 +51,12 @@ Partial Class MaestroDispositivo
         Me.BotonBuscar = New System.Windows.Forms.Button()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -61,7 +67,7 @@ Partial Class MaestroDispositivo
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator1, Me.BotonModificar, Me.ToolStripSeparator2, Me.BotonSalir, Me.ToolStripSeparator3})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(351, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(329, 25)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -146,7 +152,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label2.Location = New System.Drawing.Point(12, 157)
+        Me.Label2.Location = New System.Drawing.Point(12, 245)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(121, 15)
         Me.Label2.TabIndex = 60
@@ -156,7 +162,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(12, 245)
+        Me.Label4.Location = New System.Drawing.Point(12, 333)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(46, 15)
         Me.Label4.TabIndex = 61
@@ -187,7 +193,7 @@ Partial Class MaestroDispositivo
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
-        Me.ComboGrupo.Location = New System.Drawing.Point(12, 263)
+        Me.ComboGrupo.Location = New System.Drawing.Point(12, 351)
         Me.ComboGrupo.Name = "ComboGrupo"
         Me.ComboGrupo.Size = New System.Drawing.Size(280, 23)
         Me.ComboGrupo.TabIndex = 65
@@ -196,7 +202,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label6.Location = New System.Drawing.Point(12, 294)
+        Me.Label6.Location = New System.Drawing.Point(12, 377)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 15)
         Me.Label6.TabIndex = 66
@@ -208,8 +214,7 @@ Partial Class MaestroDispositivo
         Me.ComboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboEstado.FormattingEnabled = True
-        Me.ComboEstado.Items.AddRange(New Object() {"OPERATIVA", "DESCONECTADA", "PRESENTANDO FALLAS"})
-        Me.ComboEstado.Location = New System.Drawing.Point(12, 312)
+        Me.ComboEstado.Location = New System.Drawing.Point(12, 395)
         Me.ComboEstado.Name = "ComboEstado"
         Me.ComboEstado.Size = New System.Drawing.Size(280, 23)
         Me.ComboEstado.TabIndex = 67
@@ -224,16 +229,16 @@ Partial Class MaestroDispositivo
         Me.ComboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboTipo.FormattingEnabled = True
-        Me.ComboTipo.Location = New System.Drawing.Point(12, 175)
+        Me.ComboTipo.Location = New System.Drawing.Point(12, 263)
         Me.ComboTipo.Name = "ComboTipo"
         Me.ComboTipo.Size = New System.Drawing.Size(280, 23)
         Me.ComboTipo.TabIndex = 68
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(298, 222)
+        Me.TextBox4.Location = New System.Drawing.Point(298, 320)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(53, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(23, 20)
         Me.TextBox4.TabIndex = 69
         Me.TextBox4.Visible = False
         '
@@ -241,7 +246,7 @@ Partial Class MaestroDispositivo
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label7.Location = New System.Drawing.Point(12, 201)
+        Me.Label7.Location = New System.Drawing.Point(12, 289)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(33, 15)
         Me.Label7.TabIndex = 70
@@ -253,16 +258,16 @@ Partial Class MaestroDispositivo
         Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboSede.FormattingEnabled = True
-        Me.ComboSede.Location = New System.Drawing.Point(12, 219)
+        Me.ComboSede.Location = New System.Drawing.Point(12, 307)
         Me.ComboSede.Name = "ComboSede"
         Me.ComboSede.Size = New System.Drawing.Size(280, 23)
         Me.ComboSede.TabIndex = 71
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(298, 263)
+        Me.TextBox5.Location = New System.Drawing.Point(298, 346)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(53, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(23, 20)
         Me.TextBox5.TabIndex = 72
         Me.TextBox5.Visible = False
         '
@@ -270,7 +275,7 @@ Partial Class MaestroDispositivo
         '
         Me.BotonBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BotonBuscar.Image = CType(resources.GetObject("BotonBuscar.Image"), System.Drawing.Image)
-        Me.BotonBuscar.Location = New System.Drawing.Point(311, 40)
+        Me.BotonBuscar.Location = New System.Drawing.Point(297, 40)
         Me.BotonBuscar.Name = "BotonBuscar"
         Me.BotonBuscar.Size = New System.Drawing.Size(28, 28)
         Me.BotonBuscar.TabIndex = 59
@@ -278,9 +283,9 @@ Partial Class MaestroDispositivo
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(298, 178)
+        Me.TextBox6.Location = New System.Drawing.Point(298, 294)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(53, 20)
+        Me.TextBox6.Size = New System.Drawing.Size(23, 20)
         Me.TextBox6.TabIndex = 73
         Me.TextBox6.Visible = False
         '
@@ -294,12 +299,72 @@ Partial Class MaestroDispositivo
         Me.ImageList3.Images.SetKeyName(3, "Camara360.png")
         Me.ImageList3.Images.SetKeyName(4, "Otro.png")
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label8.Location = New System.Drawing.Point(12, 157)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(81, 15)
+        Me.Label8.TabIndex = 74
+        Me.Label8.Text = "DIRECCIÓN IP"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox7.Location = New System.Drawing.Point(12, 175)
+        Me.TextBox7.MaxLength = 50
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(280, 23)
+        Me.TextBox7.TabIndex = 75
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox8.Location = New System.Drawing.Point(12, 219)
+        Me.TextBox8.MaxLength = 50
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(280, 23)
+        Me.TextBox8.TabIndex = 77
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label9.Location = New System.Drawing.Point(12, 201)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(49, 15)
+        Me.Label9.TabIndex = 76
+        Me.Label9.Text = "MARCA"
+        '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "Operativo.png")
+        Me.ImageList2.Images.SetKeyName(1, "Desconectada.png")
+        Me.ImageList2.Images.SetKeyName(2, "SinReporte.png")
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "Alimex.png")
+        Me.ImageList1.Images.SetKeyName(1, "Almacen.png")
+        Me.ImageList1.Images.SetKeyName(2, "CEP.png")
+        Me.ImageList1.Images.SetKeyName(3, "Hacienda.png")
+        Me.ImageList1.Images.SetKeyName(4, "Planta.png")
+        '
         'MaestroDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.ClientSize = New System.Drawing.Size(351, 347)
+        Me.ClientSize = New System.Drawing.Size(329, 430)
+        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.ComboSede)
@@ -360,4 +425,10 @@ Partial Class MaestroDispositivo
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents ImageList3 As ImageList
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents ImageList1 As ImageList
 End Class

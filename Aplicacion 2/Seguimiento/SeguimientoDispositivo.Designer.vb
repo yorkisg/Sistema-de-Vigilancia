@@ -27,6 +27,10 @@ Partial Class SeguimientoDispositivo
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -36,24 +40,32 @@ Partial Class SeguimientoDispositivo
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.TabControl()
         Me.Pagina1 = New System.Windows.Forms.TabPage()
         Me.Arbol = New System.Windows.Forms.TreeView()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BotonSalir2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaIDGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaDispositivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaImagen3 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaUbicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaImagen = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.TabControl()
         Me.Pagina2 = New System.Windows.Forms.TabPage()
         Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
+        Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
         Me.ComboClasificacion = New System.Windows.Forms.ComboBox()
         Me.ComboPrioridad = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -65,9 +77,7 @@ Partial Class SeguimientoDispositivo
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Pagina3 = New System.Windows.Forms.TabPage()
         Me.ComboSede = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -77,12 +87,15 @@ Partial Class SeguimientoDispositivo
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.BotonGuardar2 = New System.Windows.Forms.ToolStripButton()
         Me.ComboEstado = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.TextBox14 = New System.Windows.Forms.TextBox()
         Me.TextBox11 = New System.Windows.Forms.TextBox()
@@ -123,23 +136,15 @@ Partial Class SeguimientoDispositivo
         Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
-        Me.BotonGuardar2 = New System.Windows.Forms.ToolStripButton()
-        Me.BotonSalir2 = New System.Windows.Forms.ToolStripButton()
         Me.BotonConsulta1 = New System.Windows.Forms.ToolStripButton()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaIDGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaDispositivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaImagen3 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaUbicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaImagen = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImageList4 = New System.Windows.Forms.ImageList(Me.components)
+        Me.MenuServicios = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MenuIr = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ImageList5 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Pagina1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -157,6 +162,7 @@ Partial Class SeguimientoDispositivo
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Pagina7.SuspendLayout()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuServicios.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -227,6 +233,14 @@ Partial Class SeguimientoDispositivo
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
+        'BotonSalir2
+        '
+        Me.BotonSalir2.Image = CType(resources.GetObject("BotonSalir2.Image"), System.Drawing.Image)
+        Me.BotonSalir2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BotonSalir2.Name = "BotonSalir2"
+        Me.BotonSalir2.Size = New System.Drawing.Size(49, 22)
+        Me.BotonSalir2.Text = "Salir"
+        '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
@@ -287,6 +301,109 @@ Partial Class SeguimientoDispositivo
         Me.DataGridView1.Size = New System.Drawing.Size(574, 602)
         Me.DataGridView1.TabIndex = 47
         '
+        'ColumnaID
+        '
+        Me.ColumnaID.DataPropertyName = "iddispositivo"
+        Me.ColumnaID.HeaderText = "ID DISPOSITIVO"
+        Me.ColumnaID.Name = "ColumnaID"
+        Me.ColumnaID.ReadOnly = True
+        Me.ColumnaID.Visible = False
+        '
+        'ColumnaIDGrupo
+        '
+        Me.ColumnaIDGrupo.DataPropertyName = "idgrupo"
+        Me.ColumnaIDGrupo.HeaderText = "ID GRUPO"
+        Me.ColumnaIDGrupo.Name = "ColumnaIDGrupo"
+        Me.ColumnaIDGrupo.ReadOnly = True
+        Me.ColumnaIDGrupo.Visible = False
+        '
+        'ColumnaGrupo
+        '
+        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
+        Me.ColumnaGrupo.HeaderText = "NOMBRE GRUPO"
+        Me.ColumnaGrupo.Name = "ColumnaGrupo"
+        Me.ColumnaGrupo.ReadOnly = True
+        Me.ColumnaGrupo.Visible = False
+        '
+        'ColumnaSede
+        '
+        Me.ColumnaSede.DataPropertyName = "nombresede"
+        Me.ColumnaSede.HeaderText = "NOMBRE SEDE"
+        Me.ColumnaSede.Name = "ColumnaSede"
+        Me.ColumnaSede.ReadOnly = True
+        Me.ColumnaSede.Visible = False
+        '
+        'ColumnaDispositivo
+        '
+        Me.ColumnaDispositivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaDispositivo.DataPropertyName = "nombredispositivo"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaDispositivo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ColumnaDispositivo.FillWeight = 19.49362!
+        Me.ColumnaDispositivo.HeaderText = "DISPOSITIVO"
+        Me.ColumnaDispositivo.MinimumWidth = 110
+        Me.ColumnaDispositivo.Name = "ColumnaDispositivo"
+        Me.ColumnaDispositivo.ReadOnly = True
+        Me.ColumnaDispositivo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'ColumnaImagen3
+        '
+        Me.ColumnaImagen3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaImagen3.HeaderText = ""
+        Me.ColumnaImagen3.MinimumWidth = 26
+        Me.ColumnaImagen3.Name = "ColumnaImagen3"
+        Me.ColumnaImagen3.ReadOnly = True
+        Me.ColumnaImagen3.Width = 26
+        '
+        'ColumnaTipo
+        '
+        Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaTipo.DataPropertyName = "nombretipo"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaTipo.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ColumnaTipo.FillWeight = 26.29328!
+        Me.ColumnaTipo.HeaderText = "TIPO"
+        Me.ColumnaTipo.MinimumWidth = 135
+        Me.ColumnaTipo.Name = "ColumnaTipo"
+        Me.ColumnaTipo.ReadOnly = True
+        Me.ColumnaTipo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'ColumnaUbicacion
+        '
+        Me.ColumnaUbicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaUbicacion.DataPropertyName = "ubicacion"
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaUbicacion.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ColumnaUbicacion.HeaderText = "UBICACIÓN"
+        Me.ColumnaUbicacion.MinimumWidth = 140
+        Me.ColumnaUbicacion.Name = "ColumnaUbicacion"
+        Me.ColumnaUbicacion.ReadOnly = True
+        '
+        'ColumnaImagen
+        '
+        Me.ColumnaImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaImagen.HeaderText = ""
+        Me.ColumnaImagen.MinimumWidth = 26
+        Me.ColumnaImagen.Name = "ColumnaImagen"
+        Me.ColumnaImagen.ReadOnly = True
+        Me.ColumnaImagen.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ColumnaImagen.Width = 26
+        '
+        'ColumnaEstado
+        '
+        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaEstado.DataPropertyName = "estadodispositivo"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ColumnaEstado.FillWeight = 380.7106!
+        Me.ColumnaEstado.HeaderText = "ESTADO"
+        Me.ColumnaEstado.MinimumWidth = 130
+        Me.ColumnaEstado.Name = "ColumnaEstado"
+        Me.ColumnaEstado.ReadOnly = True
+        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(775, 445)
@@ -342,6 +459,16 @@ Partial Class SeguimientoDispositivo
         Me.ToolStrip3.TabIndex = 114
         Me.ToolStrip3.Text = "ToolStrip3"
         '
+        'BotonGuardar
+        '
+        Me.BotonGuardar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.BotonGuardar.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.BotonGuardar.Image = CType(resources.GetObject("BotonGuardar.Image"), System.Drawing.Image)
+        Me.BotonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BotonGuardar.Name = "BotonGuardar"
+        Me.BotonGuardar.Size = New System.Drawing.Size(130, 22)
+        Me.BotonGuardar.Text = "Registrar Incidencia"
+        '
         'ComboClasificacion
         '
         Me.ComboClasificacion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -356,11 +483,10 @@ Partial Class SeguimientoDispositivo
         '
         'ComboPrioridad
         '
-        Me.ComboPrioridad.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.ComboPrioridad.BackColor = System.Drawing.Color.AliceBlue
         Me.ComboPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboPrioridad.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboPrioridad.FormattingEnabled = True
-        Me.ComboPrioridad.Items.AddRange(New Object() {"ALTA", "MEDIA", "BAJA"})
         Me.ComboPrioridad.Location = New System.Drawing.Point(6, 65)
         Me.ComboPrioridad.Name = "ComboPrioridad"
         Me.ComboPrioridad.Size = New System.Drawing.Size(270, 23)
@@ -451,16 +577,6 @@ Partial Class SeguimientoDispositivo
         Me.Label3.TabIndex = 85
         Me.Label3.Text = "INCIDENCIA"
         '
-        'TextBox3
-        '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox3.Location = New System.Drawing.Point(775, 356)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(153, 23)
-        Me.TextBox3.TabIndex = 83
-        Me.TextBox3.Visible = False
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -470,17 +586,6 @@ Partial Class SeguimientoDispositivo
         Me.Label2.Size = New System.Drawing.Size(75, 15)
         Me.Label2.TabIndex = 82
         Me.Label2.Text = "DISPOSITIVO"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label1.Location = New System.Drawing.Point(677, 359)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(86, 15)
-        Me.Label1.TabIndex = 81
-        Me.Label1.Text = "ID INCIDENCIA"
-        Me.Label1.Visible = False
         '
         'Pagina3
         '
@@ -510,6 +615,7 @@ Partial Class SeguimientoDispositivo
         '
         Me.ComboSede.BackColor = System.Drawing.Color.AliceBlue
         Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboSede.Enabled = False
         Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboSede.FormattingEnabled = True
         Me.ComboSede.Location = New System.Drawing.Point(6, 153)
@@ -531,6 +637,7 @@ Partial Class SeguimientoDispositivo
         '
         Me.ComboTipo.BackColor = System.Drawing.Color.AliceBlue
         Me.ComboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboTipo.Enabled = False
         Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboTipo.FormattingEnabled = True
         Me.ComboTipo.Location = New System.Drawing.Point(6, 109)
@@ -552,6 +659,7 @@ Partial Class SeguimientoDispositivo
         '
         Me.ComboGrupo.BackColor = System.Drawing.Color.AliceBlue
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboGrupo.Enabled = False
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
         Me.ComboGrupo.Location = New System.Drawing.Point(6, 197)
@@ -590,13 +698,22 @@ Partial Class SeguimientoDispositivo
         Me.ToolStrip2.TabIndex = 115
         Me.ToolStrip2.Text = "ToolStrip2"
         '
+        'BotonGuardar2
+        '
+        Me.BotonGuardar2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.BotonGuardar2.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.BotonGuardar2.Image = CType(resources.GetObject("BotonGuardar2.Image"), System.Drawing.Image)
+        Me.BotonGuardar2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BotonGuardar2.Name = "BotonGuardar2"
+        Me.BotonGuardar2.Size = New System.Drawing.Size(129, 22)
+        Me.BotonGuardar2.Text = "Actualizar Cambios"
+        '
         'ComboEstado
         '
-        Me.ComboEstado.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.ComboEstado.BackColor = System.Drawing.Color.AliceBlue
         Me.ComboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboEstado.FormattingEnabled = True
-        Me.ComboEstado.Items.AddRange(New Object() {"OPERATIVA", "DESCONECTADA", "PRESENTANDO FALLAS"})
         Me.ComboEstado.Location = New System.Drawing.Point(6, 241)
         Me.ComboEstado.Name = "ComboEstado"
         Me.ComboEstado.Size = New System.Drawing.Size(270, 23)
@@ -620,16 +737,6 @@ Partial Class SeguimientoDispositivo
         Me.TextBox9.Size = New System.Drawing.Size(270, 23)
         Me.TextBox9.TabIndex = 89
         '
-        'TextBox7
-        '
-        Me.TextBox7.Enabled = False
-        Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox7.Location = New System.Drawing.Point(775, 327)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(153, 23)
-        Me.TextBox7.TabIndex = 88
-        Me.TextBox7.Visible = False
-        '
         'TextBox8
         '
         Me.TextBox8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
@@ -647,6 +754,37 @@ Partial Class SeguimientoDispositivo
         Me.Label11.Size = New System.Drawing.Size(81, 15)
         Me.Label11.TabIndex = 86
         Me.Label11.Text = "DESCRIPCIÓN"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox3.Location = New System.Drawing.Point(775, 356)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(153, 23)
+        Me.TextBox3.TabIndex = 83
+        Me.TextBox3.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label1.Location = New System.Drawing.Point(677, 359)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(86, 15)
+        Me.Label1.TabIndex = 81
+        Me.Label1.Text = "ID INCIDENCIA"
+        Me.Label1.Visible = False
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Enabled = False
+        Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox7.Location = New System.Drawing.Point(775, 327)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(153, 23)
+        Me.TextBox7.TabIndex = 88
+        Me.TextBox7.Visible = False
         '
         'Label12
         '
@@ -878,7 +1016,7 @@ Partial Class SeguimientoDispositivo
         Me.Pagina6.Location = New System.Drawing.Point(4, 24)
         Me.Pagina6.Name = "Pagina6"
         Me.Pagina6.Padding = New System.Windows.Forms.Padding(3)
-        Me.Pagina6.Size = New System.Drawing.Size(580, 217)
+        Me.Pagina6.Size = New System.Drawing.Size(557, 217)
         Me.Pagina6.TabIndex = 2
         Me.Pagina6.Text = "HISTORIAL DE CAMBIOS"
         Me.Pagina6.UseVisualStyleBackColor = True
@@ -914,7 +1052,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView3.Size = New System.Drawing.Size(574, 211)
+        Me.DataGridView3.Size = New System.Drawing.Size(551, 211)
         Me.DataGridView3.TabIndex = 64
         '
         'ColumnaHistorial2
@@ -978,7 +1116,7 @@ Partial Class SeguimientoDispositivo
         Me.Pagina7.ImageIndex = 4
         Me.Pagina7.Location = New System.Drawing.Point(4, 24)
         Me.Pagina7.Name = "Pagina7"
-        Me.Pagina7.Size = New System.Drawing.Size(580, 217)
+        Me.Pagina7.Size = New System.Drawing.Size(557, 217)
         Me.Pagina7.TabIndex = 3
         Me.Pagina7.Text = "HISTORIAL DE SERVICIOS"
         Me.Pagina7.UseVisualStyleBackColor = True
@@ -1013,7 +1151,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridView4.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView4.Size = New System.Drawing.Size(574, 211)
+        Me.DataGridView4.Size = New System.Drawing.Size(551, 211)
         Me.DataGridView4.TabIndex = 65
         '
         'DataGridViewTextBoxColumn2
@@ -1104,34 +1242,6 @@ Partial Class SeguimientoDispositivo
         Me.Label21.Text = "NODO ARBOL"
         Me.Label21.Visible = False
         '
-        'BotonGuardar
-        '
-        Me.BotonGuardar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.BotonGuardar.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.BotonGuardar.Image = CType(resources.GetObject("BotonGuardar.Image"), System.Drawing.Image)
-        Me.BotonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.BotonGuardar.Name = "BotonGuardar"
-        Me.BotonGuardar.Size = New System.Drawing.Size(130, 22)
-        Me.BotonGuardar.Text = "Registrar Incidencia"
-        '
-        'BotonGuardar2
-        '
-        Me.BotonGuardar2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.BotonGuardar2.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.BotonGuardar2.Image = CType(resources.GetObject("BotonGuardar2.Image"), System.Drawing.Image)
-        Me.BotonGuardar2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.BotonGuardar2.Name = "BotonGuardar2"
-        Me.BotonGuardar2.Size = New System.Drawing.Size(129, 22)
-        Me.BotonGuardar2.Text = "Actualizar Cambios"
-        '
-        'BotonSalir2
-        '
-        Me.BotonSalir2.Image = CType(resources.GetObject("BotonSalir2.Image"), System.Drawing.Image)
-        Me.BotonSalir2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.BotonSalir2.Name = "BotonSalir2"
-        Me.BotonSalir2.Size = New System.Drawing.Size(49, 22)
-        Me.BotonSalir2.Text = "Salir"
-        '
         'BotonConsulta1
         '
         Me.BotonConsulta1.Image = CType(resources.GetObject("BotonConsulta1.Image"), System.Drawing.Image)
@@ -1165,108 +1275,41 @@ Partial Class SeguimientoDispositivo
         Me.ToolStripButton2.Size = New System.Drawing.Size(49, 22)
         Me.ToolStripButton2.Text = "Salir"
         '
-        'ColumnaID
+        'ImageList4
         '
-        Me.ColumnaID.DataPropertyName = "iddispositivo"
-        Me.ColumnaID.HeaderText = "ID DISPOSITIVO"
-        Me.ColumnaID.Name = "ColumnaID"
-        Me.ColumnaID.ReadOnly = True
-        Me.ColumnaID.Visible = False
+        Me.ImageList4.ImageStream = CType(resources.GetObject("ImageList4.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList4.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList4.Images.SetKeyName(0, "Alta.png")
+        Me.ImageList4.Images.SetKeyName(1, "Media.png")
+        Me.ImageList4.Images.SetKeyName(2, "Baja.png")
         '
-        'ColumnaIDGrupo
+        'MenuServicios
         '
-        Me.ColumnaIDGrupo.DataPropertyName = "idgrupo"
-        Me.ColumnaIDGrupo.HeaderText = "ID GRUPO"
-        Me.ColumnaIDGrupo.Name = "ColumnaIDGrupo"
-        Me.ColumnaIDGrupo.ReadOnly = True
-        Me.ColumnaIDGrupo.Visible = False
+        Me.MenuServicios.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuIr, Me.ToolStripSeparator14})
+        Me.MenuServicios.Name = "MenuRuta"
+        Me.MenuServicios.Size = New System.Drawing.Size(138, 32)
         '
-        'ColumnaGrupo
+        'MenuIr
         '
-        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
-        Me.ColumnaGrupo.HeaderText = "NOMBRE GRUPO"
-        Me.ColumnaGrupo.Name = "ColumnaGrupo"
-        Me.ColumnaGrupo.ReadOnly = True
-        Me.ColumnaGrupo.Visible = False
+        Me.MenuIr.Image = CType(resources.GetObject("MenuIr.Image"), System.Drawing.Image)
+        Me.MenuIr.Name = "MenuIr"
+        Me.MenuIr.Size = New System.Drawing.Size(137, 22)
+        Me.MenuIr.Text = "Ir al Servicio"
         '
-        'ColumnaSede
+        'ToolStripSeparator14
         '
-        Me.ColumnaSede.DataPropertyName = "nombresede"
-        Me.ColumnaSede.HeaderText = "NOMBRE SEDE"
-        Me.ColumnaSede.Name = "ColumnaSede"
-        Me.ColumnaSede.ReadOnly = True
-        Me.ColumnaSede.Visible = False
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(134, 6)
         '
-        'ColumnaDispositivo
+        'ImageList5
         '
-        Me.ColumnaDispositivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaDispositivo.DataPropertyName = "nombredispositivo"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaDispositivo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ColumnaDispositivo.FillWeight = 19.49362!
-        Me.ColumnaDispositivo.HeaderText = "DISPOSITIVO"
-        Me.ColumnaDispositivo.MinimumWidth = 110
-        Me.ColumnaDispositivo.Name = "ColumnaDispositivo"
-        Me.ColumnaDispositivo.ReadOnly = True
-        Me.ColumnaDispositivo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'ColumnaImagen3
-        '
-        Me.ColumnaImagen3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaImagen3.HeaderText = ""
-        Me.ColumnaImagen3.MinimumWidth = 26
-        Me.ColumnaImagen3.Name = "ColumnaImagen3"
-        Me.ColumnaImagen3.ReadOnly = True
-        Me.ColumnaImagen3.Width = 26
-        '
-        'ColumnaTipo
-        '
-        Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaTipo.DataPropertyName = "nombretipo"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaTipo.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ColumnaTipo.FillWeight = 26.29328!
-        Me.ColumnaTipo.HeaderText = "TIPO"
-        Me.ColumnaTipo.MinimumWidth = 135
-        Me.ColumnaTipo.Name = "ColumnaTipo"
-        Me.ColumnaTipo.ReadOnly = True
-        Me.ColumnaTipo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'ColumnaUbicacion
-        '
-        Me.ColumnaUbicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaUbicacion.DataPropertyName = "ubicacion"
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaUbicacion.DefaultCellStyle = DataGridViewCellStyle4
-        Me.ColumnaUbicacion.HeaderText = "UBICACIÓN"
-        Me.ColumnaUbicacion.MinimumWidth = 140
-        Me.ColumnaUbicacion.Name = "ColumnaUbicacion"
-        Me.ColumnaUbicacion.ReadOnly = True
-        '
-        'ColumnaImagen
-        '
-        Me.ColumnaImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaImagen.HeaderText = ""
-        Me.ColumnaImagen.MinimumWidth = 26
-        Me.ColumnaImagen.Name = "ColumnaImagen"
-        Me.ColumnaImagen.ReadOnly = True
-        Me.ColumnaImagen.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColumnaImagen.Width = 26
-        '
-        'ColumnaEstado
-        '
-        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaEstado.DataPropertyName = "estadodispositivo"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle5
-        Me.ColumnaEstado.FillWeight = 380.7106!
-        Me.ColumnaEstado.HeaderText = "ESTADO"
-        Me.ColumnaEstado.MinimumWidth = 130
-        Me.ColumnaEstado.Name = "ColumnaEstado"
-        Me.ColumnaEstado.ReadOnly = True
+        Me.ImageList5.ImageStream = CType(resources.GetObject("ImageList5.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList5.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList5.Images.SetKeyName(0, "Alimex.png")
+        Me.ImageList5.Images.SetKeyName(1, "Almacen.png")
+        Me.ImageList5.Images.SetKeyName(2, "CEP.png")
+        Me.ImageList5.Images.SetKeyName(3, "Hacienda.png")
+        Me.ImageList5.Images.SetKeyName(4, "Planta.png")
         '
         'SeguimientoDispositivo
         '
@@ -1325,6 +1368,7 @@ Partial Class SeguimientoDispositivo
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Pagina7.ResumeLayout(False)
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuServicios.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1430,4 +1474,9 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaIDGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaID As DataGridViewTextBoxColumn
+    Friend WithEvents ImageList4 As ImageList
+    Friend WithEvents MenuServicios As ContextMenuStrip
+    Friend WithEvents MenuIr As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents ImageList5 As ImageList
 End Class

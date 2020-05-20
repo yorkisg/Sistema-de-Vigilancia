@@ -281,6 +281,18 @@ Module ModuloSeguimientoDispositivo
         SeguimientoDispositivo.ComboSede.DisplayMember = "nombresede"
         SeguimientoDispositivo.ComboSede.ValueMember = "idsede"
 
+        SeguimientoDispositivo.ComboSede.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
+        SeguimientoDispositivo.ComboSede.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
+
+        'Generamos un ciclo para obtener cada nombre de la consulta guardada en el Tabla
+        'cada valor obtenido es agregado al ArrayList declarado al inicio de la clase
+        For Each dr As DataRow In Tabla.Rows
+
+            'guardamos cada registro en el arreglo
+            Arreglo5.Add(dr("nombresede"))
+
+        Next
+
     End Sub
 
     Public Sub CargarComboGrupo()
@@ -299,6 +311,34 @@ Module ModuloSeguimientoDispositivo
         SeguimientoDispositivo.ComboGrupo.DataSource = Tabla
         SeguimientoDispositivo.ComboGrupo.DisplayMember = "nombregrupo"
         SeguimientoDispositivo.ComboGrupo.ValueMember = "idgrupo"
+
+    End Sub
+
+    Public Sub CargarComboPrioridad()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Arreglo2.Add("ALTA")
+        Arreglo2.Add("MEDIA")
+        Arreglo2.Add("BAJA")
+
+        SeguimientoDispositivo.ComboPrioridad.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
+        SeguimientoDispositivo.ComboPrioridad.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
+
+        SeguimientoDispositivo.ComboPrioridad.DataSource = Arreglo2
+
+    End Sub
+
+    Public Sub CargarComboEstado()
+        'Metodo que permite cargar el Combobox desde la BD.
+
+        Arreglo4.Add("OPERATIVO")
+        Arreglo4.Add("PRESENTANDO FALLAS")
+        Arreglo4.Add("DESCONECTADO")
+
+        SeguimientoDispositivo.ComboEstado.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
+        SeguimientoDispositivo.ComboEstado.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
+
+        SeguimientoDispositivo.ComboEstado.DataSource = Arreglo4
 
     End Sub
 
@@ -485,7 +525,7 @@ Module ModuloSeguimientoDispositivo
             SeguimientoDispositivo.TextBox2.Text = ""
             SeguimientoDispositivo.TextBox4.Text = ""
             SeguimientoDispositivo.TextBox5.Text = ""
-            SeguimientoDispositivo.ComboPrioridad.SelectedIndex = -1
+            'SeguimientoDispositivo.ComboPrioridad.SelectedIndex = -1
             SeguimientoDispositivo.ComboClasificacion.SelectedIndex = -1
 
         ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
@@ -494,9 +534,9 @@ Module ModuloSeguimientoDispositivo
             SeguimientoDispositivo.TextBox8.Text = ""
             SeguimientoDispositivo.TextBox9.Text = ""
             'SeguimientoDispositivo.ComboTipo.SelectedIndex = -1
-            SeguimientoDispositivo.ComboSede.SelectedIndex = -1
+            'SeguimientoDispositivo.ComboSede.SelectedIndex = -1
             SeguimientoDispositivo.ComboGrupo.SelectedIndex = -1
-            SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
+            ' SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
 
         End If
 

@@ -74,6 +74,7 @@ Public Class ListadoMaterial
                 Next
 
                 SeguimientoServicio.BotonRemover.Enabled = True
+                SeguimientoServicio.BotonGuardar.Enabled = True
 
             End If
 

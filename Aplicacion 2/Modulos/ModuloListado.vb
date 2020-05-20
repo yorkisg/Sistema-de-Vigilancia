@@ -38,7 +38,7 @@ Module ModuloListado
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
-        Dim sql As String = "SELECT iddispositivo, nombredispositivo, ubicacion, nombretipo, nombregrupo, estadodispositivo, nombresede " _
+        Dim sql As String = "SELECT iddispositivo, nombredispositivo, ubicacion, direccionip, marca, nombretipo, nombregrupo, nombresede, estadodispositivo " _
                             & " FROM dispositivo, grupo, sede, tipodispositivo " _
                             & " WHERE dispositivo.grupo = grupo.idgrupo " _
                             & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
@@ -67,6 +67,7 @@ Module ModuloListado
         ListadoDispositivo.Contador.Text = ListadoDispositivo.DataGridView.RowCount
 
         CargarImagenesDispositivo()
+        CargarImagenesSeguimiento()
 
     End Sub
 
@@ -137,7 +138,7 @@ Module ModuloListado
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
-        Dim sql As String = "SELECT idservicio, nombreservicio, fechainicio, nombresede, nombregrupo, estadoservicio" _
+        Dim sql As String = "SELECT idservicio, nombreservicio, fechainicio, nombresede, nombregrupo, responsable, estadoservicio" _
                             & " FROM servicio, grupo, sede" _
                             & " WHERE servicio.grupo = grupo.idgrupo " _
                             & " AND grupo.sede = sede.idsede " _

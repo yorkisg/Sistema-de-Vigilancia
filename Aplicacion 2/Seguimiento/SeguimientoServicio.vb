@@ -1,4 +1,5 @@
 ﻿
+
 Public Class SeguimientoServicio
 
     Private Sub SeguimientoServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,7 +17,7 @@ Public Class SeguimientoServicio
         EnableDoubleBuffered(DataGridView2)
 
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
-        TextBox2.CharacterCasing = CharacterCasing.Upper
+        TextBox8.CharacterCasing = CharacterCasing.Upper
         DateTimePicker1.Value = Today
 
         'validamos uso de los botones
@@ -60,6 +61,7 @@ Public Class SeguimientoServicio
             DataGridView2.ClearSelection()
             DataGridView2.EndEdit()
 
+            'Iniciamos las validaciones correspondientes
             If ValidarComponentesServicio() = True And ValidarDataGridView() = True And ValidarDuplicado() = True Then
 
                 'Se reccorren todos los elementos del grid para guardar fila por fila
@@ -69,8 +71,8 @@ Public Class SeguimientoServicio
                     idmaterial = row.Cells(0).Value
                     cantidad = row.Cells(3).Value
 
-                    Dim db As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad) " _
-                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "')", Conexion)
+                    Dim db As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad, observacion) " _
+                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "', '" & TextBox8.Text & "')", Conexion)
 
                     db.ExecuteNonQuery()
 
@@ -133,6 +135,7 @@ Public Class SeguimientoServicio
         ElseIf DataGridView2.RowCount = 1 Then
 
             DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
+            BotonGuardar.Enabled = False
             BotonRemover.Enabled = False
 
         ElseIf DataGridView2.RowCount > 1 Then
@@ -164,7 +167,7 @@ Public Class SeguimientoServicio
 
                 TipoEstado = (DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
 
-                If TipoEstado = "OPERATIVA" Then
+                If TipoEstado = "OPERATIVO" Then
 
                     e.CellStyle.ForeColor = Color.Green
                     DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Operativo
@@ -178,7 +181,7 @@ Public Class SeguimientoServicio
 
                 End If
 
-                If TipoEstado = "DESCONECTADA" Then
+                If TipoEstado = "DESCONECTADO" Then
 
                     e.CellStyle.ForeColor = Color.Red
                     DataGridView1.Rows(e.RowIndex).Cells("ColumnaImagen").Value = Desconectada
@@ -262,6 +265,13 @@ Public Class SeguimientoServicio
             MsgBox("No se pudo completar la operación.4", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
+
+    End Sub
+
+    Private Sub TextBox8_TextChanged(sender As Object, e As EventArgs) Handles TextBox8.TextChanged
+        'Para contar los caracteres en el textbox
+
+        Label12.Text = Len(TextBox8.Text)
 
     End Sub
 
