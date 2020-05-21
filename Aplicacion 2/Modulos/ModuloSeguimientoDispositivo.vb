@@ -191,7 +191,7 @@ Module ModuloSeguimientoDispositivo
     Public Sub CargarHistorialServicios()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT nombredispositivo, nombreservicio, fechainicio " _
+        Dim sql As String = "SELECT servicio, nombredispositivo, nombreservicio, fechainicio " _
                     & " FROM dispositivo, detalleservicio, servicio " _
                     & " WHERE detalleservicio.dispositivo = dispositivo.iddispositivo " _
                     & " AND detalleservicio.servicio = servicio.idservicio " _

@@ -12,9 +12,7 @@ Public Class ConsultaServicio
         EnableDoubleBuffered(DataGridView1)
         EnableDoubleBuffered(DataGridView2)
 
-
-        'validamos uso de los botones
-
+        BotonConsultar.Enabled = False
 
     End Sub
 
@@ -62,8 +60,33 @@ Public Class ConsultaServicio
         'Llamada al formulario "ListadoServicio"
 
         ListadoServicio.ShowDialog()
-        'CargarGridSeguimientoServicio()
+
+        CargarGridObservacionServicio()
+        CargarGridMaterialesServicio()
 
     End Sub
+
+    Private Sub BotonConsultar_Click(sender As Object, e As EventArgs) Handles BotonConsultar.Click
+        'Boton Filtrar
+
+        Try
+
+            If TextBox6.Text <> "" Then
+
+                'CargarGridObservacionServicio()
+                'CargarGridMaterialesServicio()
+
+            ElseIf TextBox6.Text = "" Then
+
+                'MsgBox("Debe seleccionar un servicio a consultar.", MsgBoxStyle.Exclamation, "Error.")
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
 
 End Class

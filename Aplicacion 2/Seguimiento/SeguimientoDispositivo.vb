@@ -180,7 +180,7 @@ Public Class SeguimientoDispositivo
                 If e.Button = MouseButtons.Left Then
 
                     Fila = DataGridView1.CurrentRow.Index
-                    Columna = 5
+                    Columna = 1
 
                 End If
 
@@ -357,62 +357,6 @@ Public Class SeguimientoDispositivo
         Catch ex As Exception
 
             MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
-
-        End Try
-
-    End Sub
-
-    Private Sub DataGridView4_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView4.MouseClick
-        'Metodo o evento que permite generar menu contextual con click derecho
-
-        Try
-
-            If DataGridView4.RowCount > 0 Or DataGridView4.SelectedRows.Count = 1 Then
-
-                DataGridView4.ContextMenuStrip = MenuServicios
-
-            Else
-
-                DataGridView4.ContextMenuStrip = Nothing
-
-            End If
-
-        Catch ex As Exception
-
-            MsgBox("No se pudo completar la operación.7", MsgBoxStyle.Exclamation, "Error.")
-
-        End Try
-
-    End Sub
-
-    Private Sub DataGridView4_MouseDown(sender As Object, e As MouseEventArgs) Handles DataGridView4.MouseDown
-        'Metodo o evento que permite seleccionar filas con el click derecho
-
-        Dim Indice As Integer
-        Dim Dato As DataGridView.HitTestInfo = DataGridView4.HitTest(e.X, e.Y)
-
-        Try
-
-            If e.Button = MouseButtons.Right Then
-
-                If Dato.Type = DataGridViewHitTestType.Cell Then
-
-                    If Dato.RowIndex >= 0 Then
-
-                        Indice = Dato.RowIndex
-                        DataGridView4.CurrentCell = DataGridView4.Rows(Dato.RowIndex).Cells(Dato.ColumnIndex)
-                        DataGridView4.Rows(Dato.RowIndex).Selected = True
-                        DataGridView4.ContextMenuStrip = MenuServicios
-
-                    End If
-
-                End If
-
-            End If
-
-        Catch ex As Exception
-
-            MsgBox("No se pudo completar la operación.8", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
@@ -851,6 +795,7 @@ Public Class SeguimientoDispositivo
         End Try
 
     End Sub
+
 
 
 End Class

@@ -1,5 +1,4 @@
 ﻿
-
 Public Class SeguimientoServicio
 
     Private Sub SeguimientoServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -71,8 +70,8 @@ Public Class SeguimientoServicio
                     idmaterial = row.Cells(0).Value
                     cantidad = row.Cells(3).Value
 
-                    Dim db As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidad, observacion) " _
-                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "', '" & TextBox8.Text & "')", Conexion)
+                    Dim db As New MySqlCommand("INSERT INTO detalleservicio (iddetalle, servicio, material, dispositivo, cantidadagregada, fechaservicio, observacion) " _
+                    & " VALUES ('" & TextBox5.Text & "', '" & TextBox1.Text & "', '" & idmaterial & "', '" & TextBox7.Text & "', '" & cantidad & "', '" & fecha & "', '" & TextBox8.Text & "')", Conexion)
 
                     db.ExecuteNonQuery()
 

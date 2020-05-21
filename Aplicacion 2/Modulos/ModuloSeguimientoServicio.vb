@@ -127,6 +127,15 @@ Module ModuloSeguimientoServicio
 
         End If
 
+        If String.IsNullOrEmpty(SeguimientoServicio.TextBox9.Text) Then
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.Label7, "No puede dejar campos en blanco.")
+            Validar = False
+        Else
+            'Si el error ha sido superado, se debe borrar
+            SeguimientoServicio.ErrorProvider1.SetError(SeguimientoServicio.Label7, "")
+
+        End If
+
         Return Validar
 
     End Function

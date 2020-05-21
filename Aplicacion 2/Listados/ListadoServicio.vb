@@ -101,18 +101,15 @@ Public Class ListadoServicio
             If ConsultaServicio.Visible = True Then
                 'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
 
-                SeguimientoServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox4.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox3.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox6.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox6.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox1.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox5.Text = DataGridView.Item("ColumnaResponsable", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox3.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox4.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox2.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
 
-                'validamos uso de los botones
-                SeguimientoServicio.BotonGuardar.Enabled = True
-                SeguimientoServicio.BotonAgregar.Enabled = True
-
-                ComboEstado.Enabled = True
+                'ConsultaServicio.BotonConsultar.Enabled = True
 
                 'Se cierra el formulario ListadoVehiculo
                 Tabla.Clear()
@@ -262,18 +259,15 @@ Public Class ListadoServicio
             If ConsultaServicio.Visible = True Then
                 'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
 
-                SeguimientoServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox4.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox3.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
-                SeguimientoServicio.TextBox6.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox6.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox1.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox5.Text = DataGridView.Item("ColumnaResponsable", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox3.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox4.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+                ConsultaServicio.TextBox2.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
 
-                'validamos uso de los botones
-                SeguimientoServicio.BotonGuardar.Enabled = True
-                SeguimientoServicio.BotonAgregar.Enabled = True
-
-                ComboEstado.Enabled = True
+                'ConsultaServicio.BotonConsultar.Enabled = True
 
                 'Se cierra el formulario ListadoVehiculo
                 Tabla.Clear()
