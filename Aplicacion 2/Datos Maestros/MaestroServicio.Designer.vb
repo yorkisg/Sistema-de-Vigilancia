@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MaestroServicio
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MaestroServicio
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MaestroServicio))
@@ -45,11 +45,12 @@ Partial Class MaestroServicio
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.ComboEstado = New System.Windows.Forms.ComboBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ComboTipo = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -107,7 +108,7 @@ Partial Class MaestroServicio
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label5.Location = New System.Drawing.Point(12, 157)
+        Me.Label5.Location = New System.Drawing.Point(12, 201)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(99, 15)
         Me.Label5.TabIndex = 70
@@ -117,7 +118,7 @@ Partial Class MaestroServicio
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label2.Location = New System.Drawing.Point(12, 290)
+        Me.Label2.Location = New System.Drawing.Point(12, 334)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(51, 15)
         Me.Label2.TabIndex = 69
@@ -137,7 +138,7 @@ Partial Class MaestroServicio
         '
         Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox2.Location = New System.Drawing.Point(12, 87)
-        Me.TextBox2.MaxLength = 50
+        Me.TextBox2.MaxLength = 49
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(280, 23)
         Me.TextBox2.TabIndex = 67
@@ -177,7 +178,7 @@ Partial Class MaestroServicio
         Me.ComboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboSede.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboSede.FormattingEnabled = True
-        Me.ComboSede.Location = New System.Drawing.Point(12, 219)
+        Me.ComboSede.Location = New System.Drawing.Point(12, 263)
         Me.ComboSede.Name = "ComboSede"
         Me.ComboSede.Size = New System.Drawing.Size(280, 23)
         Me.ComboSede.TabIndex = 76
@@ -186,7 +187,7 @@ Partial Class MaestroServicio
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label7.Location = New System.Drawing.Point(12, 201)
+        Me.Label7.Location = New System.Drawing.Point(12, 245)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(33, 15)
         Me.Label7.TabIndex = 75
@@ -198,7 +199,7 @@ Partial Class MaestroServicio
         Me.ComboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboGrupo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboGrupo.FormattingEnabled = True
-        Me.ComboGrupo.Location = New System.Drawing.Point(12, 264)
+        Me.ComboGrupo.Location = New System.Drawing.Point(12, 308)
         Me.ComboGrupo.Name = "ComboGrupo"
         Me.ComboGrupo.Size = New System.Drawing.Size(280, 23)
         Me.ComboGrupo.TabIndex = 74
@@ -207,7 +208,7 @@ Partial Class MaestroServicio
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label6.Location = New System.Drawing.Point(12, 245)
+        Me.Label6.Location = New System.Drawing.Point(12, 289)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(46, 15)
         Me.Label6.TabIndex = 73
@@ -220,7 +221,7 @@ Partial Class MaestroServicio
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.DateTimePicker1.Location = New System.Drawing.Point(12, 175)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(12, 219)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(280, 23)
         Me.DateTimePicker1.TabIndex = 90
@@ -232,24 +233,16 @@ Partial Class MaestroServicio
         Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ComboEstado.FormattingEnabled = True
         Me.ComboEstado.Items.AddRange(New Object() {"POR REALIZAR", "COMPLETADO"})
-        Me.ComboEstado.Location = New System.Drawing.Point(12, 308)
+        Me.ComboEstado.Location = New System.Drawing.Point(12, 352)
         Me.ComboEstado.Name = "ComboEstado"
         Me.ComboEstado.Size = New System.Drawing.Size(280, 23)
         Me.ComboEstado.TabIndex = 91
         '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(298, 90)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(27, 20)
-        Me.TextBox3.TabIndex = 92
-        Me.TextBox3.Visible = False
-        '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(298, 196)
+        Me.TextBox4.Location = New System.Drawing.Point(297, 264)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(27, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(32, 20)
         Me.TextBox4.TabIndex = 93
         Me.TextBox4.Visible = False
         '
@@ -267,7 +260,7 @@ Partial Class MaestroServicio
         '
         Me.TextBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox5.Location = New System.Drawing.Point(12, 131)
-        Me.TextBox5.MaxLength = 50
+        Me.TextBox5.MaxLength = 19
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(280, 23)
         Me.TextBox5.TabIndex = 95
@@ -282,16 +275,39 @@ Partial Class MaestroServicio
         Me.ImageList1.Images.SetKeyName(3, "Hacienda.png")
         Me.ImageList1.Images.SetKeyName(4, "Planta.png")
         '
+        'ComboTipo
+        '
+        Me.ComboTipo.BackColor = System.Drawing.Color.AliceBlue
+        Me.ComboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboTipo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ComboTipo.FormattingEnabled = True
+        Me.ComboTipo.Items.AddRange(New Object() {"PREVENTIVO", "SOLICITADO", "POR FALLA REPORTADA"})
+        Me.ComboTipo.Location = New System.Drawing.Point(12, 175)
+        Me.ComboTipo.Name = "ComboTipo"
+        Me.ComboTipo.Size = New System.Drawing.Size(280, 23)
+        Me.ComboTipo.TabIndex = 97
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label8.Location = New System.Drawing.Point(12, 157)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(102, 15)
+        Me.Label8.TabIndex = 96
+        Me.Label8.Text = "TIPO DE SERVICIO"
+        '
         'MaestroServicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.ClientSize = New System.Drawing.Size(329, 343)
+        Me.ClientSize = New System.Drawing.Size(329, 387)
+        Me.Controls.Add(Me.ComboTipo)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.ComboEstado)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ComboSede)
@@ -307,6 +323,7 @@ Partial Class MaestroServicio
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MaestroServicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Maestro de Servicios"
@@ -339,9 +356,10 @@ Partial Class MaestroServicio
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents ComboEstado As ComboBox
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents ComboTipo As ComboBox
+    Friend WithEvents Label8 As Label
 End Class

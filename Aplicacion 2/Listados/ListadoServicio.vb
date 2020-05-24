@@ -54,13 +54,11 @@ Public Class ListadoServicio
             If MaestroServicio.Visible = True Then
                 'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
 
+                'Enviamos el ID seleccionado al formulario
                 MaestroServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.TextBox5.Text = DataGridView.Item("ColumnaResponsable", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+
+                'Dependiendo del ID seleccionado se extraen los datos metiante el metodo a continuacion
+                ObtenerServicio()
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroServicio.BotonModificar.Enabled = True
@@ -212,13 +210,11 @@ Public Class ListadoServicio
             If MaestroServicio.Visible = True Then
                 'si el formulario "MaestroEstado" esta activo, se carga la informacion seleccionada del datagridview.
 
+                'Enviamos el ID seleccionado al formulario
                 MaestroServicio.TextBox1.Text = DataGridView.Item("ColumnaID", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.TextBox2.Text = DataGridView.Item("ColumnaDescripcion", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.TextBox5.Text = DataGridView.Item("ColumnaResponsable", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.DateTimePicker1.Text = DataGridView.Item("ColumnaFecha", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
-                MaestroServicio.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+
+                'Dependiendo del ID seleccionado se extraen los datos metiante el metodo a continuacion
+                ObtenerServicio()
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroServicio.BotonModificar.Enabled = True

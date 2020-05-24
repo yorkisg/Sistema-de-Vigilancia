@@ -114,7 +114,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox2.Location = New System.Drawing.Point(12, 87)
-        Me.TextBox2.MaxLength = 50
+        Me.TextBox2.MaxLength = 19
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(280, 23)
         Me.TextBox2.TabIndex = 58
@@ -182,7 +182,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox3.Location = New System.Drawing.Point(12, 131)
-        Me.TextBox3.MaxLength = 50
+        Me.TextBox3.MaxLength = 19
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(280, 23)
         Me.TextBox3.TabIndex = 63
@@ -313,7 +313,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox7.Location = New System.Drawing.Point(12, 175)
-        Me.TextBox7.MaxLength = 50
+        Me.TextBox7.MaxLength = 15
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New System.Drawing.Size(280, 23)
         Me.TextBox7.TabIndex = 75
@@ -322,7 +322,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox8.Location = New System.Drawing.Point(12, 219)
-        Me.TextBox8.MaxLength = 50
+        Me.TextBox8.MaxLength = 19
         Me.TextBox8.Name = "TextBox8"
         Me.TextBox8.Size = New System.Drawing.Size(280, 23)
         Me.TextBox8.TabIndex = 77

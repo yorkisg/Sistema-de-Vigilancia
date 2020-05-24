@@ -99,11 +99,18 @@ Public Class MaestroGrupo
 
     End Sub
 
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
+    Private Sub ComboSedeSelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
+        'Este metodo permite obtener el ID de cada item seleccionado. 
 
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
+        Dim Adaptador As New MySqlDataAdapter
+        Dim Tabla As New DataTable
+
+        Adaptador = New MySqlDataAdapter("SELECT idsede FROM sede WHERE nombresede = '" & ComboSede.Text & "' ", Conexion)
+        Adaptador.Fill(Tabla)
+
+        For Each row As DataRow In Tabla.Rows
+            TextBox3.Text = row("idsede").ToString
+        Next
 
     End Sub
 
@@ -124,6 +131,14 @@ Public Class MaestroGrupo
 
     End Sub
 
+    Private Sub LimpiarComponentes()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        'TextBox1.Text = ""
+        TextBox2.Text = ""
+
+    End Sub
+
     Function ValidarComponentes() As Boolean
 
         Dim Validar As Boolean = True
@@ -137,24 +152,14 @@ Public Class MaestroGrupo
             Validar = False
         End If
 
+        If String.IsNullOrEmpty(ComboSede.Text) Then
+            ErrorProvider1.SetError(ComboSede, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
         Return Validar
 
     End Function
-
-    Private Sub ComboSedeSelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
-        'Este metodo permite obtener el ID de cada item seleccionado. 
-
-        Dim Adaptador As New MySqlDataAdapter
-        Dim Tabla As New DataTable
-
-        Adaptador = New MySqlDataAdapter("SELECT idsede FROM sede WHERE nombresede = '" & ComboSede.Text & "' ", Conexion)
-        Adaptador.Fill(Tabla)
-
-        For Each row As DataRow In Tabla.Rows
-            TextBox3.Text = row("idsede").ToString
-        Next
-
-    End Sub
 
 
 End Class

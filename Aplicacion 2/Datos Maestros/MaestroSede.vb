@@ -80,14 +80,6 @@
 
     End Sub
 
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
-
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
-
-    End Sub
-
     Private Sub Serie()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID.
@@ -102,6 +94,14 @@
 
         'Se da formato al ID obtenido de la BD.
         TextBox1.Text = Format(numero, "000000000")
+
+    End Sub
+
+    Private Sub LimpiarComponentes()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        'TextBox1.Text = ""
+        TextBox2.Text = ""
 
     End Sub
 

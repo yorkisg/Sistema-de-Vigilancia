@@ -138,7 +138,7 @@ Module ModuloListado
         'Metodo para cargar el datagridview.
 
         'Conexion a la BD.
-        Dim sql As String = "SELECT idservicio, nombreservicio, fechainicio, nombresede, nombregrupo, responsable, estadoservicio" _
+        Dim sql As String = "SELECT idservicio, nombreservicio, nombresede, nombregrupo, responsable, tiposervicio, fechainicio, estadoservicio" _
                             & " FROM servicio, grupo, sede" _
                             & " WHERE servicio.grupo = grupo.idgrupo " _
                             & " AND grupo.sede = sede.idsede " _

@@ -24,12 +24,13 @@ Partial Class ListadoServicio
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadoServicio))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.Contador = New System.Windows.Forms.ToolStripLabel()
@@ -52,8 +53,9 @@ Partial Class ListadoServicio
         Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaResponsable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,7 +108,7 @@ Partial Class ListadoServicio
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaSede, Me.ColumnaGrupo, Me.ColumnaFecha, Me.ColumnaResponsable, Me.ColumnaEstado})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaSede, Me.ColumnaGrupo, Me.ColumnaResponsable, Me.ColumnaTipo, Me.ColumnaFecha, Me.ColumnaEstado})
         Me.DataGridView.GridColor = System.Drawing.SystemColors.Menu
         Me.DataGridView.Location = New System.Drawing.Point(12, 28)
         Me.DataGridView.MultiSelect = False
@@ -114,8 +116,8 @@ Partial Class ListadoServicio
         Me.DataGridView.ReadOnly = True
         Me.DataGridView.RowHeadersVisible = False
         Me.DataGridView.RowHeadersWidth = 45
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridView.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView.Size = New System.Drawing.Size(960, 536)
         Me.DataGridView.TabIndex = 76
@@ -229,10 +231,10 @@ Partial Class ListadoServicio
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ColumnaDescripcion.DefaultCellStyle = DataGridViewCellStyle2
         Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
-        Me.ColumnaDescripcion.MinimumWidth = 270
+        Me.ColumnaDescripcion.MinimumWidth = 240
         Me.ColumnaDescripcion.Name = "ColumnaDescripcion"
         Me.ColumnaDescripcion.ReadOnly = True
-        Me.ColumnaDescripcion.Width = 280
+        Me.ColumnaDescripcion.Width = 240
         '
         'ColumnaSede
         '
@@ -254,16 +256,6 @@ Partial Class ListadoServicio
         Me.ColumnaGrupo.Name = "ColumnaGrupo"
         Me.ColumnaGrupo.ReadOnly = True
         '
-        'ColumnaFecha
-        '
-        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaFecha.DataPropertyName = "fechainicio"
-        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
-        Me.ColumnaFecha.MinimumWidth = 150
-        Me.ColumnaFecha.Name = "ColumnaFecha"
-        Me.ColumnaFecha.ReadOnly = True
-        Me.ColumnaFecha.Width = 150
-        '
         'ColumnaResponsable
         '
         Me.ColumnaResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -274,17 +266,35 @@ Partial Class ListadoServicio
         Me.ColumnaResponsable.Name = "ColumnaResponsable"
         Me.ColumnaResponsable.ReadOnly = True
         '
+        'ColumnaTipo
+        '
+        Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaTipo.DataPropertyName = "tiposervicio"
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaTipo.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ColumnaTipo.HeaderText = "TIPO"
+        Me.ColumnaTipo.Name = "ColumnaTipo"
+        Me.ColumnaTipo.ReadOnly = True
+        '
+        'ColumnaFecha
+        '
+        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaFecha.DataPropertyName = "fechainicio"
+        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
+        Me.ColumnaFecha.MinimumWidth = 100
+        Me.ColumnaFecha.Name = "ColumnaFecha"
+        Me.ColumnaFecha.ReadOnly = True
+        '
         'ColumnaEstado
         '
         Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ColumnaEstado.DataPropertyName = "estadoservicio"
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle7
         Me.ColumnaEstado.HeaderText = "ESTADO"
-        Me.ColumnaEstado.MinimumWidth = 150
+        Me.ColumnaEstado.MinimumWidth = 100
         Me.ColumnaEstado.Name = "ColumnaEstado"
         Me.ColumnaEstado.ReadOnly = True
-        Me.ColumnaEstado.Width = 150
         '
         'ListadoServicio
         '
@@ -329,8 +339,9 @@ Partial Class ListadoServicio
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaResponsable As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaFecha As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaTipo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaResponsable As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaDescripcion As DataGridViewTextBoxColumn

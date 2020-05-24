@@ -12,9 +12,10 @@ Public Class MaestroServicio
 
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
         TextBox2.CharacterCasing = CharacterCasing.Upper
+        TextBox5.CharacterCasing = CharacterCasing.Upper
 
+        'Carga inicial del combo sede
         CargarComboSede()
-        'CargarComboGrupo()
 
     End Sub
 
@@ -34,8 +35,8 @@ Public Class MaestroServicio
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, nombreservicio, fechainicio, responsable, grupo, estadoservicio) " _
-            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "', '" & TextBox5.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
+            Dim db As New MySqlCommand("INSERT INTO servicio (idservicio, nombreservicio, fechainicio, responsable, tiposervicio, grupo, estadoservicio) " _
+            & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & fecha & "', '" & TextBox5.Text & "', '" & ComboTipo.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
 
             db.ExecuteNonQuery()
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
@@ -57,7 +58,7 @@ Public Class MaestroServicio
         'Se valida que no haya algun campo vacio
         If ValidarComponentes() = True Then
 
-            Dim db As New MySqlCommand("UPDATE servicio SET nombreservicio = '" & TextBox2.Text & "', fechainicio = '" & fecha & "', responsable = '" & TextBox5.Text & "', grupo = '" & TextBox4.Text & "', estadoservicio = '" & ComboEstado.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
+            Dim db As New MySqlCommand("UPDATE servicio SET nombreservicio = '" & TextBox2.Text & "', fechainicio = '" & fecha & "', responsable = '" & TextBox5.Text & "', tiposervicio = '" & ComboTipo.Text & "', grupo = '" & TextBox4.Text & "', estadoservicio = '" & ComboEstado.Text & "' WHERE idservicio = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
             MsgBox("Modificado con Exito.", MsgBoxStyle.Information, "Exito.")
 
@@ -89,16 +90,7 @@ Public Class MaestroServicio
 
     End Sub
 
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
-
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox5.Text = ""
-
-    End Sub
-
-    Private Sub CargarComboSede()
+    Public Sub CargarComboSede()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Dim Tabla As New DataTable
@@ -125,7 +117,7 @@ Public Class MaestroServicio
 
     End Sub
 
-    Private Sub CargarComboGrupo()
+    Public Sub CargarComboGrupo()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Dim Tabla As New DataTable
@@ -133,7 +125,7 @@ Public Class MaestroServicio
 
         Adaptador = New MySqlDataAdapter("SELECT * FROM grupo, sede " _
                                & " WHERE grupo.sede = sede.idsede " _
-                               & " And nombresede = '" & TextBox3.Text & "' ORDER BY nombregrupo ASC", Conexion)
+                               & " AND nombresede = '" & ComboSede.Text & "' ", Conexion)
 
         Adaptador.Fill(Tabla)
 
@@ -146,7 +138,6 @@ Public Class MaestroServicio
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
         'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
-        TextBox3.Text = ComboSede.Text
         CargarComboGrupo()
 
     End Sub
@@ -157,7 +148,8 @@ Public Class MaestroServicio
         Dim Adaptador As New MySqlDataAdapter
         Dim Tabla As New DataTable
 
-        Adaptador = New MySqlDataAdapter("SELECT idgrupo FROM grupo WHERE nombregrupo = '" & ComboGrupo.Text & "' ", Conexion)
+        Adaptador = New MySqlDataAdapter("SELECT * FROM grupo " _
+         & " WHERE nombregrupo = '" & ComboGrupo.Text & "' ", Conexion)
         Adaptador.Fill(Tabla)
 
         For Each row As DataRow In Tabla.Rows
@@ -245,6 +237,15 @@ Public Class MaestroServicio
 
     End Sub
 
+    Private Sub LimpiarComponentes()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        'TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox5.Text = ""
+
+    End Sub
+
     Function ValidarComponentes() As Boolean
 
         Dim Validar As Boolean = True
@@ -258,13 +259,8 @@ Public Class MaestroServicio
             Validar = False
         End If
 
-        If String.IsNullOrEmpty(TextBox3.Text) Then
-            ErrorProvider1.SetError(TextBox3, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(TextBox4.Text) Then
-            ErrorProvider1.SetError(TextBox4, "No puede dejar campos en blanco.")
+        If String.IsNullOrEmpty(TextBox5.Text) Then
+            ErrorProvider1.SetError(TextBox5, "No puede dejar campos en blanco.")
             Validar = False
         End If
 
@@ -280,6 +276,11 @@ Public Class MaestroServicio
 
         If String.IsNullOrEmpty(ComboEstado.Text) Then
             ErrorProvider1.SetError(ComboEstado, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
+        If String.IsNullOrEmpty(ComboTipo.Text) Then
+            ErrorProvider1.SetError(ComboTipo, "No puede dejar campos en blanco.")
             Validar = False
         End If
 

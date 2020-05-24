@@ -88,17 +88,6 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
-
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
-        TextBox7.Text = ""
-        TextBox8.Text = ""
-
-    End Sub
-
     Private Sub CargarComboSede()
         'Metodo que permite cargar el Combobox desde la BD.
 
@@ -426,6 +415,17 @@ Public Class MaestroDispositivo
 
     End Sub
 
+    Private Sub LimpiarComponentes()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        'TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+        TextBox7.Text = ""
+        TextBox8.Text = ""
+
+    End Sub
+
     Function ValidarComponentes() As Boolean
 
         Dim Validar As Boolean = True
@@ -456,6 +456,16 @@ Public Class MaestroDispositivo
 
         If String.IsNullOrEmpty(ComboTipo.Text) Then
             ErrorProvider1.SetError(ComboTipo, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
+        If String.IsNullOrEmpty(ComboSede.Text) Then
+            ErrorProvider1.SetError(ComboSede, "No puede dejar campos en blanco.")
+            Validar = False
+        End If
+
+        If String.IsNullOrEmpty(ComboGrupo.Text) Then
+            ErrorProvider1.SetError(ComboGrupo, "No puede dejar campos en blanco.")
             Validar = False
         End If
 
