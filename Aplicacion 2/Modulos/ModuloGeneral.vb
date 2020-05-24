@@ -15,11 +15,16 @@ Module ModuloGeneral
     Public Reader As MySqlDataReader
 
     'Usado para cargar las imagenes en un arreglo y desplegarlas en el combobox mediante los eventos drawitem y measureitem
-    Public Arreglo As New ArrayList
+
+    'usado para la carga de los combobox en los maestros
     Public Arreglo2 As New ArrayList
+
+    'usado para la carga de los combobox en el seguimiento
+    Public Arreglo As New ArrayList
     Public Arreglo3 As New ArrayList
     Public Arreglo4 As New ArrayList
     Public Arreglo5 As New ArrayList
+
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '''''''''''''''''''''''CONEXION A LA BD''''''''''''''''''''''''

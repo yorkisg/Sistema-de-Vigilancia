@@ -1326,6 +1326,7 @@ Partial Class SeguimientoDispositivo
         'ColumnaObservacion
         '
         Me.ColumnaObservacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaObservacion.DataPropertyName = "observacion"
         DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ColumnaObservacion.DefaultCellStyle = DataGridViewCellStyle17
         Me.ColumnaObservacion.HeaderText = "OBSERVACIONES"

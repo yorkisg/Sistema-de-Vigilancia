@@ -131,7 +131,7 @@ Public Class ListadoGrupo
 
         Dim cmd As New MySqlCommand("SELECT idgrupo, nombregrupo, nombresede " _
                                     & " FROM grupo, sede WHERE grupo.sede = sede.idsede " _
-                                    & " AND nombregrupo Like '%" & busqueda & "%' ", Conexion)
+                                    & " AND nombregrupo LIKE '%" & busqueda & "%' ", Conexion)
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter(cmd)

@@ -5,7 +5,7 @@ Public Class MaestroMaterial
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Se habilita la serie correlativa para el siguiente ID.
-        Serie()
+        SerieMaterial()
 
         'Se inhabilita el boton modificar.
         BotonModificar.Enabled = False
@@ -14,13 +14,12 @@ Public Class MaestroMaterial
         TextBox2.CharacterCasing = CharacterCasing.Upper
         TextBox3.CharacterCasing = CharacterCasing.Upper
 
-
     End Sub
 
     Private Sub MaestroDispositivo_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Cierre del formulario
 
-        LimpiarComponentes()
+        LimpiarComponentesMaterial()
         Dispose()
 
     End Sub
@@ -29,7 +28,7 @@ Public Class MaestroMaterial
         'Boton registrar
 
         'Se valida que no haya algun campo vacio
-        If ValidarComponentes() = True Then
+        If ValidarComponentesMaterial() = True Then
 
             Dim db As New MySqlCommand("INSERT INTO material (idmaterial, nombrematerial, unidad, cantidad) " _
             & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & ComboUnidad.Text & "', '" & TextBox3.Text & "')", Conexion)
@@ -38,9 +37,9 @@ Public Class MaestroMaterial
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesMaterial()
             'Se habilita el metodo para incrementar el siguiente ID.
-            Serie()
+            SerieMaterial()
 
         End If
 
@@ -50,7 +49,7 @@ Public Class MaestroMaterial
         'Boton modificar
 
         'Se valida que no haya algun campo vacio
-        If ValidarComponentes() = True Then
+        If ValidarComponentesMaterial() = True Then
 
             Dim db As New MySqlCommand("UPDATE material SET nombrematerial = '" & TextBox2.Text & "', unidad = '" & ComboUnidad.Text & "', cantidad = '" & TextBox3.Text & "' WHERE idmaterial = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
@@ -61,9 +60,9 @@ Public Class MaestroMaterial
             'Se activa el uso del boton guardar.
             BotonGuardar.Enabled = True
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesSeguimientoDispositivo()
             'Se habilita el metodo para incrementar el siguiente ID.
-            Serie()
+            SerieMaterial()
 
         End If
 
@@ -72,7 +71,7 @@ Public Class MaestroMaterial
     Private Sub BotonSalir_Click(sender As Object, e As EventArgs) Handles BotonSalir.Click
         'Boton salir
 
-        LimpiarComponentes()
+        LimpiarComponentesMaterial()
         Dispose()
 
     End Sub
@@ -80,65 +79,9 @@ Public Class MaestroMaterial
     Private Sub BotonBuscar_Click(sender As Object, e As EventArgs) Handles BotonBuscar.Click
         'Boton buscar
 
-        'Escondemos la columna check
-        ' ListadoMaterial.DataGridView.MultiSelect = False
-
         ListadoMaterial.ShowDialog()
 
     End Sub
-
-    Private Sub Serie()
-        'Metodo que permite generar una serie correlativa de numeros enteros. 
-        'Usado para generar automaticamente el ID.
-
-        'Se obtiene el ultimo ID del chofer.
-        Dim Command As New MySqlCommand("SELECT MAX(idmaterial) FROM material", Conexion)
-        Dim numero As Integer
-
-        'El ID obtenido de la BD se incrementa.
-        numero = Command.ExecuteScalar
-        numero = numero + 1
-
-        'Se da formato al ID obtenido de la BD.
-        TextBox1.Text = Format(numero, "000000000")
-
-    End Sub
-
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
-
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
-
-    End Sub
-
-    Function ValidarComponentes() As Boolean
-
-        Dim Validar As Boolean = True
-
-        'Limpia todos los mensajes de error mostrados en la interfaz de usuario
-        ErrorProvider1.Clear()
-
-        'Valida que el textbox no este nulo o vacio
-        If String.IsNullOrEmpty(TextBox2.Text) Then
-            ErrorProvider1.SetError(TextBox2, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(TextBox3.Text) Then
-            ErrorProvider1.SetError(TextBox3, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(ComboUnidad.Text) Then
-            ErrorProvider1.SetError(ComboUnidad, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        Return Validar
-
-    End Function
 
     Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox3.KeyPress
         'Evento KeyPress: permite agregar solo numeros en el textbox.

@@ -10,7 +10,7 @@ Public Class SeguimientoDispositivo
         InicializarTimer()
 
         'Carga del arbol de opciones
-        CargarArbolSeguimiento()
+        CargarArbolSeguimientoDispositivo()
 
         'Validamos que el primer item seleccionado en el arbol sea el primero
         'Arbol.SelectedNode = Arbol.Nodes(0).Nodes(0) 'SELECCIONAMOS EL PRIMER HIJO
@@ -30,16 +30,16 @@ Public Class SeguimientoDispositivo
         EnableDoubleBuffered(DataGridView4)
 
         'Inicializacion de la serie
-        SerieSeguimientoIncidencia()
-        SerieSeguimientohistorial()
+        SerieIncidenciaSeguimientoDispositivo()
+        SerieHistorialSeguimientoDispositivo()
 
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
         TextBox5.CharacterCasing = CharacterCasing.Upper
 
         'Carga del combo
         CargarComboTipoDispositivoSeguimiento()
-        CargarComboPrioridad()
-        CargarComboEstado()
+        CargarComboPrioridadSeguimientoDispositivo()
+        CargarComboEstadoSeguimientoDispositivo()
 
     End Sub
 
@@ -48,7 +48,7 @@ Public Class SeguimientoDispositivo
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
 
-            LimpiarDataGridView()
+            LimpiarDataGridViewSeguimientoDispositivo()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -77,7 +77,7 @@ Public Class SeguimientoDispositivo
         'Control Timer: se lleva el tiempo para que la hora y la fecha pueda ser actualizada constantemente
 
         'Serie
-        SerieSeguimientoIncidencia()
+        SerieIncidenciaSeguimientoDispositivo()
 
         TextBox6.Text = DateTime.Now.ToShortTimeString()
         DateTimePicker1.Value = Today
@@ -95,7 +95,7 @@ Public Class SeguimientoDispositivo
         TextBox1.Text = e.Node.Text
 
         'Al conocer la sede enviada al textbox, se ejecuta el metodo
-        CargarGridSeguimiento()
+        CargarGridSeguimientoDispositivo()
 
         'Si el nodo seleccionado es padre se inhabilita el panel2 y el panel3
         If e.Node.Parent Is Nothing And e.Node.Nodes.Count > 0 Then
@@ -103,7 +103,7 @@ Public Class SeguimientoDispositivo
             Panel2.Enabled = False
             Panel3.Enabled = False
 
-            LimpiarDataGridView()
+            LimpiarDataGridViewSeguimientoDispositivo()
 
             'Si el nodo seleccionado es hijo se habilita el panel2 y el panel3
         Else
@@ -131,7 +131,7 @@ Public Class SeguimientoDispositivo
         Try
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesSeguimientoDispositivo()
 
             If DataGridView1.RowCount > 0 And DataGridView1.SelectedRows.Count = 1 Then
 
@@ -149,7 +149,7 @@ Public Class SeguimientoDispositivo
                 ComboGrupo.Text = DataGridView1.Item("ColumnaGrupo", DataGridView1.SelectedRows(0).Index).Value
                 ComboEstado.Text = DataGridView1.Item("ColumnaEstado", DataGridView1.SelectedRows(0).Index).Value
 
-                SerieSeguimientoIncidencia()
+                SerieIncidenciaSeguimientoDispositivo()
 
                 TextBox12.Text = DataGridView1.Item("ColumnaGrupo", DataGridView1.SelectedRows(0).Index).Value
 
@@ -157,9 +157,9 @@ Public Class SeguimientoDispositivo
 
             'Luego de seleccionar el valor en el DataGridView1 llamamos a los metodos para cargar lo correspondiente.
 
-            CargarHistorialSeguimiento()
-            CargarHistorialEstatus()
-            CargarHistorialServicios()
+            CargarHistorialSeguimientoDispositivo()
+            CargarHistorialEstatusDispositivo()
+            CargarHistorialServiciosDispositivo()
 
         Catch ex As Exception
 
@@ -369,7 +369,7 @@ Public Class SeguimientoDispositivo
 
             Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
 
-            If ValidarComponentes() = True Then
+            If ValidarComponentesSeguimientoDispositivo() = True Then
 
                 'Registro formal de la ruta con todos sus atributos
                 Dim db As New MySqlCommand("INSERT INTO incidencia (idincidencia, dispositivo, prioridad, clasificacion, descripcion, fecha, hora) " _
@@ -379,17 +379,17 @@ Public Class SeguimientoDispositivo
                 db.ExecuteNonQuery()
 
                 'Se limpian todos los componentes del formulario para un nuevo uso.
-                LimpiarComponentes()
+                LimpiarComponentesSeguimientoDispositivo()
 
                 'Se habilita el metodo para incrementar el siguiente ID.
-                SerieSeguimientoIncidencia()
+                SerieIncidenciaSeguimientoDispositivo()
 
                 'Actualizamos la lista
-                CargarGridSeguimiento()
+                CargarGridSeguimientoDispositivo()
 
                 'Luego de seleccionar el valor en el DataGridView1 llamamos al metodo 
                 'CargarHistorialSeguimiento para cargar lo correspondiente.
-                CargarHistorialSeguimiento()
+                CargarHistorialSeguimientoDispositivo()
 
                 'Luego de guardar nos posicionamos en la fila ya seleccionada anteriormente
                 'para verificar la inclusion de la ruta en el datagridview2.
@@ -413,7 +413,7 @@ Public Class SeguimientoDispositivo
         Dim fecha = DateTimePicker1.Value.ToString("yyyy-MM-dd")
 
         'Se valida que no haya algun campo vacio
-        If ValidarComponentes() = True Then
+        If ValidarComponentesSeguimientoDispositivo() = True Then
 
             Dim db As New MySqlCommand("UPDATE dispositivo SET nombredispositivo = '" & TextBox8.Text & "', " _
                              & " ubicacion = '" & TextBox9.Text & "', tipodispositivo = '" & TextBox11.Text & "', " _
@@ -429,18 +429,18 @@ Public Class SeguimientoDispositivo
             db2.ExecuteNonQuery()
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesSeguimientoDispositivo()
 
             'Se habilita el metodo para incrementar el siguiente ID.
-            SerieSeguimientoIncidencia()
-            SerieSeguimientohistorial()
+            SerieIncidenciaSeguimientoDispositivo()
+            SerieHistorialSeguimientoDispositivo()
 
             'Actualizamos la lista
-            CargarGridSeguimiento()
+            CargarGridSeguimientoDispositivo()
 
             'Luego de seleccionar el valor en el DataGridView1 llamamos al metodo 
             'CargarHistorialEstatus para cargar lo correspondiente.
-            CargarHistorialEstatus()
+            CargarHistorialEstatusDispositivo()
 
             'Luego de guardar nos posicionamos en la fila ya seleccionada anteriormente
             'para verificar la inclusion de la ruta en el datagridview2.
@@ -457,7 +457,7 @@ Public Class SeguimientoDispositivo
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
 
-            LimpiarDataGridView()
+            LimpiarDataGridViewSeguimientoDispositivo()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -478,14 +478,14 @@ Public Class SeguimientoDispositivo
         'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
         TextBox12.Text = ComboSede.Text
-        CargarComboGrupo()
+        CargarComboGrupoSeguimientoDispositivo()
 
     End Sub
 
     Private Sub ComboGrupo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboGrupo.SelectedIndexChanged
         'Obtenemos el id del grupo seleccionado
 
-        ObtenerGrupo()
+        ObtenerGrupoSeguimientoDispositivo()
 
     End Sub
 
@@ -502,7 +502,7 @@ Public Class SeguimientoDispositivo
             Panel3.SelectedIndex = 1
 
             'Cargamos el combo con las sedes
-            CargarComboSede()
+            CargarComboSedeSeguimientoDispositivo()
 
         End If
 
@@ -548,7 +548,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboTipo_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboTipo.DrawItem
+    Private Sub ComboTipo_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboTipo.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -568,7 +568,7 @@ Public Class SeguimientoDispositivo
                 e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
                 e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
 
             Else
@@ -580,7 +580,7 @@ Public Class SeguimientoDispositivo
                 e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
                 e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
 
             End If
@@ -595,7 +595,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboTipo_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboTipo.MeasureItem
+    Private Sub ComboTipo_MeasureItem(sender As Object, e As MeasureItemEventArgs) Handles ComboTipo.MeasureItem
         'Esto es para darle espacio a los elementos mostrados en el ComboBox
 
         Try
@@ -610,7 +610,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboPrioridad_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboPrioridad.DrawItem
+    Private Sub ComboPrioridad_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboPrioridad.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -624,7 +624,7 @@ Public Class SeguimientoDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList4.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
@@ -639,7 +639,7 @@ Public Class SeguimientoDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList4.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList4.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality
@@ -657,7 +657,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboPrioridad_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboPrioridad.MeasureItem
+    Private Sub ComboPrioridad_MeasureItem(sender As Object, e As MeasureItemEventArgs) Handles ComboPrioridad.MeasureItem
         'Esto es para darle espacio a los elementos mostrados en el ComboBox
 
         Try
@@ -672,7 +672,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboEstado_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboEstado.DrawItem
+    Private Sub ComboEstado_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboEstado.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -719,7 +719,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboEstado_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboEstado.MeasureItem
+    Private Sub ComboEstado_MeasureItem(sender As Object, e As MeasureItemEventArgs) Handles ComboEstado.MeasureItem
         'Esto es para darle espacio a los elementos mostrados en el ComboBox
 
         Try
@@ -734,7 +734,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboSede_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboSede.DrawItem
+    Private Sub ComboSede_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboSede.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -781,7 +781,7 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub ComboSede_MeasureItem(sender As Object, e As System.Windows.Forms.MeasureItemEventArgs) Handles ComboSede.MeasureItem
+    Private Sub ComboSede_MeasureItem(sender As Object, e As MeasureItemEventArgs) Handles ComboSede.MeasureItem
         'Esto es para darle espacio a los elementos mostrados en el ComboBox
 
         Try

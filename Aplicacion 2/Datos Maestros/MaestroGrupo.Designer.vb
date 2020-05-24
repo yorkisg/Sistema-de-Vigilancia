@@ -40,6 +40,7 @@ Partial Class MaestroGrupo
         Me.BotonBuscar = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -174,6 +175,16 @@ Partial Class MaestroGrupo
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "Alimex.png")
+        Me.ImageList1.Images.SetKeyName(1, "Almacen.png")
+        Me.ImageList1.Images.SetKeyName(2, "CEP.png")
+        Me.ImageList1.Images.SetKeyName(3, "Hacienda.png")
+        Me.ImageList1.Images.SetKeyName(4, "Planta.png")
+        '
         'MaestroGrupo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -219,4 +230,5 @@ Partial Class MaestroGrupo
     Friend WithEvents BotonBuscar As Button
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents ImageList1 As ImageList
 End Class

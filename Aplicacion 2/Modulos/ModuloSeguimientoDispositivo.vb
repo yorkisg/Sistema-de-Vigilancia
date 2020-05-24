@@ -10,7 +10,7 @@ Module ModuloSeguimientoDispositivo
     '''''''''''''''''''''''''CARGA DEL ARBOL''''''''''''''''''''''''''
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-    Public Sub CargarArbolSeguimiento()
+    Public Sub CargarArbolSeguimientoDispositivo()
         'Metodo donde generamos el arbol de opciones de acuerdo a las flotas, subflotas y grupos registrados en BD
 
         'Adaptadores
@@ -81,7 +81,7 @@ Module ModuloSeguimientoDispositivo
     '''''''''''''''''''''''CARGA DE DATOS''''''''''''''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-    Public Sub CargarGridSeguimiento()
+    Public Sub CargarGridSeguimientoDispositivo()
         'Metodo que genera la carga de datos en el DataGridview1 
 
         Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, nombredispositivo, nombretipo, ubicacion, estadodispositivo " _
@@ -112,14 +112,14 @@ Module ModuloSeguimientoDispositivo
         End With
 
         'Llamada al metodo para cargar imagenes
-        CargarImagenesSeguimiento()
+        CargarImagenesSeguimientoDispositivo()
 
         CargarImagenesDispositivo()
         'SeguimientoDispositivo.DataGridView1.ClearSelection()
 
     End Sub
 
-    Public Sub CargarHistorialSeguimiento()
+    Public Sub CargarHistorialSeguimientoDispositivo()
         'Metodo que genera la carga de datos en el DataGridview1 
 
         Dim sql As String = "SELECT idincidencia, descripcion, prioridad, clasificacion, fecha, hora " _
@@ -154,7 +154,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarHistorialEstatus()
+    Public Sub CargarHistorialEstatusDispositivo()
         'Metodo que genera la carga de datos en el DataGridview1 
 
         Dim sql As String = "SELECT idhistorial, nombredispositivo, descripcionhistorial, fecha, hora " _
@@ -188,10 +188,10 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarHistorialServicios()
+    Public Sub CargarHistorialServiciosDispositivo()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT servicio, nombredispositivo, nombreservicio, fechainicio " _
+        Dim sql As String = "SELECT servicio, nombredispositivo, nombreservicio, observacion, fechainicio " _
                     & " FROM dispositivo, detalleservicio, servicio " _
                     & " WHERE detalleservicio.dispositivo = dispositivo.iddispositivo " _
                     & " AND detalleservicio.servicio = servicio.idservicio " _
@@ -224,7 +224,7 @@ Module ModuloSeguimientoDispositivo
     '''''''''''''''''''''''METODOS DE APOYO''''''''''''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-    Public Sub SerieSeguimientoIncidencia()
+    Public Sub SerieIncidenciaSeguimientoDispositivo()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID
 
@@ -241,7 +241,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub SerieSeguimientohistorial()
+    Public Sub SerieHistorialSeguimientoDispositivo()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID
 
@@ -258,7 +258,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarImagenesSeguimiento()
+    Public Sub CargarImagenesSeguimientoDispositivo()
         'En este metodo especificamos cuales son las imagenes que se cargaran en el 
         'CellFormatting del DataGridView1
 
@@ -268,7 +268,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarComboSede()
+    Public Sub CargarComboSedeSeguimientoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Dim Tabla As New DataTable
@@ -295,7 +295,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarComboGrupo()
+    Public Sub CargarComboGrupoSeguimientoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Dim Tabla As New DataTable
@@ -303,7 +303,7 @@ Module ModuloSeguimientoDispositivo
 
         Adaptador = New MySqlDataAdapter("Select idgrupo, nombregrupo FROM grupo, sede " _
                          & " WHERE grupo.sede = sede.idsede " _
-                         & " And nombresede Like '" & SeguimientoDispositivo.TextBox12.Text & "' " _
+                         & " And nombresede LIKE '" & SeguimientoDispositivo.TextBox12.Text & "' " _
                          & " ORDER BY nombregrupo ASC", Conexion)
 
         Adaptador.Fill(Tabla)
@@ -314,21 +314,21 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub CargarComboPrioridad()
+    Public Sub CargarComboPrioridadSeguimientoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
-        Arreglo2.Add("ALTA")
-        Arreglo2.Add("MEDIA")
-        Arreglo2.Add("BAJA")
+        Arreglo3.Add("ALTA")
+        Arreglo3.Add("MEDIA")
+        Arreglo3.Add("BAJA")
 
         SeguimientoDispositivo.ComboPrioridad.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
         SeguimientoDispositivo.ComboPrioridad.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
 
-        SeguimientoDispositivo.ComboPrioridad.DataSource = Arreglo2
+        SeguimientoDispositivo.ComboPrioridad.DataSource = Arreglo3
 
     End Sub
 
-    Public Sub CargarComboEstado()
+    Public Sub CargarComboEstadoSeguimientoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
         Arreglo4.Add("OPERATIVO")
@@ -342,7 +342,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub ObtenerGrupo()
+    Public Sub ObtenerGrupoSeguimientoDispositivo()
         'Este metodo permite obtener el ID del chofer y sus datos
 
         Dim Adaptador As New MySqlDataAdapter
@@ -390,7 +390,7 @@ Module ModuloSeguimientoDispositivo
     '''''''''''''''''''''''METODOS DE LIMPIEZA'''''''''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-    Public Function ValidarComponentes() As Boolean
+    Public Function ValidarComponentesSeguimientoDispositivo() As Boolean
         'Funcion booleana que permite validar si algun campo quedo vacio.
 
         Dim Validar As Boolean = True
@@ -517,7 +517,7 @@ Module ModuloSeguimientoDispositivo
 
     End Function
 
-    Public Sub LimpiarComponentes()
+    Public Sub LimpiarComponentesSeguimientoDispositivo()
         'Metodo que permite limpiar todos los controles del formulario.
 
         If SeguimientoDispositivo.Panel2.SelectedIndex = 0 Then
@@ -542,7 +542,7 @@ Module ModuloSeguimientoDispositivo
 
     End Sub
 
-    Public Sub LimpiarDataGridView()
+    Public Sub LimpiarDataGridViewSeguimientoDispositivo()
         'Metodo que permite limpiar todos los controles del formulario.
 
         If SeguimientoDispositivo.DataGridView1.RowCount > 0 Then

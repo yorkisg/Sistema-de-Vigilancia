@@ -140,7 +140,7 @@ Public Class ListadoDispositivo
                                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
                                        & " AND grupo.sede = sede.idsede " _
                                        & " AND dispositivo.tipodispositivo = tipodispositivo.idtipodispositivo " _
-                                       & " AND nombredispositivo Like '%" & busqueda & "%' " _
+                                       & " AND nombredispositivo LIKE '%" & busqueda & "%' " _
                                        & " ORDER BY nombredispositivo ", Conexion)
 
         Dim Tabla As New DataTable

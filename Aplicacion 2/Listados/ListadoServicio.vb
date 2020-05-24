@@ -186,11 +186,12 @@ Public Class ListadoServicio
     Function Filtrar(ByVal busqueda As String) As DataTable
         'Funcion que carga los datos de acuerdo a lo ingresado en el TextBox
 
-        Dim cmd As New MySqlCommand("SELECT idservicio, descripcion, fechainicio, nombresede, nombregrupo, estado" _
+        Dim cmd As New MySqlCommand("SELECT idservicio, nombreservicio, nombresede, nombregrupo, responsable, tiposervicio, fechainicio, estadoservicio" _
                                        & " FROM servicio, grupo, sede" _
                                        & " WHERE servicio.grupo = grupo.idgrupo " _
                                        & " AND grupo.sede = sede.idsede " _
-                                       & " AND descripcion Like '%" & busqueda & "%' ", Conexion)
+                                       & " AND estadoservicio = '" & TextBox1.Text & "' " _
+                                       & " AND nombreservicio LIKE '%" & busqueda & "%' ", Conexion)
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter(cmd)

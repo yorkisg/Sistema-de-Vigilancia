@@ -5,7 +5,7 @@ Public Class SeguimientoServicio
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Carga inicial de las series
-        SerieSeguimientoDetalle()
+        SerieSeguimientoDetalleServicio()
 
         'Llamada al metodo para alternar los colores de las filas
         AlternarFilasGeneral(DataGridView1)
@@ -61,7 +61,7 @@ Public Class SeguimientoServicio
             DataGridView2.EndEdit()
 
             'Iniciamos las validaciones correspondientes
-            If ValidarComponentesServicio() = True And ValidarDataGridView() = True And ValidarDuplicado() = True Then
+            If ValidarComponentesServicios() = True And ValidarDataGridViewSeguimientoServicio() = True And ValidarDuplicadoSeguimientoServicio() = True Then
 
                 'Se reccorren todos los elementos del grid para guardar fila por fila
                 For Each row In DataGridView2.Rows
@@ -76,7 +76,7 @@ Public Class SeguimientoServicio
                     db.ExecuteNonQuery()
 
                     'Incrementamos el id para el siguiente registro
-                    SerieSeguimientoDetalle()
+                    SerieSeguimientoDetalleServicio()
 
                 Next
 

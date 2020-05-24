@@ -5,7 +5,7 @@ Public Class MaestroDispositivo
         'Metodos que cargaran al momento de desplegar el formulario.
 
         'Se habilita la serie correlativa para el siguiente ID.
-        Serie()
+        SerieDispositivo()
 
         'Se inhabilita el boton modificar.
         BotonModificar.Enabled = False
@@ -14,17 +14,17 @@ Public Class MaestroDispositivo
         TextBox2.CharacterCasing = CharacterCasing.Upper
         TextBox3.CharacterCasing = CharacterCasing.Upper
 
-        CargarComboSede()
-        'CargarComboGrupo()
+        'Carga inicial de combos
+        CargarComboSedeDispositivo()
         CargarComboTipoDispositivo()
-        CargarComboEstado()
+        CargarComboEstadoDispositivo()
 
     End Sub
 
     Private Sub MaestroDispositivo_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Cierre del formulario
 
-        LimpiarComponentes()
+        LimpiarComponentesDispositivo()
         Dispose()
 
     End Sub
@@ -33,7 +33,7 @@ Public Class MaestroDispositivo
         'Boton registrar
 
         'Se valida que no haya algun campo vacio
-        If ValidarComponentes() = True Then
+        If ValidarComponentesDispositivo() = True Then
 
             Dim db As New MySqlCommand("INSERT INTO dispositivo (iddispositivo, nombredispositivo, ubicacion, direccionip, marca, tipodispositivo, grupo, estadodispositivo) " _
             & " VALUES ('" & TextBox1.Text & "', '" & TextBox2.Text & "', '" & TextBox3.Text & "', '" & TextBox7.Text & "', '" & TextBox8.Text & "', '" & TextBox6.Text & "', '" & TextBox4.Text & "', '" & ComboEstado.Text & "')", Conexion)
@@ -42,9 +42,9 @@ Public Class MaestroDispositivo
             MsgBox("Registrado con Exito.", MsgBoxStyle.Information, "Exito.")
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesDispositivo()
             'Se habilita el metodo para incrementar el siguiente ID.
-            Serie()
+            SerieDispositivo()
 
         End If
 
@@ -54,7 +54,7 @@ Public Class MaestroDispositivo
         'Boton modificar
 
         'Se valida que no haya algun campo vacio
-        If ValidarComponentes() = True Then
+        If ValidarComponentesDispositivo() = True Then
 
             Dim db As New MySqlCommand("UPDATE dispositivo SET nombredispositivo = '" & TextBox2.Text & "', ubicacion = '" & TextBox3.Text & "', direccionip = '" & TextBox7.Text & "', marca = '" & TextBox8.Text & "', tipodispositivo = '" & TextBox6.Text & "', grupo = '" & TextBox4.Text & "', estadodispositivo = '" & ComboEstado.Text & "' WHERE iddispositivo = '" & TextBox1.Text & "' ", Conexion)
             db.ExecuteNonQuery()
@@ -65,9 +65,9 @@ Public Class MaestroDispositivo
             'Se activa el uso del boton guardar.
             BotonGuardar.Enabled = True
             'Se limpian todos los componentes del formulario para un nuevo uso.
-            LimpiarComponentes()
+            LimpiarComponentesDispositivo()
             'Se habilita el metodo para incrementar el siguiente ID.
-            Serie()
+            SerieDispositivo()
 
         End If
 
@@ -76,7 +76,7 @@ Public Class MaestroDispositivo
     Private Sub BotonSalir_Click(sender As Object, e As EventArgs) Handles BotonSalir.Click
         'Boton salir
 
-        LimpiarComponentes()
+        LimpiarComponentesDispositivo()
         Dispose()
 
     End Sub
@@ -88,97 +88,11 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub CargarComboSede()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("SELECT * FROM sede ORDER BY nombresede ASC", Conexion)
-        Adaptador.Fill(Tabla)
-
-        ComboSede.DataSource = Tabla
-        ComboSede.DisplayMember = "nombresede"
-        ComboSede.ValueMember = "idsede"
-
-        ComboSede.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
-        ComboSede.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
-
-        'Generamos un ciclo para obtener cada nombre de la consulta guardada en el Tabla
-        'cada valor obtenido es agregado al ArrayList declarado al inicio de la clase
-        For Each dr As DataRow In Tabla.Rows
-
-            'guardamos cada registro en el arreglo
-            Arreglo5.Add(dr("nombresede"))
-
-        Next
-
-    End Sub
-
-    Private Sub CargarComboGrupo()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("SELECT * FROM grupo, sede " _
-                               & " WHERE grupo.sede = sede.idsede " _
-                               & " And nombresede = '" & TextBox5.Text & "' ORDER BY nombregrupo ASC", Conexion)
-
-        Adaptador.Fill(Tabla)
-
-        ComboGrupo.DataSource = Tabla
-        ComboGrupo.DisplayMember = "nombregrupo"
-        ComboGrupo.ValueMember = "idgrupo"
-
-    End Sub
-
-    Private Sub CargarComboTipoDispositivo()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Dim Tabla As New DataTable
-        Dim Adaptador As New MySqlDataAdapter
-
-        Adaptador = New MySqlDataAdapter("SELECT * FROM tipodispositivo ORDER BY idtipodispositivo ASC", Conexion)
-        Adaptador.Fill(Tabla)
-
-        ComboTipo.DataSource = Tabla
-        ComboTipo.DisplayMember = "nombretipo"
-        ComboTipo.ValueMember = "idtipodispositivo"
-
-        ComboTipo.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
-        ComboTipo.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
-
-        'Generamos un ciclo para obtener cada nombre de la consulta guardada en el Tabla
-        'cada valor obtenido es agregado al ArrayList declarado al inicio de la clase
-        For Each dr As DataRow In Tabla.Rows
-
-            'guardamos cada registro en el arreglo
-            Arreglo.Add(dr("nombretipo"))
-
-        Next
-
-    End Sub
-
-    Private Sub CargarComboEstado()
-        'Metodo que permite cargar el Combobox desde la BD.
-
-        Arreglo3.Add("OPERATIVO")
-        Arreglo3.Add("PRESENTANDO FALLAS")
-        Arreglo3.Add("DESCONECTADO")
-
-        ComboEstado.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
-        ComboEstado.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
-
-        ComboEstado.DataSource = Arreglo3
-
-    End Sub
-
     Private Sub ComboSede_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboSede.SelectedIndexChanged
         'Evento que permite cargar el metodo de acuerdo al valor selecionado
 
         TextBox5.Text = ComboSede.Text
-        CargarComboGrupo()
+        CargarComboGrupoDispositivo()
 
     End Sub
 
@@ -226,13 +140,13 @@ Public Class MaestroDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
                 e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
 
             Else
@@ -241,10 +155,10 @@ Public Class MaestroDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                e.Graphics.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality
                 e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
 
             End If
@@ -274,7 +188,7 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub ComboEstado_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboEstado.DrawItem
+    Private Sub ComboEstado_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboEstado.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -288,7 +202,7 @@ Public Class MaestroDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
@@ -303,7 +217,7 @@ Public Class MaestroDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality
@@ -336,7 +250,7 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub ComboSede_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles ComboSede.DrawItem
+    Private Sub ComboSede_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboSede.DrawItem
         'Evento que dibuja el texto y las imagenes cargadas en el combobox
 
         Try
@@ -350,7 +264,7 @@ Public Class MaestroDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo5(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList1.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList1.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList1.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
@@ -365,7 +279,7 @@ Public Class MaestroDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList1.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo5(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList1.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList1.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality
@@ -398,85 +312,6 @@ Public Class MaestroDispositivo
 
     End Sub
 
-    Private Sub Serie()
-        'Metodo que permite generar una serie correlativa de numeros enteros. 
-        'Usado para generar automaticamente el ID.
-
-        'Se obtiene el ultimo ID del chofer.
-        Dim Command As New MySqlCommand("SELECT MAX(iddispositivo) FROM dispositivo", Conexion)
-        Dim numero As Integer
-
-        'El ID obtenido de la BD se incrementa.
-        numero = Command.ExecuteScalar
-        numero = numero + 1
-
-        'Se da formato al ID obtenido de la BD.
-        TextBox1.Text = Format(numero, "000000000")
-
-    End Sub
-
-    Private Sub LimpiarComponentes()
-        'Metodo que permite limpiar todos los controles del formulario.
-
-        'TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
-        TextBox7.Text = ""
-        TextBox8.Text = ""
-
-    End Sub
-
-    Function ValidarComponentes() As Boolean
-
-        Dim Validar As Boolean = True
-
-        'Limpia todos los mensajes de error mostrados en la interfaz de usuario
-        ErrorProvider1.Clear()
-
-        'Valida que el textbox no este nulo o vacio
-        If String.IsNullOrEmpty(TextBox2.Text) Then
-            ErrorProvider1.SetError(TextBox2, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(TextBox3.Text) Then
-            ErrorProvider1.SetError(TextBox3, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(TextBox7.Text) Then
-            ErrorProvider1.SetError(TextBox7, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(TextBox8.Text) Then
-            ErrorProvider1.SetError(TextBox8, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(ComboTipo.Text) Then
-            ErrorProvider1.SetError(ComboTipo, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(ComboSede.Text) Then
-            ErrorProvider1.SetError(ComboSede, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(ComboGrupo.Text) Then
-            ErrorProvider1.SetError(ComboGrupo, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        If String.IsNullOrEmpty(ComboEstado.Text) Then
-            ErrorProvider1.SetError(ComboEstado, "No puede dejar campos en blanco.")
-            Validar = False
-        End If
-
-        Return Validar
-
-    End Function
 
 
 End Class

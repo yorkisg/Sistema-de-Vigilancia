@@ -158,7 +158,7 @@ Public Class ListadoMaterial
 
         Dim cmd As New MySqlCommand("Select idmaterial, nombrematerial, unidad, cantidad " _
                                        & " FROM material " _
-                                       & " WHERE nombrematerial Like '%" & busqueda & "%' ", Conexion)
+                                       & " WHERE nombrematerial LIKE '%" & busqueda & "%' ", Conexion)
 
         Dim Tabla As New DataTable
         Dim Adaptador As New MySqlDataAdapter(cmd)

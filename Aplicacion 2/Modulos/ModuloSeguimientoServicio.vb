@@ -33,7 +33,7 @@ Module ModuloSeguimientoServicio
         End With
 
         'Llamada al metodo para cargar imagenes
-        CargarImagenesSeguimiento()
+        CargarImagenesSeguimientoDispositivo()
 
         CargarImagenesDispositivo()
 
@@ -58,7 +58,7 @@ Module ModuloSeguimientoServicio
 
     End Sub
 
-    Public Sub SerieSeguimientoDetalle()
+    Public Sub SerieSeguimientoDetalleServicio()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID.
 
@@ -75,7 +75,7 @@ Module ModuloSeguimientoServicio
 
     End Sub
 
-    Public Sub LimpiarComponentesServicio()
+    Public Sub LimpiarComponentesServicios()
         'Metodo que permite limpiar todos los controles del formulario.
 
         'Abrimos el ciclo que recorre todas las filas del datagridview
@@ -92,7 +92,7 @@ Module ModuloSeguimientoServicio
 
     End Sub
 
-    Public Function ValidarComponentesServicio() As Boolean
+    Public Function ValidarComponentesServicios() As Boolean
         'Funcion booleana que permite validar si algun campo quedo vacio.
 
         Dim Validar As Boolean = True
@@ -140,7 +140,7 @@ Module ModuloSeguimientoServicio
 
     End Function
 
-    Public Function ValidarDataGridView() As Boolean
+    Public Function ValidarDataGridViewSeguimientoServicio() As Boolean
         'metodo para validar q no se cargue dos veces un elemento en el datagridview
 
         Dim Existe As Boolean = True
@@ -172,7 +172,7 @@ Module ModuloSeguimientoServicio
 
     End Function
 
-    Public Function ValidarDuplicado() As Boolean
+    Public Function ValidarDuplicadoSeguimientoServicio() As Boolean
         'metodo para validar q no se cargue dos veces un elemento en el datagridview
 
         Dim Existe As Boolean = True

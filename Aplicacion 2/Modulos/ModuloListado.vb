@@ -67,7 +67,7 @@ Module ModuloListado
         ListadoDispositivo.Contador.Text = ListadoDispositivo.DataGridView.RowCount
 
         CargarImagenesDispositivo()
-        CargarImagenesSeguimiento()
+        CargarImagenesSeguimientoDispositivo()
 
     End Sub
 
