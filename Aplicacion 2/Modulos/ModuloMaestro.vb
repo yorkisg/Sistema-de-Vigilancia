@@ -67,7 +67,7 @@ Module ModuloMaestro
         For Each dr As DataRow In Tabla.Rows
 
             'guardamos cada registro en el Arreglo2
-            Arreglo2.Add(dr("nombretipo"))
+            Arreglo3.Add(dr("nombretipo"))
 
         Next
 
@@ -76,14 +76,14 @@ Module ModuloMaestro
     Public Sub CargarComboEstadoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
-        Arreglo2.Add("OPERATIVO")
-        Arreglo2.Add("PRESENTANDO FALLAS")
-        Arreglo2.Add("DESCONECTADO")
+        Arreglo4.Add("OPERATIVO")
+        Arreglo4.Add("PRESENTANDO FALLAS")
+        Arreglo4.Add("DESCONECTADO")
 
         MaestroDispositivo.ComboEstado.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
         MaestroDispositivo.ComboEstado.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
 
-        MaestroDispositivo.ComboEstado.DataSource = Arreglo2
+        MaestroDispositivo.ComboEstado.DataSource = Arreglo4
 
     End Sub
 

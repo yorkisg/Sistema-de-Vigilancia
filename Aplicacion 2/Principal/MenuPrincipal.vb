@@ -17,9 +17,9 @@ Public Class MenuPrincipal
         DesconectarBaseDeDatos()
 
         'Dispose o Close, cualquiera de los dos sirve
-        Close()
+        'Close()
 
-        'Application.Exit()
+        Application.Exit()
 
     End Sub
 
@@ -78,5 +78,6 @@ Public Class MenuPrincipal
         ConsultaServicio.ShowDialog()
 
     End Sub
+
 
 End Class

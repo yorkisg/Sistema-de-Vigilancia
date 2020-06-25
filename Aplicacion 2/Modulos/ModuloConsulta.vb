@@ -36,11 +36,11 @@ Module ModuloConsulta
     Public Sub CargarGridMaterialesServicio()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT nombredispositivo, SUM(cantidadagregada) AS 'suma' " _
-                        & " FROM dispositivo, detalleservicio " _
-                        & " WHERE detalleservicio.dispositivo = dispositivo.iddispositivo " _
-                        & " And servicio = '" & ConsultaServicio.TextBox6.Text & "' " _
-                        & " GROUP BY nombredispositivo " _
+        Dim sql As String = "SELECT nombrematerial, SUM(cantidadagregada) AS 'suma' " _
+                        & " FROM material, detalleservicio " _
+                        & " WHERE detalleservicio.material = material.idmaterial " _
+                        & " AND servicio = '" & ConsultaServicio.TextBox6.Text & "' " _
+                        & " GROUP BY nombrematerial " _
                         & " ORDER BY SUM(cantidadagregada) DESC "
 
         Dim connection As New MySqlConnection(ConnectionString)
@@ -71,21 +71,22 @@ Module ModuloConsulta
     Public Sub CargarGridListadoServicios()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT nombresede, nombregrupo, nombreservicio, responsable, fechainicio, estadoservicio " _
-                           & " FROM sede, grupo, servicio " _
+        Dim Command As New MySqlCommand("SELECT nombresede, nombregrupo, nombreservicio, responsable, fechaservicio, estadoservicio " _
+                           & " FROM sede, grupo, servicio, detalleservicio " _
                            & " WHERE servicio.grupo = grupo.idgrupo " _
-                           & " AND grupo.sede = sede.idsede "
+                           & " AND fechaservicio BETWEEN @fecha1 AND @fecha2 " _
+                           & " AND detalleservicio.servicio = servicio.idservicio " _
+                           & " AND grupo.sede = sede.idsede " _
+                           & " ORDER BY fechaservicio DESC", Conexion)
 
-        Dim connection As New MySqlConnection(ConnectionString)
+        'Para trabajar con fechas y campos tipo "DATE" se usan los parametos
+        Command.Parameters.Add("@fecha1", MySqlDbType.Date).Value = ConsultaServicio.DateTimePicker2.Value
+        Command.Parameters.Add("@fecha2", MySqlDbType.Date).Value = ConsultaServicio.DateTimePicker3.Value
 
-        'Instancia y uso de variables.
-        Command = New MySqlCommand(sql, connection)
-        Adaptador = New MySqlDataAdapter(Command)
-        DataSet = New DataSet()
-
-        'Llenado del datagridview.
-        Adaptador.Fill(DataSet, "historial")
-        Tabla = DataSet.Tables("historial")
+        'Llenado del datagridview
+        Dim adaptador As New MySqlDataAdapter(Command)
+        Dim Tabla As New DataTable
+        adaptador.Fill(Tabla)
         ConsultaServicio.DataGridView3.DataSource = Tabla
 
         'Parametros para editar apariencia del datagridview.

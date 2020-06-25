@@ -84,7 +84,7 @@ Module ModuloSeguimientoDispositivo
     Public Sub CargarGridSeguimientoDispositivo()
         'Metodo que genera la carga de datos en el DataGridview1 
 
-        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, nombredispositivo, nombretipo, ubicacion, estadodispositivo " _
+        Dim sql As String = "SELECT iddispositivo, idgrupo, nombregrupo, nombresede, nombredispositivo, nombretipo, direccionip, ubicacion, estadodispositivo " _
                        & " FROM dispositivo, grupo, sede, tipodispositivo " _
                        & " WHERE dispositivo.grupo = grupo.idgrupo " _
                        & " AND grupo.sede = sede.idsede " _
@@ -520,25 +520,25 @@ Module ModuloSeguimientoDispositivo
     Public Sub LimpiarComponentesSeguimientoDispositivo()
         'Metodo que permite limpiar todos los controles del formulario.
 
-        If SeguimientoDispositivo.Panel2.SelectedIndex = 0 Then
+        'If SeguimientoDispositivo.Panel2.SelectedIndex = 0 Then
 
-            SeguimientoDispositivo.TextBox2.Text = ""
+        SeguimientoDispositivo.TextBox2.Text = ""
             SeguimientoDispositivo.TextBox4.Text = ""
             SeguimientoDispositivo.TextBox5.Text = ""
             'SeguimientoDispositivo.ComboPrioridad.SelectedIndex = -1
             SeguimientoDispositivo.ComboClasificacion.SelectedIndex = -1
 
-        ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
+        'ElseIf SeguimientoDispositivo.Panel2.SelectedIndex = 1 Then
 
-            SeguimientoDispositivo.TextBox7.Text = ""
+        SeguimientoDispositivo.TextBox7.Text = ""
             SeguimientoDispositivo.TextBox8.Text = ""
             SeguimientoDispositivo.TextBox9.Text = ""
             'SeguimientoDispositivo.ComboTipo.SelectedIndex = -1
             'SeguimientoDispositivo.ComboSede.SelectedIndex = -1
             SeguimientoDispositivo.ComboGrupo.SelectedIndex = -1
-            ' SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
+        ' SeguimientoDispositivo.ComboEstado.SelectedIndex = -1
 
-        End If
+        ' End If
 
     End Sub
 
@@ -586,6 +586,84 @@ Module ModuloSeguimientoDispositivo
             Next
 
         End If
+
+    End Sub
+
+    Public Sub LimpiarDataGridViewSeguimientoDispositivoControl()
+        'Metodo que permite limpiar todos los controles del formulario.
+
+        If SeguimientoDispositivo.DataGridView2.RowCount > 0 Then
+
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView2.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView2.Rows.Remove(SeguimientoDispositivo.DataGridView2.CurrentRow)
+
+            Next
+
+        End If
+
+        If SeguimientoDispositivo.DataGridView3.RowCount > 0 Then
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView3.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView3.Rows.Remove(SeguimientoDispositivo.DataGridView3.CurrentRow)
+
+            Next
+
+        End If
+
+        If SeguimientoDispositivo.DataGridView4.RowCount > 0 Then
+
+            For i As Integer = 0 To SeguimientoDispositivo.DataGridView4.RowCount - 1
+
+                SeguimientoDispositivo.DataGridView4.Rows.Remove(SeguimientoDispositivo.DataGridView4.CurrentRow)
+
+            Next
+
+        End If
+
+    End Sub
+
+    Public Sub BloquearComponentes()
+
+        'Bloqueamos componentes de las inciencias
+        SeguimientoDispositivo.TextBox4.Enabled = False
+        SeguimientoDispositivo.TextBox5.Enabled = False
+        SeguimientoDispositivo.TextBox6.Enabled = False
+
+        SeguimientoDispositivo.ComboPrioridad.Enabled = False
+        SeguimientoDispositivo.ComboClasificacion.Enabled = False
+
+        'Bloqueamos componentes de los dispositivos
+        'TextBox8.Enabled = False
+        'TextBox9.Enabled = False
+
+        'ComboTipo.Enabled = False
+        'ComboSede.Enabled = False
+        ' ComboGrupo.Enabled = False
+        SeguimientoDispositivo.ComboEstado.Enabled = False
+
+    End Sub
+
+    Public Sub DesbloquearComponentes()
+
+        'Bloqueamos componentes de las inciencias
+        SeguimientoDispositivo.TextBox4.Enabled = True
+        SeguimientoDispositivo.TextBox5.Enabled = True
+        'TextBox6.Enabled = True
+
+        SeguimientoDispositivo.ComboPrioridad.Enabled = True
+        SeguimientoDispositivo.ComboClasificacion.Enabled = True
+
+        'Bloqueamos componentes de los dispositivos
+        'TextBox8.Enabled = True
+        'TextBox9.Enabled = True
+
+        'ComboTipo.Enabled = True
+        'ComboSede.Enabled = True
+        'ComboGrupo.Enabled = True
+        SeguimientoDispositivo.ComboEstado.Enabled = True
 
     End Sub
 

@@ -13,6 +13,7 @@ Public Class MaestroDispositivo
         'Validamos que en cada Textbox del formulario solo se agregue texto en mayusculas.
         TextBox2.CharacterCasing = CharacterCasing.Upper
         TextBox3.CharacterCasing = CharacterCasing.Upper
+        TextBox8.CharacterCasing = CharacterCasing.Upper
 
         'Carga inicial de combos
         CargarComboSedeDispositivo()
@@ -140,7 +141,7 @@ Public Class MaestroDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
@@ -155,7 +156,7 @@ Public Class MaestroDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList3.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo3(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList3.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality
@@ -202,7 +203,7 @@ Public Class MaestroDispositivo
                 e.Graphics.FillRectangle(Brushes.DeepSkyBlue, e.Bounds)
 
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo4(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
 
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
@@ -217,7 +218,7 @@ Public Class MaestroDispositivo
                 'Dibuja la imagen
                 e.Graphics.DrawImage(ImageList2.Images(e.Index), e.Bounds.Left, e.Bounds.Top)
                 'Dibuja el texto
-                e.Graphics.DrawString(Arreglo2(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
+                e.Graphics.DrawString(Arreglo4(e.Index), e.Font, Brushes.Black, e.Bounds.Left + ImageList2.ImageSize.Width + 16, e.Bounds.Top)
 
                 'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 e.Graphics.CompositingQuality = CompositingQuality.HighQuality
@@ -229,9 +230,10 @@ Public Class MaestroDispositivo
 
         Catch ex As Exception
 
-            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+            MsgBox("No se pudo completar la operación.6", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
+
 
     End Sub
 
@@ -244,7 +246,7 @@ Public Class MaestroDispositivo
 
         Catch ex As Exception
 
-            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+            MsgBox("No se pudo completar la operación.7", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
@@ -311,7 +313,6 @@ Public Class MaestroDispositivo
         End Try
 
     End Sub
-
 
 
 End Class

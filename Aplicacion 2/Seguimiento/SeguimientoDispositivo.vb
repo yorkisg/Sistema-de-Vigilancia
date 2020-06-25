@@ -48,7 +48,7 @@ Public Class SeguimientoDispositivo
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
 
-            LimpiarDataGridViewSeguimientoDispositivo()
+            'LimpiarDataGridViewSeguimientoDispositivo()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -103,13 +103,25 @@ Public Class SeguimientoDispositivo
             Panel2.Enabled = False
             Panel3.Enabled = False
 
+
             LimpiarDataGridViewSeguimientoDispositivo()
 
-            'Si el nodo seleccionado es hijo se habilita el panel2 y el panel3
         Else
 
+            'Si el nodo seleccionado es hijo se habilita el panel2 y el panel3
             Panel2.Enabled = True
             Panel3.Enabled = True
+
+        End If
+
+        If DataGridView1.RowCount = 0 And DataGridView1.SelectedRows.Count = 0 Then
+
+            BloquearComponentes()
+
+            'Se limpian todos los componentes del formulario para un nuevo uso.
+            LimpiarComponentesSeguimientoDispositivo()
+            LimpiarDataGridViewSeguimientoDispositivoControl()
+            ErrorProvider1.Clear()
 
         End If
 
@@ -132,8 +144,11 @@ Public Class SeguimientoDispositivo
 
             'Se limpian todos los componentes del formulario para un nuevo uso.
             LimpiarComponentesSeguimientoDispositivo()
+            ErrorProvider1.Clear()
 
             If DataGridView1.RowCount > 0 And DataGridView1.SelectedRows.Count = 1 Then
+
+                DesbloquearComponentes()
 
                 'Seleccionamos y pasamos el valor al TextBox.
                 'Usado para el registro de incidencia
@@ -457,7 +472,7 @@ Public Class SeguimientoDispositivo
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
 
-            LimpiarDataGridViewSeguimientoDispositivo()
+            'LimpiarDataGridViewSeguimientoDispositivo()
 
             Tabla.Clear()
             DataSet.Clear()
@@ -468,7 +483,8 @@ Public Class SeguimientoDispositivo
         Else
 
             'Cierre formal de la ventana sin liberar recursos
-            Close()
+            Dispose()
+            'Close()
 
         End If
 
@@ -713,7 +729,7 @@ Public Class SeguimientoDispositivo
 
         Catch ex As Exception
 
-            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+            MsgBox("No se pudo completar la operación.1", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
@@ -728,7 +744,7 @@ Public Class SeguimientoDispositivo
 
         Catch ex As Exception
 
-            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+            MsgBox("No se pudo completar la operación.2", MsgBoxStyle.Exclamation, "Error.")
 
         End Try
 
@@ -795,7 +811,6 @@ Public Class SeguimientoDispositivo
         End Try
 
     End Sub
-
 
 
 End Class

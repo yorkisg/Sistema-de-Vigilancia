@@ -74,7 +74,23 @@ Public Class ConsultaServicio
     Private Sub BotonBuscar2_Click(sender As Object, e As EventArgs) Handles BotonBuscar2.Click
         'Llamada al metodo de carga de datos
 
-        CargarGridListadoServicios()
+        Try
+
+            'La fecha inicial no puede ser mayor que la fecha final
+            If DateTimePicker2.Value <= DateTimePicker3.Value Then
+
+                CargarGridListadoServicios()
+
+            Else
+
+                MsgBox("La fecha inicial no puede ser mayor a la fecha final.", MsgBoxStyle.Exclamation, "Error.")
+
+            End If
+
+        Catch ex As Exception
+
+
+        End Try
 
     End Sub
 
@@ -141,6 +157,40 @@ Public Class ConsultaServicio
             Close()
 
         End If
+
+    End Sub
+
+    Private Sub DataGridView3_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView3.CellFormatting
+        'CellFormatting: Evento del control DataGridview el cual permite cambiar 
+        'y dar formato a las celdas, bien sea por color de texto, fondo, etc.
+
+        Try
+
+            Dim TipoEstado As String
+
+            If DataGridView3.Columns(e.ColumnIndex).Name.Equals("ColumnaEstado") Then
+
+                TipoEstado = (DataGridView3.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+
+                If TipoEstado = "POR REALIZAR" Then
+
+                    e.CellStyle.ForeColor = Color.Blue
+
+                End If
+
+                If TipoEstado = "COMPLETADO" Then
+
+                    e.CellStyle.ForeColor = Color.Green
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("No se pudo completar la operación.", MsgBoxStyle.Exclamation, "Error.")
+
+        End Try
 
     End Sub
 

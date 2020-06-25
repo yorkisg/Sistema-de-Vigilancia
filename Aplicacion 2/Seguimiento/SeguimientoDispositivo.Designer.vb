@@ -60,6 +60,7 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaDispositivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaImagen3 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaIP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaUbicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaImagen = New System.Windows.Forms.DataGridViewImageColumn()
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -128,6 +129,11 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaHora2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Pagina7 = New System.Windows.Forms.TabPage()
         Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.ColumnaID2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaObservacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
@@ -143,11 +149,6 @@ Partial Class SeguimientoDispositivo
         Me.ImageList5 = New System.Windows.Forms.ImageList(Me.components)
         Me.Label22 = New System.Windows.Forms.Label()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
-        Me.ColumnaID2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaObservacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.Pagina1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -227,7 +228,7 @@ Partial Class SeguimientoDispositivo
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator2, Me.BotonSalir2, Me.ToolStripSeparator4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1169, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1281, 25)
         Me.ToolStrip1.TabIndex = 46
         '
         'ToolStripSeparator2
@@ -278,7 +279,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaIDGrupo, Me.ColumnaGrupo, Me.ColumnaSede, Me.ColumnaDispositivo, Me.ColumnaImagen3, Me.ColumnaTipo, Me.ColumnaUbicacion, Me.ColumnaImagen, Me.ColumnaEstado})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaIDGrupo, Me.ColumnaGrupo, Me.ColumnaSede, Me.ColumnaDispositivo, Me.ColumnaImagen3, Me.ColumnaTipo, Me.ColumnaIP, Me.ColumnaUbicacion, Me.ColumnaImagen, Me.ColumnaEstado})
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -288,7 +289,7 @@ Partial Class SeguimientoDispositivo
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.Menu
-        Me.DataGridView1.Location = New System.Drawing.Point(583, 28)
+        Me.DataGridView1.Location = New System.Drawing.Point(579, 28)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -300,7 +301,7 @@ Partial Class SeguimientoDispositivo
         Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.ShowEditingIcon = False
-        Me.DataGridView1.Size = New System.Drawing.Size(574, 602)
+        Me.DataGridView1.Size = New System.Drawing.Size(690, 602)
         Me.DataGridView1.TabIndex = 47
         '
         'ColumnaID
@@ -371,6 +372,15 @@ Partial Class SeguimientoDispositivo
         Me.ColumnaTipo.Name = "ColumnaTipo"
         Me.ColumnaTipo.ReadOnly = True
         Me.ColumnaTipo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'ColumnaIP
+        '
+        Me.ColumnaIP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaIP.DataPropertyName = "direccionip"
+        Me.ColumnaIP.HeaderText = "DIRECCIÓN IP"
+        Me.ColumnaIP.MinimumWidth = 100
+        Me.ColumnaIP.Name = "ColumnaIP"
+        Me.ColumnaIP.ReadOnly = True
         '
         'ColumnaUbicacion
         '
@@ -737,6 +747,7 @@ Partial Class SeguimientoDispositivo
         'TextBox9
         '
         Me.TextBox9.BackColor = System.Drawing.Color.AliceBlue
+        Me.TextBox9.Enabled = False
         Me.TextBox9.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox9.Location = New System.Drawing.Point(6, 65)
         Me.TextBox9.Name = "TextBox9"
@@ -746,6 +757,7 @@ Partial Class SeguimientoDispositivo
         'TextBox8
         '
         Me.TextBox8.BackColor = System.Drawing.Color.AliceBlue
+        Me.TextBox8.Enabled = False
         Me.TextBox8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TextBox8.Location = New System.Drawing.Point(6, 21)
         Me.TextBox8.Name = "TextBox8"
@@ -1161,6 +1173,53 @@ Partial Class SeguimientoDispositivo
         Me.DataGridView4.Size = New System.Drawing.Size(551, 211)
         Me.DataGridView4.TabIndex = 65
         '
+        'ColumnaID2
+        '
+        Me.ColumnaID2.DataPropertyName = "servicio"
+        Me.ColumnaID2.HeaderText = "ID SERVICIO"
+        Me.ColumnaID2.Name = "ColumnaID2"
+        Me.ColumnaID2.ReadOnly = True
+        Me.ColumnaID2.Visible = False
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "nombredispositivo"
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle15
+        Me.DataGridViewTextBoxColumn2.FillWeight = 81.81818!
+        Me.DataGridViewTextBoxColumn2.HeaderText = "DISPOSITIVO"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "nombreservicio"
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle16
+        Me.DataGridViewTextBoxColumn3.HeaderText = "SERVICIO"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'ColumnaObservacion
+        '
+        Me.ColumnaObservacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaObservacion.DataPropertyName = "observacion"
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaObservacion.DefaultCellStyle = DataGridViewCellStyle17
+        Me.ColumnaObservacion.HeaderText = "OBSERVACIONES"
+        Me.ColumnaObservacion.Name = "ColumnaObservacion"
+        Me.ColumnaObservacion.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "fechainicio"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "FECHA"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 100
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
         'Timer1
         '
         '
@@ -1295,59 +1354,12 @@ Partial Class SeguimientoDispositivo
         Me.TextBox15.TabIndex = 138
         Me.TextBox15.Visible = False
         '
-        'ColumnaID2
-        '
-        Me.ColumnaID2.DataPropertyName = "servicio"
-        Me.ColumnaID2.HeaderText = "ID SERVICIO"
-        Me.ColumnaID2.Name = "ColumnaID2"
-        Me.ColumnaID2.ReadOnly = True
-        Me.ColumnaID2.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "nombredispositivo"
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle15
-        Me.DataGridViewTextBoxColumn2.FillWeight = 81.81818!
-        Me.DataGridViewTextBoxColumn2.HeaderText = "DISPOSITIVO"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "nombreservicio"
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle16
-        Me.DataGridViewTextBoxColumn3.HeaderText = "SERVICIO"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'ColumnaObservacion
-        '
-        Me.ColumnaObservacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaObservacion.DataPropertyName = "observacion"
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaObservacion.DefaultCellStyle = DataGridViewCellStyle17
-        Me.ColumnaObservacion.HeaderText = "OBSERVACIONES"
-        Me.ColumnaObservacion.Name = "ColumnaObservacion"
-        Me.ColumnaObservacion.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "fechainicio"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "FECHA"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 100
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
         'SeguimientoDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1169, 642)
+        Me.ClientSize = New System.Drawing.Size(1281, 642)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel2)
@@ -1493,16 +1505,6 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents Label14 As Label
     Friend WithEvents TextBox14 As TextBox
     Friend WithEvents Label21 As Label
-    Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaImagen As DataGridViewImageColumn
-    Friend WithEvents ColumnaUbicacion As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaTipo As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaImagen3 As DataGridViewImageColumn
-    Friend WithEvents ColumnaDispositivo As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaIDGrupo As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaID As DataGridViewTextBoxColumn
     Friend WithEvents ImageList4 As ImageList
     Friend WithEvents ImageList5 As ImageList
     Friend WithEvents TextBox15 As TextBox
@@ -1512,4 +1514,15 @@ Partial Class SeguimientoDispositivo
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaID2 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaImagen As DataGridViewImageColumn
+    Friend WithEvents ColumnaUbicacion As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaIP As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaTipo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaImagen3 As DataGridViewImageColumn
+    Friend WithEvents ColumnaDispositivo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaIDGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaID As DataGridViewTextBoxColumn
 End Class

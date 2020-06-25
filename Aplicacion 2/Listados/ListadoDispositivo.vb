@@ -49,9 +49,14 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.TextBox7.Text = DataGridView.Item("ColumnaDireccion", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox8.Text = DataGridView.Item("ColumnaMarca", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
-                MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+
+
                 MaestroDispositivo.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox10.Text = DataGridView.Item("ColumnaIDSede", DataGridView.SelectedRows(0).Index).Value
+
+                MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox9.Text = DataGridView.Item("ColumnaIDGrupo", DataGridView.SelectedRows(0).Index).Value
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroDispositivo.BotonModificar.Enabled = True
@@ -167,9 +172,14 @@ Public Class ListadoDispositivo
                 MaestroDispositivo.TextBox7.Text = DataGridView.Item("ColumnaDireccion", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.TextBox8.Text = DataGridView.Item("ColumnaMarca", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboTipo.Text = DataGridView.Item("ColumnaTipo", DataGridView.SelectedRows(0).Index).Value
-                MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
                 MaestroDispositivo.ComboEstado.Text = DataGridView.Item("ColumnaEstado", DataGridView.SelectedRows(0).Index).Value
+
+
                 MaestroDispositivo.ComboSede.Text = DataGridView.Item("ColumnaSede", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox10.Text = DataGridView.Item("ColumnaIDSede", DataGridView.SelectedRows(0).Index).Value
+
+                MaestroDispositivo.ComboGrupo.Text = DataGridView.Item("ColumnaGrupo", DataGridView.SelectedRows(0).Index).Value
+                MaestroDispositivo.TextBox9.Text = DataGridView.Item("ColumnaIDGrupo", DataGridView.SelectedRows(0).Index).Value
 
                 'Se activa el uso del boton modificar del formulario "MaestroVehiculo"
                 MaestroDispositivo.BotonModificar.Enabled = True

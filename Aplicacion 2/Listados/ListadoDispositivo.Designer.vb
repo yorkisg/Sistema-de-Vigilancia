@@ -58,6 +58,8 @@ Partial Class ListadoDispositivo
         Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaIDGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaIDSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip2.SuspendLayout()
@@ -149,7 +151,7 @@ Partial Class ListadoDispositivo
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaDireccion, Me.ColumnaMarca, Me.ColumnaImagen, Me.ColumnaTipo, Me.ColumnaImagen2, Me.ColumnaEstado, Me.ColumnaSede, Me.ColumnaGrupo})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnaID, Me.ColumnaDescripcion, Me.ColumnaUbicacion, Me.ColumnaDireccion, Me.ColumnaMarca, Me.ColumnaImagen, Me.ColumnaTipo, Me.ColumnaImagen2, Me.ColumnaEstado, Me.ColumnaSede, Me.ColumnaGrupo, Me.ColumnaIDGrupo, Me.ColumnaIDSede})
         Me.DataGridView.GridColor = System.Drawing.SystemColors.Menu
         Me.DataGridView.Location = New System.Drawing.Point(12, 28)
         Me.DataGridView.MultiSelect = False
@@ -296,6 +298,22 @@ Partial Class ListadoDispositivo
         Me.ColumnaGrupo.Name = "ColumnaGrupo"
         Me.ColumnaGrupo.ReadOnly = True
         '
+        'ColumnaIDGrupo
+        '
+        Me.ColumnaIDGrupo.DataPropertyName = "idgrupo"
+        Me.ColumnaIDGrupo.HeaderText = "ID GRUPO"
+        Me.ColumnaIDGrupo.Name = "ColumnaIDGrupo"
+        Me.ColumnaIDGrupo.ReadOnly = True
+        Me.ColumnaIDGrupo.Visible = False
+        '
+        'ColumnaIDSede
+        '
+        Me.ColumnaIDSede.DataPropertyName = "idsede"
+        Me.ColumnaIDSede.HeaderText = "ID SEDE"
+        Me.ColumnaIDSede.Name = "ColumnaIDSede"
+        Me.ColumnaIDSede.ReadOnly = True
+        Me.ColumnaIDSede.Visible = False
+        '
         'ListadoDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -333,10 +351,12 @@ Partial Class ListadoDispositivo
     Friend WithEvents ToolStrip2 As ToolStrip
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
     Friend WithEvents Contador As ToolStripLabel
-    Friend WithEvents ColumnaImagen2 As DataGridViewImageColumn
+    Friend WithEvents ColumnaIDGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaIDSede As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaSede As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaEstado As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnaImagen2 As DataGridViewImageColumn
     Friend WithEvents ColumnaTipo As DataGridViewTextBoxColumn
     Friend WithEvents ColumnaImagen As DataGridViewImageColumn
     Friend WithEvents ColumnaMarca As DataGridViewTextBoxColumn

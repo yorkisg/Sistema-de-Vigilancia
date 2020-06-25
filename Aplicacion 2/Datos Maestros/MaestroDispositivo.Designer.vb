@@ -55,8 +55,10 @@ Partial Class MaestroDispositivo
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -238,7 +240,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox4.Location = New System.Drawing.Point(298, 320)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(23, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(31, 20)
         Me.TextBox4.TabIndex = 69
         Me.TextBox4.Visible = False
         '
@@ -267,7 +269,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox5.Location = New System.Drawing.Point(298, 346)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(23, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(31, 20)
         Me.TextBox5.TabIndex = 72
         Me.TextBox5.Visible = False
         '
@@ -285,7 +287,7 @@ Partial Class MaestroDispositivo
         '
         Me.TextBox6.Location = New System.Drawing.Point(298, 294)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(23, 20)
+        Me.TextBox6.Size = New System.Drawing.Size(31, 20)
         Me.TextBox6.TabIndex = 73
         Me.TextBox6.Visible = False
         '
@@ -337,14 +339,6 @@ Partial Class MaestroDispositivo
         Me.Label9.TabIndex = 76
         Me.Label9.Text = "MARCA"
         '
-        'ImageList2
-        '
-        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "Operativo.png")
-        Me.ImageList2.Images.SetKeyName(1, "Desconectada.png")
-        Me.ImageList2.Images.SetKeyName(2, "SinReporte.png")
-        '
         'ImageList1
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -355,12 +349,38 @@ Partial Class MaestroDispositivo
         Me.ImageList1.Images.SetKeyName(3, "Hacienda.png")
         Me.ImageList1.Images.SetKeyName(4, "Planta.png")
         '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(298, 238)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(31, 20)
+        Me.TextBox9.TabIndex = 78
+        Me.TextBox9.Visible = False
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(298, 264)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(31, 20)
+        Me.TextBox10.TabIndex = 79
+        Me.TextBox10.Visible = False
+        '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "Operativo.png")
+        Me.ImageList2.Images.SetKeyName(1, "Desconectada.png")
+        Me.ImageList2.Images.SetKeyName(2, "SinReporte.png")
+        '
         'MaestroDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ClientSize = New System.Drawing.Size(329, 430)
+        Me.Controls.Add(Me.TextBox10)
+        Me.Controls.Add(Me.TextBox9)
         Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TextBox7)
@@ -429,6 +449,8 @@ Partial Class MaestroDispositivo
     Friend WithEvents Label9 As Label
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents ImageList2 As ImageList
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents ImageList2 As ImageList
 End Class
