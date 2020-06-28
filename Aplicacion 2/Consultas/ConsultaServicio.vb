@@ -16,13 +16,12 @@ Public Class ConsultaServicio
 
         BotonConsultar.Enabled = False
 
-
     End Sub
 
     Private Sub ConsultaServicio_FormClosing(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
         'Al cerrar el formulario por el boton "x" se ejecutan los metodos del boton salir
 
-        If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+        If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Or DataGridView3.RowCount > 0 Then
 
             Tabla.Clear()
             DataSet.Clear()
@@ -34,6 +33,30 @@ Public Class ConsultaServicio
 
             'Cierre formal del formulario liberando recursos
             Dispose()
+
+        End If
+
+    End Sub
+
+    Private Sub ConsultaServicio_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
+        'Evento que permite cerrar el formulario presionando la tecla esc
+
+        If (e.KeyCode = Keys.Escape) Then
+
+            If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Or DataGridView3.RowCount > 0 Then
+
+                Tabla.Clear()
+                DataSet.Clear()
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            Else
+
+                'Cierre formal de la ventana sin liberar recursos
+                Close()
+
+            End If
 
         End If
 
@@ -143,7 +166,7 @@ Public Class ConsultaServicio
     Private Sub BotonSalir_Click(sender As Object, e As EventArgs) Handles BotonSalir.Click
         'Boton salir
 
-        If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+        If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Or DataGridView3.RowCount > 0 Then
 
             Tabla.Clear()
             DataSet.Clear()

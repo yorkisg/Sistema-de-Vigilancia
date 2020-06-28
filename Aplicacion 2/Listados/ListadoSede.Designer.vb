@@ -199,6 +199,7 @@ Partial Class ListadoSede
         Me.Controls.Add(Me.DataGridView)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "ListadoSede"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Listado de Sedes de la Organización"

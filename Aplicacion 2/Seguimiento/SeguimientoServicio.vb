@@ -1,8 +1,14 @@
 ﻿
 Public Class SeguimientoServicio
 
+    Dim Contador As Integer = 0
+
     Private Sub SeguimientoServicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Metodos que cargaran al momento de desplegar el formulario.
+
+        'Inicializamos el timer
+        Timer1.Start()
+        Timer1.Interval = 1000
 
         'Carga inicial de las series
         SerieSeguimientoDetalleServicio()
@@ -27,7 +33,7 @@ Public Class SeguimientoServicio
 
     End Sub
 
-    Private Sub SeguimientoDispositivo_FormClosing(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
+    Private Sub SeguimientoServicio_FormClosing(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
         'Al cerrar el formulario por el boton "x" se ejecutan los metodos del boton salir
 
         If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
@@ -44,6 +50,98 @@ Public Class SeguimientoServicio
             Dispose()
 
         End If
+
+    End Sub
+
+    Private Sub SeguimientoServicio_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
+        'Evento que permite cerrar el formulario presionando la tecla esc
+
+        If (e.KeyCode = Keys.Escape) Then
+
+            If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+                Tabla.Clear()
+                DataSet.Clear()
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            Else
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'Control Timer: se lleva el tiempo para que la hora y la fecha pueda ser actualizada constantemente
+
+        'Contamos y enviamos el tiempo al label
+        Contador = Contador + 1
+        Tiempo.Text = Contador
+
+        'Si el tiempo llega a 300 seg (5min) se cierra la aplicacion
+        If Contador = 300 Then
+
+            If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+                Tabla.Clear()
+                DataSet.Clear()
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            Else
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub ReiniciarTiempo()
+        'Se detiene el tiempo, reiniciamos el contador y volvemos a iniciar el conteo del tiempo
+
+        Timer1.Stop()
+
+        Contador = 0
+
+        Timer1.Start()
+
+    End Sub
+
+    Private Sub SeguimientoServicio_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        'Al mover el mouse sobre el formulario se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub SeguimientoServicio_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick
+        'Al dar click sobre el formulario se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+        'Al mover el mouse sobre el panel se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub Panel2_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel2.MouseMove
+        'Al mover el mouse sobre el panel se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
 
     End Sub
 

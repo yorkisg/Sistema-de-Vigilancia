@@ -202,6 +202,7 @@ Partial Class MaestroGrupo
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "MaestroGrupo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

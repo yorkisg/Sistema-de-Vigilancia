@@ -94,6 +94,9 @@ Partial Class SeguimientoServicio
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.TabControl()
         Me.Pagina2 = New System.Windows.Forms.TabPage()
+        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
+        Me.Tiempo = New System.Windows.Forms.ToolStripLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -109,7 +112,7 @@ Partial Class SeguimientoServicio
         'ToolStrip1
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.AliceBlue
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator3, Me.BotonSalir, Me.ToolStripSeparator4})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonGuardar, Me.ToolStripSeparator3, Me.BotonSalir, Me.ToolStripSeparator4, Me.Tiempo, Me.ToolStripLabel4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1169, 25)
@@ -742,6 +745,21 @@ Partial Class SeguimientoServicio
         Me.Pagina2.Text = "DISPOSITIVOS"
         Me.Pagina2.UseVisualStyleBackColor = True
         '
+        'ToolStripLabel4
+        '
+        Me.ToolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripLabel4.Image = CType(resources.GetObject("ToolStripLabel4.Image"), System.Drawing.Image)
+        Me.ToolStripLabel4.Name = "ToolStripLabel4"
+        Me.ToolStripLabel4.Size = New System.Drawing.Size(63, 22)
+        Me.ToolStripLabel4.Text = "Usuario"
+        '
+        'Tiempo
+        '
+        Me.Tiempo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.Tiempo.Name = "Tiempo"
+        Me.Tiempo.Size = New System.Drawing.Size(13, 22)
+        Me.Tiempo.Text = "0"
+        '
         'SeguimientoServicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -761,6 +779,7 @@ Partial Class SeguimientoServicio
         Me.Controls.Add(Me.TextBox7)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "SeguimientoServicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -842,4 +861,7 @@ Partial Class SeguimientoServicio
     Friend WithEvents Label11 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents Tiempo As ToolStripLabel
+    Friend WithEvents ToolStripLabel4 As ToolStripLabel
+    Friend WithEvents Timer1 As Timer
 End Class

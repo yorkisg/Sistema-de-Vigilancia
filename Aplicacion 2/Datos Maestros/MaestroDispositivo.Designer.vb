@@ -41,7 +41,6 @@ Partial Class MaestroDispositivo
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.ComboGrupo = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ComboEstado = New System.Windows.Forms.ComboBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ComboTipo = New System.Windows.Forms.ComboBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -59,6 +58,7 @@ Partial Class MaestroDispositivo
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ComboEstado = New System.Windows.Forms.ComboBox()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -209,17 +209,6 @@ Partial Class MaestroDispositivo
         Me.Label6.Size = New System.Drawing.Size(99, 15)
         Me.Label6.TabIndex = 66
         Me.Label6.Text = "ESTADO ACTUAL"
-        '
-        'ComboEstado
-        '
-        Me.ComboEstado.BackColor = System.Drawing.Color.AliceBlue
-        Me.ComboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ComboEstado.FormattingEnabled = True
-        Me.ComboEstado.Location = New System.Drawing.Point(12, 395)
-        Me.ComboEstado.Name = "ComboEstado"
-        Me.ComboEstado.Size = New System.Drawing.Size(280, 23)
-        Me.ComboEstado.TabIndex = 67
         '
         'ErrorProvider1
         '
@@ -373,12 +362,24 @@ Partial Class MaestroDispositivo
         Me.ImageList2.Images.SetKeyName(1, "Desconectada.png")
         Me.ImageList2.Images.SetKeyName(2, "SinReporte.png")
         '
+        'ComboEstado
+        '
+        Me.ComboEstado.BackColor = System.Drawing.Color.AliceBlue
+        Me.ComboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboEstado.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ComboEstado.FormattingEnabled = True
+        Me.ComboEstado.Location = New System.Drawing.Point(12, 395)
+        Me.ComboEstado.Name = "ComboEstado"
+        Me.ComboEstado.Size = New System.Drawing.Size(280, 23)
+        Me.ComboEstado.TabIndex = 80
+        '
         'MaestroDispositivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ClientSize = New System.Drawing.Size(329, 430)
+        Me.Controls.Add(Me.ComboEstado)
         Me.Controls.Add(Me.TextBox10)
         Me.Controls.Add(Me.TextBox9)
         Me.Controls.Add(Me.TextBox8)
@@ -390,7 +391,6 @@ Partial Class MaestroDispositivo
         Me.Controls.Add(Me.ComboSede)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.ComboTipo)
-        Me.Controls.Add(Me.ComboEstado)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ComboGrupo)
         Me.Controls.Add(Me.TextBox3)
@@ -406,6 +406,7 @@ Partial Class MaestroDispositivo
         Me.Controls.Add(Me.TextBox4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "MaestroDispositivo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -436,7 +437,6 @@ Partial Class MaestroDispositivo
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents ComboGrupo As ComboBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents ComboEstado As ComboBox
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents ComboTipo As ComboBox
     Friend WithEvents TextBox4 As TextBox
@@ -453,4 +453,5 @@ Partial Class MaestroDispositivo
     Friend WithEvents TextBox9 As TextBox
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents ComboEstado As ComboBox
 End Class

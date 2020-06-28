@@ -1,6 +1,10 @@
 ﻿
 Module ModuloMaestro
 
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''MAESTRO DISPOSITIVO'''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub CargarComboSedeDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
@@ -76,14 +80,14 @@ Module ModuloMaestro
     Public Sub CargarComboEstadoDispositivo()
         'Metodo que permite cargar el Combobox desde la BD.
 
-        Arreglo4.Add("OPERATIVO")
-        Arreglo4.Add("PRESENTANDO FALLAS")
-        Arreglo4.Add("DESCONECTADO")
+        Arreglo5.Add("OPERATIVO")
+        Arreglo5.Add("PRESENTANDO FALLAS")
+        Arreglo5.Add("DESCONECTADO")
 
         MaestroDispositivo.ComboEstado.DrawMode = DrawMode.OwnerDrawVariable 'PARA PODER PONER NUESTRAS IMAGENES
         MaestroDispositivo.ComboEstado.DropDownHeight = 480 'PARA QUE MUESTRE TODOS LOS ELEMENTOS. DEPENDE DEL NUMERO DE ELEMENTOS Y SU ALTURA
 
-        MaestroDispositivo.ComboEstado.DataSource = Arreglo4
+        MaestroDispositivo.ComboEstado.DataSource = Arreglo5
 
     End Sub
 
@@ -167,6 +171,11 @@ Module ModuloMaestro
 
     End Function
 
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''MAESTRO GRUPO'''''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub CargarComboSedeGrupo()
         'Metodo que permite cargar el Combobox desde la BD.
 
@@ -241,6 +250,10 @@ Module ModuloMaestro
 
     End Function
 
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''''MAESTRO MATERIAL''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub SerieMaterial()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID.
@@ -294,6 +307,10 @@ Module ModuloMaestro
 
     End Function
 
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''MAESTRO SEDE''''''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Public Sub SerieSede()
         'Metodo que permite generar una serie correlativa de numeros enteros. 
         'Usado para generar automaticamente el ID.
@@ -335,6 +352,10 @@ Module ModuloMaestro
         Return Validar
 
     End Function
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''MAESTRO SERVICIO''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     Public Sub CargarComboSedeServicio()
         'Metodo que permite cargar el Combobox desde la BD.

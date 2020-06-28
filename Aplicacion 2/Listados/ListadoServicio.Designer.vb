@@ -35,6 +35,14 @@ Partial Class ListadoServicio
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.Contador = New System.Windows.Forms.ToolStripLabel()
         Me.DataGridView = New System.Windows.Forms.DataGridView()
+        Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaResponsable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.BotonGuardar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -49,14 +57,6 @@ Partial Class ListadoServicio
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ColumnaID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaSede = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaResponsable = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -121,6 +121,87 @@ Partial Class ListadoServicio
         Me.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView.Size = New System.Drawing.Size(960, 536)
         Me.DataGridView.TabIndex = 76
+        '
+        'ColumnaID
+        '
+        Me.ColumnaID.DataPropertyName = "idservicio"
+        Me.ColumnaID.HeaderText = "ID SERVICIO"
+        Me.ColumnaID.Name = "ColumnaID"
+        Me.ColumnaID.ReadOnly = True
+        Me.ColumnaID.Visible = False
+        Me.ColumnaID.Width = 150
+        '
+        'ColumnaDescripcion
+        '
+        Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaDescripcion.DataPropertyName = "nombreservicio"
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaDescripcion.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
+        Me.ColumnaDescripcion.MinimumWidth = 240
+        Me.ColumnaDescripcion.Name = "ColumnaDescripcion"
+        Me.ColumnaDescripcion.ReadOnly = True
+        Me.ColumnaDescripcion.Width = 240
+        '
+        'ColumnaSede
+        '
+        Me.ColumnaSede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaSede.DataPropertyName = "nombresede"
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaSede.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ColumnaSede.HeaderText = "SEDE"
+        Me.ColumnaSede.Name = "ColumnaSede"
+        Me.ColumnaSede.ReadOnly = True
+        '
+        'ColumnaGrupo
+        '
+        Me.ColumnaGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaGrupo.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ColumnaGrupo.HeaderText = "GRUPO"
+        Me.ColumnaGrupo.Name = "ColumnaGrupo"
+        Me.ColumnaGrupo.ReadOnly = True
+        '
+        'ColumnaResponsable
+        '
+        Me.ColumnaResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaResponsable.DataPropertyName = "responsable"
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaResponsable.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ColumnaResponsable.HeaderText = "RESPONSABLE"
+        Me.ColumnaResponsable.Name = "ColumnaResponsable"
+        Me.ColumnaResponsable.ReadOnly = True
+        '
+        'ColumnaTipo
+        '
+        Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColumnaTipo.DataPropertyName = "tiposervicio"
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaTipo.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ColumnaTipo.HeaderText = "TIPO"
+        Me.ColumnaTipo.Name = "ColumnaTipo"
+        Me.ColumnaTipo.ReadOnly = True
+        '
+        'ColumnaFecha
+        '
+        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaFecha.DataPropertyName = "fechainicio"
+        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
+        Me.ColumnaFecha.MinimumWidth = 100
+        Me.ColumnaFecha.Name = "ColumnaFecha"
+        Me.ColumnaFecha.ReadOnly = True
+        '
+        'ColumnaEstado
+        '
+        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColumnaEstado.DataPropertyName = "estadoservicio"
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ColumnaEstado.HeaderText = "ESTADO"
+        Me.ColumnaEstado.MinimumWidth = 100
+        Me.ColumnaEstado.Name = "ColumnaEstado"
+        Me.ColumnaEstado.ReadOnly = True
         '
         'ToolStrip1
         '
@@ -215,87 +296,6 @@ Partial Class ListadoServicio
         Me.TextBox1.TabIndex = 78
         Me.TextBox1.Visible = False
         '
-        'ColumnaID
-        '
-        Me.ColumnaID.DataPropertyName = "idservicio"
-        Me.ColumnaID.HeaderText = "ID SERVICIO"
-        Me.ColumnaID.Name = "ColumnaID"
-        Me.ColumnaID.ReadOnly = True
-        Me.ColumnaID.Visible = False
-        Me.ColumnaID.Width = 150
-        '
-        'ColumnaDescripcion
-        '
-        Me.ColumnaDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaDescripcion.DataPropertyName = "nombreservicio"
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaDescripcion.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ColumnaDescripcion.HeaderText = "DESCRIPCIÓN"
-        Me.ColumnaDescripcion.MinimumWidth = 240
-        Me.ColumnaDescripcion.Name = "ColumnaDescripcion"
-        Me.ColumnaDescripcion.ReadOnly = True
-        Me.ColumnaDescripcion.Width = 240
-        '
-        'ColumnaSede
-        '
-        Me.ColumnaSede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaSede.DataPropertyName = "nombresede"
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaSede.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ColumnaSede.HeaderText = "SEDE"
-        Me.ColumnaSede.Name = "ColumnaSede"
-        Me.ColumnaSede.ReadOnly = True
-        '
-        'ColumnaGrupo
-        '
-        Me.ColumnaGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaGrupo.DataPropertyName = "nombregrupo"
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaGrupo.DefaultCellStyle = DataGridViewCellStyle4
-        Me.ColumnaGrupo.HeaderText = "GRUPO"
-        Me.ColumnaGrupo.Name = "ColumnaGrupo"
-        Me.ColumnaGrupo.ReadOnly = True
-        '
-        'ColumnaResponsable
-        '
-        Me.ColumnaResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaResponsable.DataPropertyName = "responsable"
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaResponsable.DefaultCellStyle = DataGridViewCellStyle5
-        Me.ColumnaResponsable.HeaderText = "RESPONSABLE"
-        Me.ColumnaResponsable.Name = "ColumnaResponsable"
-        Me.ColumnaResponsable.ReadOnly = True
-        '
-        'ColumnaTipo
-        '
-        Me.ColumnaTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnaTipo.DataPropertyName = "tiposervicio"
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaTipo.DefaultCellStyle = DataGridViewCellStyle6
-        Me.ColumnaTipo.HeaderText = "TIPO"
-        Me.ColumnaTipo.Name = "ColumnaTipo"
-        Me.ColumnaTipo.ReadOnly = True
-        '
-        'ColumnaFecha
-        '
-        Me.ColumnaFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaFecha.DataPropertyName = "fechainicio"
-        Me.ColumnaFecha.HeaderText = "FECHA DE INICIO"
-        Me.ColumnaFecha.MinimumWidth = 100
-        Me.ColumnaFecha.Name = "ColumnaFecha"
-        Me.ColumnaFecha.ReadOnly = True
-        '
-        'ColumnaEstado
-        '
-        Me.ColumnaEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColumnaEstado.DataPropertyName = "estadoservicio"
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnaEstado.DefaultCellStyle = DataGridViewCellStyle7
-        Me.ColumnaEstado.HeaderText = "ESTADO"
-        Me.ColumnaEstado.MinimumWidth = 100
-        Me.ColumnaEstado.Name = "ColumnaEstado"
-        Me.ColumnaEstado.ReadOnly = True
-        '
         'ListadoServicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -307,6 +307,7 @@ Partial Class ListadoServicio
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.TextBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "ListadoServicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Listado de Servicios"

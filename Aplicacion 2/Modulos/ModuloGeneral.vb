@@ -1,5 +1,4 @@
 ﻿
-
 Imports System.Deployment.Application
 Imports System.Reflection
 
@@ -15,8 +14,6 @@ Module ModuloGeneral
     Public Reader As MySqlDataReader
 
     'Usado para cargar las imagenes en un arreglo y desplegarlas en el combobox mediante los eventos drawitem y measureitem
-
-    'usado para la carga de los combobox en los maestros
     Public Arreglo2 As New ArrayList
 
     'usado para la carga de los combobox en el seguimiento
@@ -38,14 +35,15 @@ Module ModuloGeneral
             If Conexion.State = ConnectionState.Closed Then
 
                 Conexion.ConnectionString = " server=172.16.8.88; " _
-                                     & " user=cecon01; " _
-                                     & " password=1234; " _
-                                     & " database=bdvigilancia; " _
-                                     & " port=3306"
+                                          & " user=cecon01; " _
+                                          & " password=1234; " _
+                                          & " database=bdvigilancia; " _
+                                          & " port=3306"
+
                 Conexion.Open()
 
                 'Comprobamos si existen actualizaciones disponibles e iniciamos la aplicacion
-                'ComprobarActualizacion()
+                ComprobarActualizacion()
 
                 MsgBox("Conexión Exitosa.", MsgBoxStyle.Information, "Exito.")
 
@@ -171,7 +169,7 @@ Module ModuloGeneral
     End Sub
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    '''''''COMPROBAR ACTUALIZACION (EN PRUEBA Y DESARROLLO)''''''''
+    ''''''''''''''''''''''COMPROBAR ACTUALIZACION '''''''''''''''''
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     Public Sub ComprobarActualizacion()
@@ -207,7 +205,7 @@ Module ModuloGeneral
 
                     Dim dr As DialogResult = MessageBox.Show("Una nueva actualización esta disponible. Le gustaria descargarla en este momento?", "Actualización disponible", MessageBoxButtons.OKCancel)
 
-                    If (Not System.Windows.Forms.DialogResult.OK = dr) Then
+                    If (Not DialogResult.OK = dr) Then
                         doUpdate = False
                     End If
 

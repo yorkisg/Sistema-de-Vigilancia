@@ -3,11 +3,13 @@ Public Class SeguimientoDispositivo
 
     Dim Fila As Integer
     Dim Columna As Integer
+    Dim Contador As Integer = 0
 
     Private Sub SeguimientoDispositivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Inicializamos el timer
-        InicializarTimer()
+        Timer1.Start()
+        Timer1.Interval = 1000
 
         'Carga del arbol de opciones
         CargarArbolSeguimientoDispositivo()
@@ -65,22 +67,112 @@ Public Class SeguimientoDispositivo
 
     End Sub
 
-    Private Sub InicializarTimer()
-        'Metodo que inicializa el timer
+    Private Sub SeguimientoDispositivo_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
+        'Evento que permite cerrar el formulario presionando la tecla esc
 
-        Timer1.Start()
-        Timer1.Interval = 1000
+        If (e.KeyCode = Keys.Escape) Then
+
+            ComboSede.Dispose()
+            ComboGrupo.Dispose()
+            ComboEstado.Dispose()
+            ComboTipo.Dispose()
+            ComboPrioridad.Dispose()
+            ComboClasificacion.Dispose()
+
+            If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+                'LimpiarDataGridViewSeguimientoDispositivo()
+
+                Tabla.Clear()
+                DataSet.Clear()
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            Else
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            End If
+
+        End If
 
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         'Control Timer: se lleva el tiempo para que la hora y la fecha pueda ser actualizada constantemente
 
+        'Contamos y enviamos el tiempo al label
+        Contador = Contador + 1
+        Tiempo.Text = Contador
+
+        'Si el tiempo llega a 300 seg (5min) se cierra la aplicacion
+        If Contador = 300 Then
+
+            If DataGridView1.RowCount > 0 Or DataGridView2.RowCount > 0 Then
+
+                'LimpiarDataGridViewSeguimientoDispositivo()
+
+                Tabla.Clear()
+                DataSet.Clear()
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            Else
+
+                'Cierre formal del formulario liberando recursos
+                Dispose()
+
+            End If
+
+        End If
+
         'Serie
         SerieIncidenciaSeguimientoDispositivo()
 
         TextBox6.Text = DateTime.Now.ToShortTimeString()
         DateTimePicker1.Value = Today
+
+    End Sub
+
+    Private Sub ReiniciarTiempo()
+        'Se detiene el tiempo, reiniciamos el contador y volvemos a iniciar el conteo del tiempo
+
+        Timer1.Stop()
+
+        Contador = 0
+
+        Timer1.Start()
+
+    End Sub
+
+    Private Sub SeguimientoDispositivo_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        'Al mover el mouse sobre el formulario se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub SeguimientoDispositivo_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick
+        'Al dar click sobre el formulario se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+        'Al mover el mouse sobre el panel se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
+
+    End Sub
+
+    Private Sub Panel2_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel2.MouseMove
+        'Al mover el mouse sobre el panel se reinicia el tiempo y evitamos el cierre de la aplicacion
+
+        ReiniciarTiempo()
 
     End Sub
 
